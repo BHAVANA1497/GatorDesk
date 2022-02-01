@@ -10,11 +10,13 @@ import {MatIconModule,  MatButtonModule, MatButtonToggleModule, } from "@angular
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {IvyCarouselModule} from 'angular-responsive-carousel';
 import {MatCardModule} from '@angular/material/card';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
