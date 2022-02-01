@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import {RouterModule} from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,11 +11,14 @@ import {MatIconModule,  MatButtonModule, MatButtonToggleModule, } from "@angular
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {IvyCarouselModule} from 'angular-responsive-carousel';
 import {MatCardModule} from '@angular/material/card';
+import { AnnouncementComponent } from './announcement/announcement.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    AnnouncementComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +30,8 @@ import {MatCardModule} from '@angular/material/card';
     BrowserModule,
     BrowserAnimationsModule,
     IvyCarouselModule,
-    MatCardModule
+    MatCardModule,
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]
