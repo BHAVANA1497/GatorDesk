@@ -1,0 +1,70 @@
+.fill-space {
+    flex: 1 1 auto;
+}
+
+.header-right {
+    position : relative;
+    top : 5px;
+}
+
+.icon-32 {
+    font-size: 32px;
+}
+
+.home-toolbar {
+    height: 60px;
+    display: flex;
+    align-content: center;
+    color: white;
+    background: white;
+}
+
+.home-banner {
+    position: relative;
+    height: 80px;
+}
+
+.home-footer {
+    background: #0f1721;
+    min-height: 100px;
+    color: #FFFFFF;
+    font-size: 17px;
+}
+.home-footer-inner-div {
+    padding-left: 15%;
+    padding-right: 15%;
+    padding-top: 30px;
+    padding-bottom: 20px;       
+}
+.text-align-right {
+    text-align: right;
+}
+
+.footer-divider {
+    border-bottom:1px solid #3c3c3c;
+    padding-bottom: 15px;
+}
+
+.footer-pages {
+    margin-top: 15px;
+    padding-bottom: 20px;
+}
+
+.footer-text-thin {
+    font-size: 15px;
+    color: #afafaf;
+}
+
+.settings-nav {
+    text-decoration: none;
+    color: #fff;
+}
+
+.mat-toolbar-layout {
+    background : white !important;
+}
+
+.toolbarBtn {
+    display : inline-block;
+    padding-left: 5px;
+}
