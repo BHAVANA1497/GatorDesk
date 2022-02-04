@@ -1,18 +1,27 @@
-<p>admin-announcemet works!</p>
-<mat-form-field appearance="fill">
-    <mat-label>Event Title</mat-label>
-    <input matInput>
-  </mat-form-field>
-  <mat-form-field appearance="fill">
-    <mat-label>Even Catogery</mat-label>
-    <mat-select>
-      <mat-option value="one">Event</mat-option>
-      <mat-option value="two">Disclaimer</mat-option>
-    </mat-select>
-  </mat-form-field>
-  <mat-form-field appearance="fill">
-    <mat-label>Event Description</mat-label>
-    <textarea matInput></textarea>
-  </mat-form-field>
+<div style="width: 100%" > 
+   <div style="float:left; width: 18%;" class="announce">
+    <mat-form-field appearance="fill">
+      <mat-label>Event Title</mat-label>
+      <input matInput>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Even Catogery</mat-label>
+      <mat-select>
+        <mat-option value="one">Event</mat-option>
+        <mat-option value="two">Disclaimer</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Event Description</mat-label>
+      <textarea matInput></textarea>
+    </mat-form-field>
+  
+    <button mat-raised-button color="primary">Create Announcement</button>
+  </div>
 
-  <button mat-raised-button color="primary">Create Announcement</button>
+  <div style="float:right; width: 80%;">
+    <app-announcement></app-announcement>
+  </div>
+
+</div>
+

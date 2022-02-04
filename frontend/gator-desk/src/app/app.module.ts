@@ -6,14 +6,19 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 
+
 import {MatToolbarModule} from "@angular/material/toolbar";
-import {MatIconModule,  MatButtonModule, MatButtonToggleModule, MatFormFieldModule, MatSelectModule, MatOptionModule, MatInputModule } from "@angular/material";
+
+import {MatIconModule,  MatButtonModule, MatButtonToggleModule, MatFormFieldModule, MatSelectModule, MatOptionModule,
+   MatInputModule , MatExpansionModule} from "@angular/material";
+
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatCardModule} from '@angular/material/card';
 import { FooterComponent } from './footer/footer.component';
 import { AnnouncementComponent } from './announcement/announcement.component';
 import { AdminAnnouncemetComponent } from './admin-announcemet/admin-announcemet.component';
 import { IvyCarouselModule } from 'angular-responsive-carousel';
+
 
 
 @NgModule({
@@ -39,7 +44,8 @@ import { IvyCarouselModule } from 'angular-responsive-carousel';
     IvyCarouselModule,
     MatSelectModule,
     MatOptionModule,
-    MatInputModule
+    MatInputModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]
