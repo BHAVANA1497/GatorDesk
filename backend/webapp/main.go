@@ -32,7 +32,7 @@ func main() {
 	//r.Use(gin.Recovery())
 
 	// **** END POINTS ****
-	//r.GET("/listAllAnouncements", a.ListAnnouncementsView(db))
+	r.GET("/listAllAnnouncements", a.ListAnnouncementsView(db))
 	r.PUT("/editAnnouncement", a.EditAnnouncementView(db))
 	r.POST("/createAnnouncement", a.CreateAnnouncementView(db))
 	//r.POST("/deleteAnnoucement/{id}", a.DeleteAnnouncementView(db))
