@@ -7,7 +7,7 @@ import (
 )
 
 type Announcement struct {
-	Announcement_Id int64 `gorm:"primary_key;auto_increment;not_null;unique" form:"announcementId" json:"announcementId" binding:"required"` 
+	Announcement_Id int64 `gorm:"primary_key;auto_increment;not_null;unique" form:"announcementId" json:"announcementId"` 
 	Admin_Id int64 `gorm:"not_null" form:"adminId" json:"adminId" binding:"required"`
 	Announcement_Category  string `form:"announcementCategory" json:"announcementCategory" binding:"required"`
 	Announcement_Title string `gorm:"not_null" form:"announcementTitle" json:"announcementTitle" binding:"required"` 

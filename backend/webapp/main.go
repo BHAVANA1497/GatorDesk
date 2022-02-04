@@ -33,10 +33,10 @@ func main() {
 
 	// **** END POINTS ****
 	//r.GET("/listAllAnouncements", a.ListAnnouncementsView(db))
-	//r.POST("/editAnnoucements/{id}", a.EditAnnouncementView(db))
-	r.POST("/createAnnoucement", a.CreateAnnouncementView(db))
+	r.PUT("/editAnnouncement", a.EditAnnouncementView(db))
+	r.POST("/createAnnouncement", a.CreateAnnouncementView(db))
 	//r.POST("/deleteAnnoucement/{id}", a.DeleteAnnouncementView(db))
 
-	// starts server and listens on port 8080
+	// starts server and listens on port 8181
 	r.Run(":8181")
 }
