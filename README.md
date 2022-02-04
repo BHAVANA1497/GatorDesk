@@ -8,6 +8,6 @@ Our project ‘Gator Desk’ is an online portal that aims at increasing the eff
  - Akhil Maddukuri
  - Bhavana Chinthalapally
 
-## Tech Stack
+## Tech_Stack
  - Angular
  - Golang
