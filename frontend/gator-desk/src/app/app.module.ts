@@ -6,13 +6,19 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 
+
 import {MatToolbarModule} from "@angular/material/toolbar";
-import {MatIconModule,  MatButtonModule, MatButtonToggleModule, } from "@angular/material";
+
+import {MatIconModule,  MatButtonModule, MatButtonToggleModule, MatFormFieldModule, MatSelectModule, MatOptionModule,
+   MatInputModule , MatExpansionModule} from "@angular/material";
+
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {IvyCarouselModule} from 'angular-responsive-carousel';
 import {MatCardModule} from '@angular/material/card';
 import { FooterComponent } from './footer/footer.component';
 import { AnnouncementComponent } from './announcement/announcement.component';
+import { AdminAnnouncemetComponent } from './admin-announcemet/admin-announcemet.component';
+import { IvyCarouselModule } from 'angular-responsive-carousel';
+
 
 
 @NgModule({
@@ -20,7 +26,8 @@ import { AnnouncementComponent } from './announcement/announcement.component';
     AppComponent,
     HomeComponent,
     FooterComponent,
-    AnnouncementComponent
+    AnnouncementComponent,
+    AdminAnnouncemetComponent
   ],
   imports: [
     BrowserModule,
@@ -31,9 +38,14 @@ import { AnnouncementComponent } from './announcement/announcement.component';
     MatButtonToggleModule,
     BrowserModule,
     BrowserAnimationsModule,
-    IvyCarouselModule,
     MatCardModule,
-    RouterModule
+    RouterModule,
+    MatFormFieldModule,
+    IvyCarouselModule,
+    MatSelectModule,
+    MatOptionModule,
+    MatInputModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

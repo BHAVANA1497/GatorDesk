@@ -1,2 +1,61 @@
-<p>announcement works!</p>
-<p>Hello</p>
+<mat-accordion>
+    <!-- <mat-expansion-panel *ngFor="Let ancmt of ancmts$ | async" class="ancmt_panel">
+    <mat-expansion-panel-header>
+        <mat-panel-title>
+            <p>{{ancmt.title}}</p>
+        </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    </mat-expansion-panel>
+ -->
+ <div class="announcement_style">
+  <h1>Announcements:</h1>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Februaru 14th giveaway:
+          </mat-panel-title>
+          <mat-panel-description>
+            Pay the rent by February 5th to enter the contest
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>Giveaway includes heart shaped cookies and brownies.</p>
+      </mat-expansion-panel>
+      <span class="space-between"></span>
+      <mat-expansion-panel (opened)="panelOpenState = true"
+                           (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Self aware panel
+          </mat-panel-title>
+          <mat-panel-description>
+            Currently I am {{panelOpenState ? 'open' : 'closed'}}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>I'm visible because I am open</p>
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Februaru 14th giveaway:
+          </mat-panel-title>
+          <mat-panel-description>
+            Pay the rent by February 5th to enter the contest
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>Giveaway includes heart shaped cookies and brownies.</p>
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Februaru 14th giveaway:
+          </mat-panel-title>
+          <mat-panel-description>
+            Pay the rent by February 5th to enter the contest
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>Giveaway includes heart shaped cookies and brownies.</p>
+      </mat-expansion-panel>
+
+ </div>
+  </mat-accordion>

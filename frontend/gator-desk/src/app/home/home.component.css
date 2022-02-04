@@ -1,4 +1,11 @@
+.header-right {
+  position : relative;
+  top : 5px;
+}
 
+.fill-space {
+  flex: 1 1 auto;
+}
   .features {
     margin-top: 2%;
     margin-inline: 28%;
