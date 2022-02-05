@@ -254,5 +254,5 @@ The above functionalities have been implemented for both the use cases i.e., for
 
 ![announcement](https://user-images.githubusercontent.com/43131417/152629094-609aa71a-e3d5-45bd-8973-5e9cd72a457e.gif)
 
-##### Video Demo Link:
+### Video Demo Link:
 [Demo Video](https://youtu.be/VrKqjQOcnQw)
