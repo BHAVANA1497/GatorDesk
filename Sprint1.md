@@ -242,3 +242,17 @@ The above functionalities have been implemented for both the use cases i.e., for
 
 ### UI Demo
 
+1. Home Page:
+
+![home_page](https://user-images.githubusercontent.com/43131417/152629063-4627d82d-9a52-4ca1-88a3-415d30209db6.gif)
+
+2. Announcement Page when logged in as a resident:
+
+![announcement](https://user-images.githubusercontent.com/43131417/152629081-55c509c9-ff27-4635-9a4d-1fa0e4477db3.gif)
+
+3. Announcement Page when logged in as an admin:
+
+![announcement](https://user-images.githubusercontent.com/43131417/152629094-609aa71a-e3d5-45bd-8973-5e9cd72a457e.gif)
+
+##### Video Demo Link:
+[Demo Video](https://youtu.be/VrKqjQOcnQw)
