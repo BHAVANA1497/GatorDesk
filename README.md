@@ -14,5 +14,5 @@ Our project ‘Gator Desk’ is an online portal that aims at increasing the eff
  - TypeScript
  - HTML
  - CSS
-
+ - JavaScript
 
