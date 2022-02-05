@@ -2,6 +2,7 @@ package views
 
 import (
 	"net/http"
+	"strconv"
 	l "webapp/model"
 
 	"github.com/gin-gonic/gin"
@@ -136,6 +137,31 @@ func ListAnnouncementsView(db *gorm.DB) gin.HandlerFunc {
 		db.Find(&res)
 
 		c.JSON(http.StatusOK, gin.H{"data": res})
+
+	}
+
+	// return the loginHandlerfunction
+	return gin.HandlerFunc(fn)
+}
+
+func DeleteAnnouncementView(db *gorm.DB) gin.HandlerFunc {
+	fn := func(c *gin.Context) {
+
+		announcementId, err := strconv.Atoi(c.Param("announcementId"))
+
+		if err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+			return
+		}
+
+		var rec l.Announcement
+		if err := db.Where("Announcement_Id = ?", announcementId).First(&rec).Error; err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": "Record not found!"})
+			return
+		}
+
+		db.Delete(&rec)
+		c.JSON(http.StatusOK, gin.H{"data": true})
 
 	}
 
