@@ -28,7 +28,7 @@
             ],
             "styles": [
               "src/styles.css",
-              "src/app-theme.scss"
+              "src/custom-theme.scss",
             ],
             "scripts": []
           },
@@ -96,7 +96,7 @@
             ],
             "styles": [
               "src/styles.css",
-              "src/app-theme.scss"
+              "src/custom-theme.scss",
             ],
             "scripts": []
           }

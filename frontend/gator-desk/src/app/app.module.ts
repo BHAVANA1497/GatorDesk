@@ -18,30 +18,22 @@ import { IvyCarouselModule } from 'angular-responsive-carousel';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
-<<<<<<< HEAD
 import { FooterComponent } from './shared/footer/footer.component';
 import { AnnouncementComponent } from './announcement/announcement.component';
 import { HeaderNavComponent } from './shared/header-nav/header-nav.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { LostAndFoundComponent } from './lost-and-found/lost-and-found.component';
 import { MaintenanceRequestComponent } from './maintenance-request/maintenance-request.component';
-=======
 
+import { MatButtonToggleModule} from '@angular/material/button-toggle';
+import{MatFormFieldModule} from'@angular/material/form-field';
+import { MatSelectModule} from '@angular/material/select';
+import {    MatInputModule} from '@angular/material/input';
+import { MatExpansionModule } from '@angular/material/expansion';
 
-import {MatToolbarModule} from "@angular/material/toolbar";
-
-import {MatIconModule,  MatButtonModule, MatButtonToggleModule, MatFormFieldModule, MatSelectModule, MatOptionModule,
-   MatInputModule , MatExpansionModule} from "@angular/material";
-
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatCardModule} from '@angular/material/card';
-import { FooterComponent } from './footer/footer.component';
-import { AnnouncementComponent } from './announcement/announcement.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { MatOptionModule } from '@angular/material/core';
 import { AdminAnnouncemetComponent } from './admin-announcemet/admin-announcemet.component';
-import { IvyCarouselModule } from 'angular-responsive-carousel';
-
-
->>>>>>> 449d1936af81858ad52be6f93eef0b5016a31890
 
 @NgModule({
   declarations: [
@@ -49,14 +41,11 @@ import { IvyCarouselModule } from 'angular-responsive-carousel';
     HomeComponent,
     FooterComponent,
     AnnouncementComponent,
-<<<<<<< HEAD
     HeaderNavComponent,
     HeaderComponent,
     LostAndFoundComponent,
     MaintenanceRequestComponent,
-=======
-    AdminAnnouncemetComponent
->>>>>>> 449d1936af81858ad52be6f93eef0b5016a31890
+    AdminAnnouncemetComponent,
   ],
   imports: [
     BrowserModule,
@@ -64,27 +53,21 @@ import { IvyCarouselModule } from 'angular-responsive-carousel';
     MatIconModule,
     MatToolbarModule,
     MatButtonModule,
-<<<<<<< HEAD
-=======
-    MatButtonToggleModule,
-    BrowserModule,
-    BrowserAnimationsModule,
->>>>>>> 449d1936af81858ad52be6f93eef0b5016a31890
     MatCardModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     RouterModule,
-<<<<<<< HEAD
     FontAwesomeModule,
     IvyCarouselModule,
-=======
-    MatFormFieldModule,
-    IvyCarouselModule,
     MatSelectModule,
-    MatOptionModule,
     MatInputModule,
-    MatExpansionModule
->>>>>>> 449d1936af81858ad52be6f93eef0b5016a31890
+    MatExpansionModule,
+    MatButtonToggleModule,
+    MatFormFieldModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatIconModule,
+    MatOptionModule
   ],
   providers: [],
   bootstrap: [AppComponent],
