@@ -1,20 +1,24 @@
-.header-right {
-  position : relative;
-  top : 5px;
+carousel {
+  display: inline-block;
+  vertical-align: top;
+  overflow: hidden;
 }
 
-.fill-space {
-  flex: 1 1 auto;
-}
-  .features {
-    margin-top: 2%;
-    margin-inline: 28%;
-    display: inline-flex;
-    
+mat-grid-list {
+  background-color: #b2dfdb;
 }
 
-.example-card{
-    width: 200px;
-    margin-left: 10%;
-    
+fa-icon {
+  padding: 20px;
+  color: #263238;
+}
+
+mat-grid-tile p {
+  font-size: large;
+  letter-spacing: 1px;
+  padding-top: 10px;
+}
+
+.feature-link {
+  padding: 30px;
 }

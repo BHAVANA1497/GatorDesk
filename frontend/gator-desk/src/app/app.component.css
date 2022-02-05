@@ -16,12 +16,15 @@
     font-size: 32px;
 }
 
+
+
 .home-toolbar {
-    height: 60px;
+    top: 10px;
     display: flex;
     align-content: center;
     color: white;
     background: white;
+    height: 30px;
 }
 
 .home-banner {

@@ -1,25 +1,38 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {RouterModule} from '@angular/router';
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-
-
-import {MatToolbarModule} from "@angular/material/toolbar";
-
-import {MatIconModule,  MatButtonModule, MatButtonToggleModule, MatFormFieldModule, MatSelectModule, MatOptionModule,
-   MatInputModule , MatExpansionModule} from "@angular/material";
-
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatCardModule} from '@angular/material/card';
-import { FooterComponent } from './footer/footer.component';
-import { AnnouncementComponent } from './announcement/announcement.component';
-import { AdminAnnouncemetComponent } from './admin-announcemet/admin-announcemet.component';
+import { RouterModule } from '@angular/router';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatCardModule } from '@angular/material/card';
+import {
+  FontAwesomeModule,
+  FaIconLibrary,
+} from '@fortawesome/angular-fontawesome';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { far } from '@fortawesome/free-regular-svg-icons';
+import { fab } from '@fortawesome/free-brands-svg-icons';
 import { IvyCarouselModule } from 'angular-responsive-carousel';
+import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
+import { HomeComponent } from './home/home.component';
+import { FooterComponent } from './shared/footer/footer.component';
+import { AnnouncementComponent } from './announcement/announcement.component';
+import { HeaderNavComponent } from './shared/header-nav/header-nav.component';
+import { LostAndFoundComponent } from './lost-and-found/lost-and-found.component';
+import { MaintenanceRequestComponent } from './maintenance-request/maintenance-request.component';
 
+import { MatButtonToggleModule} from '@angular/material/button-toggle';
+import{MatFormFieldModule} from'@angular/material/form-field';
+import { MatSelectModule} from '@angular/material/select';
+import {    MatInputModule} from '@angular/material/input';
+import { MatExpansionModule } from '@angular/material/expansion';
 
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { MatOptionModule } from '@angular/material/core';
+import { AdminAnnouncemetComponent } from './admin-announcemet/admin-announcemet.component';
 
 @NgModule({
   declarations: [
@@ -27,27 +40,38 @@ import { IvyCarouselModule } from 'angular-responsive-carousel';
     HomeComponent,
     FooterComponent,
     AnnouncementComponent,
-    AdminAnnouncemetComponent
+    HeaderNavComponent,
+    LostAndFoundComponent,
+    MaintenanceRequestComponent,
+    AdminAnnouncemetComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    MatToolbarModule,
+    MatGridListModule,
     MatIconModule,
+    MatToolbarModule,
     MatButtonModule,
-    MatButtonToggleModule,
-    BrowserModule,
-    BrowserAnimationsModule,
     MatCardModule,
+    BrowserAnimationsModule,
+    AppRoutingModule,
     RouterModule,
-    MatFormFieldModule,
+    FontAwesomeModule,
     IvyCarouselModule,
     MatSelectModule,
-    MatOptionModule,
     MatInputModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatButtonToggleModule,
+    MatFormFieldModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatIconModule,
+    MatOptionModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {
+  constructor(library: FaIconLibrary) {
+    library.addIconPacks(fas, far, fab);
+  }
+}
