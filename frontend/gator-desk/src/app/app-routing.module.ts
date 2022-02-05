@@ -1,26 +1,26 @@
-import { Component, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { AnnouncementComponent } from './announcement/announcement.component';
 import { HomeComponent } from './home/home.component';
-import { FooterComponent } from './footer/footer.component';
-
+import { AnnouncementComponent } from './announcement/announcement.component';
+import { LostAndFoundComponent } from './lost-and-found/lost-and-found.component';
+import { MaintenanceRequestComponent } from './maintenance-request/maintenance-request.component';
 
 const routes: Routes = [
-    { path: '', component: HomeComponent,
-      children:[
-        {
-          path:'',
-          component: FooterComponent
-        }
-      ]
+  {
+    path: '',
+    redirectTo: 'home',
+    pathMatch: 'full',
   },
-    { path: 'home', component: HomeComponent },
-    { path: 'announcement', component: AnnouncementComponent },
-
+  { path: 'home', component: HomeComponent },
+  { path: 'announcement', component: AnnouncementComponent },
+  { path: 'lost-and-found', component: LostAndFoundComponent },
+  { path: 'maintenance-request', component: MaintenanceRequestComponent },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  declarations: [],
+  imports: [CommonModule, RouterModule.forRoot(routes)],
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
