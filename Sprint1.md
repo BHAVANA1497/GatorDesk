@@ -52,7 +52,7 @@ Sample Response	:
 ```
 
 ##### Demonstration of the API in Postman:
-
+![Create_api](https://user-images.githubusercontent.com/43131417/152629001-f84ffb54-99a4-46c4-b4fb-d43231e7ee6f.gif)
  
 
 
@@ -97,6 +97,7 @@ Sample Response
 ```
 
 ##### Demonstration of the API in Postman:
+![edit_api](https://user-images.githubusercontent.com/43131417/152629010-2a6f35b1-268c-44a6-b085-353ca3cb9e9d.gif)
  
 
 ### 3.	\listAllAnnouncements API:
@@ -191,6 +192,7 @@ Sample Response
 ```
 
 ##### Demonstration of the API in Postman:
+![getall_api](https://user-images.githubusercontent.com/43131417/152629019-7b6c1204-62bc-4a42-818e-f964e581d4f5.gif)
  
 
 ### 4.	\deleteAnnouncement API:
@@ -214,6 +216,7 @@ Sample Response
 ```
 
 ##### Demonstration of the API in Postman:
+![delete_api](https://user-images.githubusercontent.com/43131417/152629025-7759c2a2-3d94-4b3c-b1ae-eb2dd6ece6ee.gif)
 
 
 ## UI tasks accomplished - (Tech Stack: Angular 13, HTML, CSS, Type Script, JavaScript)
