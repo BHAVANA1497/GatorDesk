@@ -35,7 +35,7 @@ func main() {
 	r.GET("/listAllAnnouncements", a.ListAnnouncementsView(db))
 	r.PUT("/editAnnouncement", a.EditAnnouncementView(db))
 	r.POST("/createAnnouncement", a.CreateAnnouncementView(db))
-	//r.POST("/deleteAnnoucement/{id}", a.DeleteAnnouncementView(db))
+	r.DELETE("/deleteAnnouncement/:announcementId", a.DeleteAnnouncementView(db))
 
 	// starts server and listens on port 8181
 	r.Run(":8181")
