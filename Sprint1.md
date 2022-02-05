@@ -229,16 +229,11 @@ Sample Response
   -	Header component
   -	Footer component
   -	Carousal component
-3. Created the following 3 pages for the following 3 functionalities:
-  -	Announcements
-  -	Lost and found
-  -	Maintenance Requests 
-
-The above functionalities have been implemented for both the use cases i.e., for user and admin roles. These pages can be reached my selecting the option on the Menu bar on the Home page.
-
-4. Login, Signup buttons have been created for existing and new users.
-5. Added routings for different pages.
-6. Used Material Design to enhance the make and feel of the UI.
+3. Created a page to display all the Announcements posted by admin when logged in as Resident. 
+4. Created a page to add a new announcement when logged in as an admin.
+5. Login, Signup buttons have been created for existing and new users.
+6. Added routings for different pages.
+7. Used Material Design to enhance the make and feel of the UI.
 
 ### UI Demo
 
