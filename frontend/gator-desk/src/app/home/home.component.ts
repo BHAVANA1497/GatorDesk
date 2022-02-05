@@ -14,11 +14,11 @@ export class HomeComponent implements OnInit {
   }
 
   public imageSources = [
-    {path: 'https://ak9.picdn.net/shutterstock/videos/5117969/thumb/1.jpg'},
-    {path: 'http://ak2.picdn.net/shutterstock/videos/18324082/thumb/3.jpg'},
-    {path:'https://ak8.picdn.net/shutterstock/videos/3159418/thumb/7.jpg?i10c=img.resize(height:160)'},
-    {path:'https://ak8.picdn.net/shutterstock/videos/11062748/thumb/1.jpg'},
-    {path:'https://ak1.picdn.net/shutterstock/videos/8221801/thumb/1.jpg'}
+    {path:'https://57b23a891d0ffc325f7b-559c437472c4da6a6044f5fd408e667f.ssl.cf1.rackcdn.com/Stoneridge-Apartments1475003638.jpg'},
+    {path: 'https://cdngeneralcf.rentcafe.com/dmslivecafe/2/129655/50733CE0-0962-4BDD-A35D-81152816203B.jpeg?quality=85&scale=both&'},
+    {path: 'https://ratemyapartments.s3.amazonaws.com/files/e7/a2/e7a2c601afbcb789cb2d464bf_original.jpg'},
+    {path:'https://gatorrentals.com/wp-content/uploads/2017/03/original.0-25.jpeg'},
+    {path:'https://57b23a891d0ffc325f7b-559c437472c4da6a6044f5fd408e667f.ssl.cf1.rackcdn.com/StoneridgeApartments1343849872.jpg'}
   ];
 
   public config: IvyCarouselModule = {

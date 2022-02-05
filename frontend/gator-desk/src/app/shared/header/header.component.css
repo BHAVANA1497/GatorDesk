@@ -1,0 +1,11 @@
+button {
+  margin-left: 20px;
+}
+
+.header-spacer {
+  flex: 1 1 auto;
+}
+
+.right-margin {
+  margin-right: 60px;
+}

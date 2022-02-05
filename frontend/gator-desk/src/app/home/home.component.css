@@ -10,6 +10,7 @@
     margin-top: 2%;
     margin-inline: 28%;
     display: inline-flex;
+    margin-left: 25%;
     
 }
 
@@ -18,3 +19,7 @@
     margin-left: 10%;
     
 }
+
+/* .example-card : hover{
+  cursor:grab;
+} */

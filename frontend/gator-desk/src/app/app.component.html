@@ -1,25 +1,4 @@
-<mat-toolbar class="home-toolbar">
-  <span style="margin-top: 13px;">
-    <a routerLink="/home">
-      <img class="home-banner" src="assets/logo1.png">
-    </a>
-  </span>
-  <span class="fill-space"></span>
-  <span class="header-right">
-      
-      <div class="button-right-align toolbarBtn">
-        <a mat-raised-button color="basic" routerLink="/login">Login</a>
-      </div> 
-      <div class="button-right-align toolbarBtn" >
-          <a mat-raised-button color="basic" routerLink="/signup">Sign up</a>
-      </div> 
-      
-  </span>
-</mat-toolbar>
-
+<app-header></app-header>
+<app-header-nav></app-header-nav>
 <router-outlet></router-outlet>
-
-<div class="bott">
-  <my-app></my-app>
-</div>
-
+<app-footer></app-footer>

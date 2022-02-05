@@ -1,0 +1,58 @@
+<div class="footer-spacer"></div>
+<div class="footer">
+  <div class="info-container">
+    <mat-grid-list cols="6" rowHeight="65px">
+      <mat-grid-tile
+        class="logo"
+        [colspan]="1"
+        [rowspan]="2"
+        [style.background]="textColor"
+        >Logo</mat-grid-tile
+      >
+      <mat-grid-tile [colspan]="4" [rowspan]="2" [style.background]="textColor">
+        <fa-icon
+          class="main-icons"
+          [icon]="['fas', 'coffee']"
+          size="2x"
+        ></fa-icon>
+        <fa-icon
+          class="main-icons"
+          [icon]="['fab', 'facebook']"
+          size="2x"
+        ></fa-icon>
+        <fa-icon
+          class="main-icons"
+          [icon]="['fas', 'envelope']"
+          size="2x"
+        ></fa-icon>
+        <fa-icon
+          class="main-icons"
+          [icon]="['fab', 'instagram']"
+          size="2x"
+        ></fa-icon>
+        <fa-icon
+          class="main-icons"
+          [icon]="['fab', 'linkedin-in']"
+          size="2x"
+        ></fa-icon>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="1" [rowspan]="2" [style.background]="textColor"
+        ><div>
+          <div class="row">
+            <fa-icon [icon]="['fas', 'home']"></fa-icon>
+            2-57, Queens, Newyork
+          </div>
+          <br />
+          <div class="row">
+            <fa-icon [icon]="['fas', 'phone']"></fa-icon>
+            + 01 234 567 89
+          </div>
+        </div></mat-grid-tile
+      >
+    </mat-grid-list>
+  </div>
+  <div class="copyright-container">
+    <p><span style="color: #d3d3d3">&copy; 2022 Copyright:</span> Gator Desk</p>
+  </div>
+</div>
