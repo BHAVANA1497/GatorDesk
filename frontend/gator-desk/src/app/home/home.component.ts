@@ -27,10 +27,6 @@ export class HomeComponent implements OnInit {
     autoplayDelay: 2000,
     stopAutoplayMinWidth: 768
   };
-
-  navigate(){
-    this.router.navigate(['annoucement']);
-    }
  
 
   ngOnInit(): void {

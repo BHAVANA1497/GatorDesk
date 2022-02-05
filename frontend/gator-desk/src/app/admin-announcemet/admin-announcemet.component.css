@@ -1,0 +1,8 @@
+
+.announce{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 5%;
+  padding-left: 2%;
+}
