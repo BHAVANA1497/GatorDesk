@@ -11,5 +11,8 @@ Our project ‘Gator Desk’ is an online portal that aims at increasing the eff
 ## Tech Stack
  - Angular
  - Golang
+ - TypeScript
+ - HTML
+ - CSS
 
 
