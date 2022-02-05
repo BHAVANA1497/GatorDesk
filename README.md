@@ -13,4 +13,3 @@ Our project ‘Gator Desk’ is an online portal that aims at increasing the eff
  - Golang
 
 
-![Create_api](https://user-images.githubusercontent.com/46106443/152628705-f4e23740-c888-41e5-a489-89d323d9a27a.gif)
