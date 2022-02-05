@@ -21,7 +21,6 @@ import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { AnnouncementComponent } from './announcement/announcement.component';
 import { HeaderNavComponent } from './shared/header-nav/header-nav.component';
-import { HeaderComponent } from './shared/header/header.component';
 import { LostAndFoundComponent } from './lost-and-found/lost-and-found.component';
 import { MaintenanceRequestComponent } from './maintenance-request/maintenance-request.component';
 
@@ -42,7 +41,6 @@ import { AdminAnnouncemetComponent } from './admin-announcemet/admin-announcemet
     FooterComponent,
     AnnouncementComponent,
     HeaderNavComponent,
-    HeaderComponent,
     LostAndFoundComponent,
     MaintenanceRequestComponent,
     AdminAnnouncemetComponent,

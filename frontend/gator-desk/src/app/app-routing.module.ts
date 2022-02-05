@@ -5,6 +5,7 @@ import { HomeComponent } from './home/home.component';
 import { AnnouncementComponent } from './announcement/announcement.component';
 import { LostAndFoundComponent } from './lost-and-found/lost-and-found.component';
 import { MaintenanceRequestComponent } from './maintenance-request/maintenance-request.component';
+import { AdminAnnouncemetComponent } from './admin-announcemet/admin-announcemet.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'announcement', component: AnnouncementComponent },
   { path: 'lost-and-found', component: LostAndFoundComponent },
   { path: 'maintenance-request', component: MaintenanceRequestComponent },
+  { path: 'login', component: AdminAnnouncemetComponent }
 ];
 
 @NgModule({
