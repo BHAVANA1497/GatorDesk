@@ -52,8 +52,9 @@ func main() {
 	//r.Use(gin.Recovery())
 
 	// **** END POINTS ****
-	//r.POST("/login", a.LoginView(db))
+
 	r.POST("/signUp", a.SignUpView(db))
+	r.POST("/login", a.LoginView(db))
 	r.GET("/listAllAnnouncements", a.ListAnnouncementsView(db))
 	r.PUT("/editAnnouncement", a.EditAnnouncementView(db))
 	r.POST("/createAnnouncement", a.CreateAnnouncementView(db))
