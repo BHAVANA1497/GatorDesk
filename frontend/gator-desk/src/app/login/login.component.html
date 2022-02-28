@@ -1,0 +1,33 @@
+<div class="w3-container">
+    <div class="login-div">
+      <div class="w3-card-3" style="width: 26rem; padding:10px;">
+        <div class="card-body">
+          <h4 class="card-title text-center">Login</h4>
+          <hr>
+          <form #loginForm="ngForm" (submit)="loginForm.valid && doLogin()">
+            <!-- Email -->
+            <div class="">
+              <input matInput type="email" name="email" id="email" [(ngModel)]="userData.email" class="w3-input w3-border" placeholder="User Id"
+                #emailField="ngModel" required pattern="^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$">
+            </div>
+  
+            <!-- Password -->
+            <div class="" style="margin-top: 30px;">
+              <input matInput type="password" name="password" id="password" [(ngModel)]="userData.password" class="w3-input w3-border" placeholder="Password"
+                #passwordField="ngModel" required minlength="6" maxlength="64">
+            </div>
+  
+            <div style="display:inline-block; position: relative; left: -13px;">
+                <a mat-button color="warn" routerLink="/forgot-password">Forgot Password</a>                          
+            </div>
+  
+            <div class="w3-container" style="text-align:right; margin-top:50px; display:inline-block; position: relative;
+            left: 178px;">
+                <button type="submit" mat-raised-button color="primary">Login</button>
+              </div>
+          </form>
+          
+        </div>
+      </div>
+    </div>
+  </div>>
