@@ -33,6 +33,11 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { MatOptionModule } from '@angular/material/core';
 import { AdminAnnouncemetComponent } from './admin-announcemet/admin-announcemet.component';
+import { AdminAnnouncemetService } from './admin-announcemet/admin-annoucemet.admin';
+import { CommonService } from './providers/common.service';
+import { UserService } from './providers/user.service';
+import { LoginComponent } from './login/login.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -44,6 +49,7 @@ import { AdminAnnouncemetComponent } from './admin-announcemet/admin-announcemet
     LostAndFoundComponent,
     MaintenanceRequestComponent,
     AdminAnnouncemetComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -65,9 +71,14 @@ import { AdminAnnouncemetComponent } from './admin-announcemet/admin-announcemet
     FormsModule,
     ReactiveFormsModule,
     MatIconModule,
-    MatOptionModule
+    MatOptionModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    AdminAnnouncemetService,
+    CommonService,
+    UserService
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {
