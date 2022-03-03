@@ -28,7 +28,7 @@
             ],
             "styles": [
               "src/styles.css",
-              "src/custom-theme.scss",
+              "src/custom-theme.scss"
             ],
             "scripts": []
           },
@@ -96,9 +96,40 @@
             ],
             "styles": [
               "src/styles.css",
-              "src/custom-theme.scss",
+              "src/custom-theme.scss"
             ],
             "scripts": []
+          }
+        },
+        "cypress-run": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "devServerTarget": "gator-desk:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "gator-desk:serve:production"
+            }
+          }
+        },
+        "cypress-open": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "watch": true,
+            "headless": false
+          }
+        },
+        "e2e": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "devServerTarget": "gator-desk:serve",
+            "watch": true,
+            "headless": false
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "gator-desk:serve:production"
+            }
           }
         }
       }
