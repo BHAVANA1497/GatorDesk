@@ -1,21 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AdminAnnouncemetService } from './admin-annoucemet.admin';
+import { AdminAnnouncementService } from './admin-annoucement.service';
 
 @Component({
   selector: 'app-admin-announcemet',
-  templateUrl: './admin-announcemet.component.html',
-  styleUrls: ['./admin-announcemet.component.css']
+  templateUrl: './admin-announcement.component.html',
+  styleUrls: ['./admin-announcement.component.css']
 })
-export class AdminAnnouncemetComponent implements OnInit {
+export class AdminAnnouncementComponent implements OnInit {
   announcementForm: FormGroup;
   eventTitle = '';
   eventCategory = '';
   eventDesc = '';
   postData: any = {};
 
-  constructor(private fb: FormBuilder, public  admObj:AdminAnnouncemetService,private router: Router, private activatedRoute: ActivatedRoute ) { 
+  constructor(private fb: FormBuilder, public  admObj:AdminAnnouncementService,private router: Router, private activatedRoute: ActivatedRoute ) { 
     this.announcementForm = fb.group({
       'eventTitle': [null, Validators.required],
       'eventDesc': [null, Validators.required]

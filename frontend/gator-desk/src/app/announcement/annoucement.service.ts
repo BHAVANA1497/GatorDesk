@@ -1,10 +1,12 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { map, Observable } from 'rxjs';
 
 
 @Injectable()
-export class AdminAnnouncemetService {
+export class AnnouncemetService {
 
+  annoucements: Object | undefined;
   result: any;
 
   httpOptions = {
@@ -22,10 +24,8 @@ export class AdminAnnouncemetService {
 //      return this._http.get("http://localhost:8000/getMeetups", options).map(result => this.result = result.json().data);
 //   }
 
-createAnnouncement(reqBody: any) {
-     return this._http.post("http://localhost:8181/createAnnouncement",reqBody,this.httpOptions).subscribe(res => {
-       window.location.reload();
-     });
+ getAllAnnouncements(): Observable<any> {
+      return this._http.get("http://localhost:8181/listAllAnnouncements",this.httpOptions);
   }
 
 }

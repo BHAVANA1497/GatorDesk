@@ -3,17 +3,18 @@
     <h1>GatorDesk</h1>
     <span class="menu-spacer"></span>
     <div>
-      <a mat-button [routerLink]="'/home'" routerLinkActive="active"> Home </a>
-      <a mat-button [routerLink]="'/announcement'" routerLinkActive="active">
+      <a mat-button [routerLink]="'/home'" id="home" routerLinkActive="active"> Home </a>
+      <a mat-button [routerLink]="'/announcement'" id="annoucement" routerLinkActive="active">
         Announcement
       </a>
-      <a mat-button [routerLink]="'/lost-and-found'" routerLinkActive="active">
+      <a mat-button [routerLink]="'/lost-and-found'" id="lostandfound" routerLinkActive="active">
         Lost & Found
       </a>
       <a
         mat-button
         [routerLink]="'/maintenance-request'"
         routerLinkActive="active"
+        id="maintenancerequest"
       >
         Maintenance Request
       </a>
