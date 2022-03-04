@@ -27,14 +27,10 @@ func CreateAnnouncementView(db *gorm.DB) gin.HandlerFunc {
 		// strips HTML input from user for security purpose
 		p := bluemonday.StripTagsPolicy()
 
-		//json.Announcement_Id = p.Sanitize(json.Announcement_Id)
-		//json.Admin_Id = p.Sanitize(json.Admin_Id)
 		json.Announcement_Category = p.Sanitize(json.Announcement_Category)
 		json.Announcement_Title = p.Sanitize(json.Announcement_Title)
 		json.Venue = p.Sanitize(json.Venue)
 		json.Event_Description = p.Sanitize(json.Event_Description)
-		//json.CreatedAt = p.Sanitize(json.CreatedAt)
-		//json.UpdatedAt = p.Sanitize(json.UpdatedAt)
 
 		// create the announcement
 		result := db.Create(&json)
@@ -70,14 +66,10 @@ func EditAnnouncementView(db *gorm.DB) gin.HandlerFunc {
 		// strips HTML input from user for security purpose
 		p := bluemonday.StripTagsPolicy()
 
-		//json.Announcement_Id = p.Sanitize(json.Announcement_Id)
-		//json.Admin_Id = p.Sanitize(json.Admin_Id)
 		json.Announcement_Category = p.Sanitize(json.Announcement_Category)
 		json.Announcement_Title = p.Sanitize(json.Announcement_Title)
 		json.Venue = p.Sanitize(json.Venue)
 		json.Event_Description = p.Sanitize(json.Event_Description)
-		//json.CreatedAt = p.Sanitize(json.CreatedAt)
-		//json.UpdatedAt = p.Sanitize(json.UpdatedAt)
 
 		// get the existing post
 		var ann l.Announcement
@@ -92,18 +84,6 @@ func EditAnnouncementView(db *gorm.DB) gin.HandlerFunc {
 
 		c.JSON(http.StatusOK, ann)
 
-		/*
-			// return error if the user does not exist
-			if ann.Announcement_Id == nil {
-				c.JSON(http.StatusBadRequest, gin.H{"error": "Announcement does not exist!"})
-				return
-			}
-		*/
-
-		/* c.JSON(http.StatusOK, gin.H{
-			"result": "Announcement edited successfully",
-		}) */
-
 	}
 
 	// return the loginHandlerfunction
@@ -112,26 +92,6 @@ func EditAnnouncementView(db *gorm.DB) gin.HandlerFunc {
 
 func ListAnnouncementsView(db *gorm.DB) gin.HandlerFunc {
 	fn := func(c *gin.Context) {
-		/*var json l.Announcement
-		// try to bind the request json to the Announcement struct
-		if err := c.ShouldBindJSON(&json); err != nil {
-			// return bad request if field names are wrong
-			// and if fields are missing
-			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-			return
-		}
-
-		// strips HTML input from user for security purpose
-		p := bluemonday.StripTagsPolicy()
-
-		//json.Announcement_Id = p.Sanitize(json.Announcement_Id)
-		//json.Admin_Id = p.Sanitize(json.Admin_Id)
-		json.Announcement_Category = p.Sanitize(json.Announcement_Category)
-		json.Announcement_Title = p.Sanitize(json.Announcement_Title)
-		json.Venue = p.Sanitize(json.Venue)
-		json.Event_Description = p.Sanitize(json.Event_Description)
-		//json.CreatedAt = p.Sanitize(json.CreatedAt)
-		//json.UpdatedAt = p.Sanitize(json.UpdatedAt) */
 
 		var res []l.Announcement
 		db.Find(&res)
