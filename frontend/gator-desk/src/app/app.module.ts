@@ -38,6 +38,7 @@ import { CommonService } from './providers/common.service';
 import { UserService } from './providers/user.service';
 import { LoginComponent } from './login/login.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AnnouncemetService } from './announcement/announcement.service';
 
 @NgModule({
   declarations: [
@@ -76,6 +77,7 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   providers: [
     AdminAnnouncemetService,
+    AnnouncemetService,
     CommonService,
     UserService
   ],
