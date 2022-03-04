@@ -47,6 +47,7 @@ func SetupRouter(db *gorm.DB, storeName string, sessionName string) *gin.Engine 
 	r.POST("/signUp", a.SignUpView(db))
 	r.POST("/login", a.LoginView(db))
 	r.DELETE("/deleteUser/:id", a.DeleteUser(db))
+	r.POST("/logout", a.LogoutView)
 	r.GET("/listAllAnnouncements", a.ListAnnouncementsView(db))
 	r.PUT("/editAnnouncement", a.EditAnnouncementView(db))
 	r.POST("/createAnnouncement", a.CreateAnnouncementView(db))
