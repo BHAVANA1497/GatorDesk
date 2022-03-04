@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs/internal/Observable';
+import { AnnouncemetService } from './announcement.service';
+
 
 @Component({
   selector: 'app-announcement',
@@ -7,7 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AnnouncementComponent implements OnInit {
   panelOpenState = false;
-  constructor() { }
+  annoucements$ : any;
+  constructor(public announcementService: AnnouncemetService) { 
+   this.announcementService.getAllAnnouncements().subscribe((data)=>{
+     console.log(data.data);
+   this.annoucements$ = data.data;
+   })
+  
+  }
 
   ngOnInit(): void {
   }
