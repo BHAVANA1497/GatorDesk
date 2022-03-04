@@ -1,16 +1,16 @@
 <mat-accordion >
-  <div class="announcement_style">
-   <h1>Announcements:</h1>
-   <mat-expansion-panel *ngFor = "let annoucement of annoucements$ ">
-     <mat-expansion-panel-header>
-       <mat-panel-title>
-         {{annoucement.announcementTitle}}
-       </mat-panel-title>
-       <mat-panel-description>
-         {{annoucement.eventDescription}}
-       </mat-panel-description>
-     </mat-expansion-panel-header>
-      <p>{{annoucement.venue}}</p>
-   </mat-expansion-panel>
-  </div>
-   </mat-accordion>
+ <div class="announcement_style">
+  <h1>Announcements:</h1>
+  <mat-expansion-panel *ngFor = "let annoucement of annoucements$ ">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{annoucement.announcementTitle}}
+      </mat-panel-title>
+      <mat-panel-description>
+        {{annoucement.eventDescription}}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+     <p>{{annoucement.venue}}</p>
+  </mat-expansion-panel>
+ </div>
+  </mat-accordion>

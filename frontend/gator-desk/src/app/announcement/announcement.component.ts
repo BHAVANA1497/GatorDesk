@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
-import { AnnouncemetService } from './announcement.service';
+import { AnnouncemetService } from './annoucement.service';
 
 
 @Component({
