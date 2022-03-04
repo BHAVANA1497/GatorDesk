@@ -2,8 +2,10 @@ package views
 
 import (
 	"net/http"
+	"strconv"
 	m "webapp/model"
 
+	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
 	"github.com/microcosm-cc/bluemonday"
 	"gorm.io/gorm"
@@ -70,7 +72,7 @@ func SignUpView(db *gorm.DB) gin.HandlerFunc {
 */
 func LoginView(db *gorm.DB) gin.HandlerFunc {
 	fn := func(c *gin.Context) {
-		//session := sessions.Default(c)
+		session := sessions.Default(c)
 		var json m.Login
 		// try to bind the request json to the Login struct
 		if err := c.ShouldBindJSON(&json); err != nil {
@@ -91,8 +93,8 @@ func LoginView(db *gorm.DB) gin.HandlerFunc {
 
 		// if user found return success
 		if len(users) > 0 {
-			//session.Set("uId", users[0].ID)
-			//session.Save()
+			session.Set("uId", users[0].ID)
+			session.Save()
 			c.JSON(http.StatusOK, gin.H{
 				"result": "Successful Login!",
 			})
@@ -107,4 +109,57 @@ func LoginView(db *gorm.DB) gin.HandlerFunc {
 
 	// return the loginHandlerfunction
 	return gin.HandlerFunc(fn)
+}
+
+func DeleteUser(db *gorm.DB) gin.HandlerFunc {
+	fn := func(c *gin.Context) {
+
+		userId, err := strconv.Atoi(c.Param("id"))
+
+		if err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+			return
+		}
+
+		var rec m.User
+		if err := db.Where("id = ?", userId).First(&rec).Error; err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": "Record not found!"})
+			return
+		}
+
+		db.Delete(&rec)
+		c.JSON(http.StatusOK, gin.H{"data": true})
+
+	}
+
+	// return the loginHandlerfunction
+	return gin.HandlerFunc(fn)
+}
+
+// Logout view - to remove the user from the session
+func LogoutView(c *gin.Context) {
+	session := sessions.Default(c)
+
+	v := session.Get("uId")
+	if v == nil {
+		c.JSON(http.StatusUnauthorized, gin.H{
+			"result": "User not logged in",
+		})
+		return
+	}
+
+	session.Clear()
+	session.Save()
+
+	v = session.Get("uId")
+	if v == nil {
+		c.JSON(http.StatusOK, gin.H{
+			"result": "Logout successful",
+		})
+		return
+	}
+
+	c.JSON(http.StatusUnauthorized, gin.H{
+		"result": "Logout failed",
+	})
 }
