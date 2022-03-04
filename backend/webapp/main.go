@@ -5,6 +5,8 @@ import (
 	m "webapp/model"
 	a "webapp/views"
 
+	"github.com/gin-contrib/sessions"
+	"github.com/gin-contrib/sessions/cookie"
 	"github.com/gin-gonic/gin"
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
@@ -24,6 +26,35 @@ func CORSMiddleware() gin.HandlerFunc {
 	}
 }
 
+func SetupRouter(db *gorm.DB, storeName string, sessionName string) *gin.Engine {
+	// setting up the webserver with default config
+	r := gin.Default()
+
+	// Check every request if allowed for CORS
+	r.Use(CORSMiddleware())
+
+	// Adding logger to the middleware
+	r.Use(gin.Logger())
+
+	// Using default recovery mechanism in case of any unexpected crashes in webserver
+	r.Use(gin.Recovery())
+
+	store := cookie.NewStore([]byte(storeName))
+	store.Options(sessions.Options{MaxAge: 60 * 60 * 24})
+	r.Use(sessions.Sessions(sessionName, store))
+
+	// **** END POINTS ****
+	r.POST("/signUp", a.SignUpView(db))
+	r.POST("/login", a.LoginView(db))
+	r.DELETE("/deleteUser/:id", a.DeleteUser(db))
+	r.GET("/listAllAnnouncements", a.ListAnnouncementsView(db))
+	r.PUT("/editAnnouncement", a.EditAnnouncementView(db))
+	r.POST("/createAnnouncement", a.CreateAnnouncementView(db))
+	r.DELETE("/deleteAnnouncement/:announcementId", a.DeleteAnnouncementView(db))
+
+	return r
+}
+
 // Driver function which starts the server
 func main() {
 
@@ -40,26 +71,9 @@ func main() {
 	db.AutoMigrate(&m.Announcement{})
 
 	// setting up the webserver with default config
-	r := gin.New()
-
-	// Check every request if allowed for CORS
-	r.Use(CORSMiddleware())
-
-	// Adding logger to the middleware
-	//r.Use(gin.Logger())
-
-	// Using default recovery mechanism in case of any unexpected crashes in webserver
-	//r.Use(gin.Recovery())
-
-	// **** END POINTS ****
-
-	r.POST("/signUp", a.SignUpView(db))
-	r.POST("/login", a.LoginView(db))
-	r.DELETE("/deleteUser/:id", a.DeleteUser(db))
-	r.GET("/listAllAnnouncements", a.ListAnnouncementsView(db))
-	r.PUT("/editAnnouncement", a.EditAnnouncementView(db))
-	r.POST("/createAnnouncement", a.CreateAnnouncementView(db))
-	r.DELETE("/deleteAnnouncement/:announcementId", a.DeleteAnnouncementView(db))
+	storeName := "mainsecret"
+	sessionName := "mainsession"
+	r := SetupRouter(db, storeName, sessionName)
 
 	// starts server and listens on port 8181
 	r.Run(":8181")
