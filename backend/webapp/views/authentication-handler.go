@@ -111,18 +111,6 @@ func LoginView(db *gorm.DB) gin.HandlerFunc {
 	return gin.HandlerFunc(fn)
 }
 
-// func DeleteUser(db *gorm.DB) gin.HandlerFunc {
-// 	fn := func(c *gin.Context) {
-// 		//userId, _ := strconv.Atoi(c.Param("userId"))
-// 		userId, _ := strconv.Atoi(c.Param("id"))
-// 		var user m.User
-// 		db.First(&user, userId)
-// 		db.Delete(&user)
-// 		c.JSON(http.StatusOK, user)
-// 	}
-// 	return gin.HandlerFunc(fn)
-// }
-
 func DeleteUser(db *gorm.DB) gin.HandlerFunc {
 	fn := func(c *gin.Context) {
 
@@ -146,4 +134,32 @@ func DeleteUser(db *gorm.DB) gin.HandlerFunc {
 
 	// return the loginHandlerfunction
 	return gin.HandlerFunc(fn)
+}
+
+// Logout view - to remove the user from the session
+func LogoutView(c *gin.Context) {
+	session := sessions.Default(c)
+
+	v := session.Get("uId")
+	if v == nil {
+		c.JSON(http.StatusUnauthorized, gin.H{
+			"result": "User not logged in",
+		})
+		return
+	}
+
+	session.Clear()
+	session.Save()
+
+	v = session.Get("uId")
+	if v == nil {
+		c.JSON(http.StatusOK, gin.H{
+			"result": "Logout successful",
+		})
+		return
+	}
+
+	c.JSON(http.StatusUnauthorized, gin.H{
+		"result": "Logout failed",
+	})
 }
