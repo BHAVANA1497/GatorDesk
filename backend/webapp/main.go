@@ -55,6 +55,7 @@ func main() {
 
 	r.POST("/signUp", a.SignUpView(db))
 	r.POST("/login", a.LoginView(db))
+	r.DELETE("/deleteUser/:id", a.DeleteUser(db))
 	r.GET("/listAllAnnouncements", a.ListAnnouncementsView(db))
 	r.PUT("/editAnnouncement", a.EditAnnouncementView(db))
 	r.POST("/createAnnouncement", a.CreateAnnouncementView(db))

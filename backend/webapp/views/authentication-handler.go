@@ -2,6 +2,7 @@ package views
 
 import (
 	"net/http"
+	"strconv"
 	m "webapp/model"
 
 	"github.com/gin-gonic/gin"
@@ -103,6 +104,43 @@ func LoginView(db *gorm.DB) gin.HandlerFunc {
 		c.JSON(http.StatusUnauthorized, gin.H{
 			"result": "Invalid User name and/or Password",
 		})
+	}
+
+	// return the loginHandlerfunction
+	return gin.HandlerFunc(fn)
+}
+
+// func DeleteUser(db *gorm.DB) gin.HandlerFunc {
+// 	fn := func(c *gin.Context) {
+// 		//userId, _ := strconv.Atoi(c.Param("userId"))
+// 		userId, _ := strconv.Atoi(c.Param("id"))
+// 		var user m.User
+// 		db.First(&user, userId)
+// 		db.Delete(&user)
+// 		c.JSON(http.StatusOK, user)
+// 	}
+// 	return gin.HandlerFunc(fn)
+// }
+
+func DeleteUser(db *gorm.DB) gin.HandlerFunc {
+	fn := func(c *gin.Context) {
+
+		userId, err := strconv.Atoi(c.Param("id"))
+
+		if err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+			return
+		}
+
+		var rec m.User
+		if err := db.Where("id = ?", userId).First(&rec).Error; err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": "Record not found!"})
+			return
+		}
+
+		db.Delete(&rec)
+		c.JSON(http.StatusOK, gin.H{"data": true})
+
 	}
 
 	// return the loginHandlerfunction
