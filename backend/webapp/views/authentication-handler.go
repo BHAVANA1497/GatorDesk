@@ -5,6 +5,7 @@ import (
 	"strconv"
 	m "webapp/model"
 
+	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
 	"github.com/microcosm-cc/bluemonday"
 	"gorm.io/gorm"
@@ -71,7 +72,7 @@ func SignUpView(db *gorm.DB) gin.HandlerFunc {
 */
 func LoginView(db *gorm.DB) gin.HandlerFunc {
 	fn := func(c *gin.Context) {
-		//session := sessions.Default(c)
+		session := sessions.Default(c)
 		var json m.Login
 		// try to bind the request json to the Login struct
 		if err := c.ShouldBindJSON(&json); err != nil {
@@ -92,8 +93,8 @@ func LoginView(db *gorm.DB) gin.HandlerFunc {
 
 		// if user found return success
 		if len(users) > 0 {
-			//session.Set("uId", users[0].ID)
-			//session.Save()
+			session.Set("uId", users[0].ID)
+			session.Save()
 			c.JSON(http.StatusOK, gin.H{
 				"result": "Successful Login!",
 			})
