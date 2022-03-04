@@ -38,7 +38,11 @@ import { CommonService } from './providers/common.service';
 import { UserService } from './providers/user.service';
 import { LoginComponent } from './login/login.component';
 import { HttpClientModule } from '@angular/common/http';
+<<<<<<< HEAD
 import { AnnouncemetService } from './announcement/annoucement.service';
+=======
+import { AnnouncemetService } from './announcement/announcement.service';
+>>>>>>> 8d67ae27258b2ef845674be04d11f290d617135a
 
 @NgModule({
   declarations: [
@@ -76,7 +80,11 @@ import { AnnouncemetService } from './announcement/annoucement.service';
     HttpClientModule,
   ],
   providers: [
+<<<<<<< HEAD
     AdminAnnouncementService,
+=======
+    AdminAnnouncemetService,
+>>>>>>> 8d67ae27258b2ef845674be04d11f290d617135a
     AnnouncemetService,
     CommonService,
     UserService

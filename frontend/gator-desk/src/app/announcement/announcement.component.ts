@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
+<<<<<<< HEAD
 import { AnnouncemetService } from './annoucement.service';
+=======
+import { AnnouncemetService } from './announcement.service';
+>>>>>>> 8d67ae27258b2ef845674be04d11f290d617135a
 
 
 @Component({
