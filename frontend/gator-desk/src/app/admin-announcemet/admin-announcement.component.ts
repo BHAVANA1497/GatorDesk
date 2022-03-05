@@ -15,7 +15,7 @@ export class AdminAnnouncementComponent implements OnInit {
   eventDesc = '';
   postData: any = {};
 
-  constructor(private fb: FormBuilder, public  admObj:AdminAnnouncementService,private router: Router, private activatedRoute: ActivatedRoute ) { 
+  constructor(private fb: FormBuilder, public  admObj:AdminAnnouncementService ) { 
     this.announcementForm = fb.group({
       'eventTitle': [null, Validators.required],
       'eventDesc': [null, Validators.required]
