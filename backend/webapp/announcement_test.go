@@ -65,6 +65,14 @@ func initData(db *gorm.DB) {
 			Phone:     "6789012345",
 			AptNo:     "DD-447",
 		},
+		{
+			Username:  "test_123",
+			Password:  "123",
+			FirstName: "Test",
+			LastName:  "User",
+			Phone:     "1234509876",
+			AptNo:     "Apt123",
+		},
 	}
 	db.Create(&users)
 
@@ -116,6 +124,16 @@ func initData(db *gorm.DB) {
 			Announcement_Title:    "Earthquare Disaster Emergency Drill",
 			Venue:                 "Stoneridge Playground",
 			Event_Description:     "We are training you for disasters.",
+			CreatedAt:             db.NowFunc().UTC().Local(),
+			UpdatedAt:             db.NowFunc().UTC().Local(),
+		},
+		{
+			Announcement_Id:       6,
+			Admin_Id:              1,
+			Announcement_Category: "Test",
+			Announcement_Title:    "Test data",
+			Venue:                 "Test data",
+			Event_Description:     "Test data",
 			CreatedAt:             db.NowFunc().UTC().Local(),
 			UpdatedAt:             db.NowFunc().UTC().Local(),
 		},
@@ -176,6 +194,38 @@ func TestAdminCreateAnnouncementPassCase(t *testing.T) {
 		nr.Flush()
 		body, _ := json.Marshal(announcements)
 		req, _ := http.NewRequest("POST", "/createAnnouncement", strings.NewReader(string(body)))
+		req.Header.Set("Content-Type", "application/json")
+		req1.Header.Set("credentials", "include")
+		req.Header.Set("Cookie", cookieValue)
+		router.ServeHTTP(nr, req)
+		assert.Equal(t, 200, nr.Code)
+	}
+}
+
+func TestAdminEditAnnouncementPassCase(t *testing.T) {
+	login := m.Login{
+		Username: "testadmin",
+		Password: "TestAdmin@123",
+	}
+	payload, _ := json.Marshal(login)
+	nr := httptest.NewRecorder()
+	req1, _ := http.NewRequest("POST", "/login", strings.NewReader(string(payload)))
+	req1.Header.Set("Content-Type", "application/json")
+	req1.Header.Set("credentials", "include")
+	router.ServeHTTP(nr, req1)
+	cookieValue := nr.Result().Header.Get("Set-Cookie")
+	if nr.Code == 200 {
+		announcement := m.Announcement{
+			Announcement_Id:       1,
+			Admin_Id:              1,
+			Announcement_Category: "Event Announcement",
+			Announcement_Title:    "New Year Celebrations",
+			Venue:                 "Stoneridge Pool",
+			Event_Description:     "We are celebrating New Year's!",
+		}
+		nr.Flush()
+		body, _ := json.Marshal(announcement)
+		req, _ := http.NewRequest("PUT", "/editAnnouncement", strings.NewReader(string(body)))
 		req.Header.Set("Content-Type", "application/json")
 		req1.Header.Set("credentials", "include")
 		req.Header.Set("Cookie", cookieValue)
