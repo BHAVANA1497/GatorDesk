@@ -148,17 +148,17 @@ Sample Response
 
 ### UI Demo
 
-1. Home Page:
+1. Integrating UIand Backend:
 
 ![home_page_new](https://user-images.githubusercontent.com/43131417/156868427-005d4657-dfcd-4f06-80de-29bdbe1e3ca9.gif)
 
 
-2. Cypress:
+2. Cypress Unit Test cases:
 
 ![cypress](https://user-images.githubusercontent.com/43131417/156868423-201c3d73-bcb9-4bd2-bbc2-9c35c89660a2.gif)
 
 
-3. Jest-UI-Angular:
+3. Jest UI Angular:
 ![jest-UI-angular](https://user-images.githubusercontent.com/43131417/156868468-bb12bd47-c83c-496c-b3e1-b04e8d67accc.gif)
 
 
