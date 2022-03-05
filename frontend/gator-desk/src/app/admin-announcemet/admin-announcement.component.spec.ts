@@ -1,4 +1,8 @@
+import { HttpClient, HttpClientModule, HttpHandler } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Router, RouterModule } from '@angular/router';
+import { AdminAnnouncementService } from './admin-annoucement.service';
 
 import { AdminAnnouncementComponent } from './admin-announcement.component';
 
@@ -8,7 +12,10 @@ describe('AdminAnnouncementComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AdminAnnouncementComponent ]
+      declarations: [ AdminAnnouncementComponent ],
+      imports: [FormsModule,
+        ReactiveFormsModule, RouterModule, Router],
+        providers: [AdminAnnouncementService, HttpClient, HttpClientModule, HttpHandler]
     })
     .compileComponents();
   });
@@ -19,7 +26,4 @@ describe('AdminAnnouncementComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
 });
