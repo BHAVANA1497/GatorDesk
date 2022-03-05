@@ -36,6 +36,7 @@ We have written the following unit test cases:
 8)  TestRegisterFailCase
 9)  TestDeleteUserPassCase
 10) TestDeleteUserFailCase
+
 Demo of the above mentioned Tests after the REST API Documentation section.
 
 ## REST API Documentation
@@ -169,7 +170,10 @@ https://www.youtube.com/watch?v=OLxU4zENE8Y
 #### Cypress Tests
 Steps:-
 
+```
 npm install cypress
+```
+
 In package.json :-
 
 "scripts": {
@@ -178,19 +182,30 @@ In package.json :-
     "cypress:run": "cypress run",
     "cypress": "cypress open"
   },
+  
 To Run :-
 
+```
 npm run cypress
+```
 
 #### Jest tests
 
+```
 npm install jest jest-preset-angular --save-dev
+```
 
-To Run:- ng test
+To Run:-
+
+```
+ng test
+```
 
 #### Go tests:
 
+```
 cd backend
 cd webapp
 go mod tidy
 go test -v
+```
