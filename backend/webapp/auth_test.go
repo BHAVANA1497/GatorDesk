@@ -77,3 +77,30 @@ func TestRegisterPassCase(t *testing.T) {
 	assert.Equal(t, 200, w.Code)
 
 }
+
+func TestRegisterFailCase(t *testing.T) {
+	user_details := m.User{
+
+		Username:  "akhil_m",
+		Password:  "MAC",
+		FirstName: "Akhil",
+		LastName:  "Maddukuri",
+		Phone:     "09876543221",
+		AptNo:     "HH-331",
+	}
+	body, err := json.Marshal(user_details)
+	if err != nil {
+		t.Fatal(err)
+	}
+	w := httptest.NewRecorder()
+
+	req, err := http.NewRequest("POST", "/signUp", strings.NewReader(string(body)))
+	if err != nil {
+		t.Fatal(err)
+	}
+	req.Header.Set("Content-Type", "application/json")
+
+	router.ServeHTTP(w, req)
+	assert.Equal(t, 400, w.Code)
+
+}
