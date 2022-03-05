@@ -7,6 +7,7 @@ it('loads examples', () => {
 
  it('tests navigation to annoucement component' , () => {
     cy.get('#annoucement').click();
+    cy.intercept('GET', '/listAllAnnouncements')
     cy.contains('Announcements:')
  });
 

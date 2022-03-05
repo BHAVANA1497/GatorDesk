@@ -38,7 +38,9 @@ export class AdminAnnouncementComponent implements OnInit {
     this.postData.eventDescription = this.announcementForm.value.eventDesc;
     this.postData.announcementCategory = this.eventCategory;
 
-    this.admObj.createAnnouncement(this.postData);
+    this.admObj.createAnnouncement(this.postData).subscribe(res => {
+      window.location.reload();
+    });;
   
    
   }

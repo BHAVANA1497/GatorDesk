@@ -23,9 +23,7 @@ export class AdminAnnouncementService {
 //   }
 
 createAnnouncement(reqBody: any) {
-     return this._http.post("http://localhost:8181/createAnnouncement",reqBody,this.httpOptions).subscribe(res => {
-       window.location.reload();
-     });
+     return this._http.post("http://localhost:8181/createAnnouncement",reqBody,this.httpOptions);
   }
 
 }
