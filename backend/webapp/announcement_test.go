@@ -351,3 +351,18 @@ func TestAdminDeleteAnnouncementFailCase(t *testing.T) {
 
 	}
 }
+
+func TestDeleteUserPassCase(t *testing.T) {
+
+	w := httptest.NewRecorder()
+
+	req, err := http.NewRequest("DELETE", "/deleteUser/10", nil)
+	if err != nil {
+		t.Fatal(err)
+	}
+	req.Header.Set("Content-Type", "application/json")
+
+	router.ServeHTTP(w, req)
+	assert.Equal(t, 200, w.Code)
+
+}
