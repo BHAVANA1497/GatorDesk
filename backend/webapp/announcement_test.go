@@ -73,6 +73,70 @@ func initData(db *gorm.DB) {
 			Phone:     "1234509876",
 			AptNo:     "Apt123",
 		},
+		{
+			Username:  "harshitha_m",
+			Password:  "GCDC",
+			FirstName: "Harshitha",
+			LastName:  "Myadam",
+			Phone:     "67878123345",
+			AptNo:     "DD-233",
+		},
+		{
+			Username:  "tejarocks",
+			Password:  "VRA",
+			FirstName: "Tejasri",
+			LastName:  "Dontham",
+			Phone:     "6783201145",
+			AptNo:     "DD-244",
+		},
+		{
+			Username:  "testuser3",
+			Password:  "random",
+			FirstName: "Test-3",
+			LastName:  "User",
+			Phone:     "9162201145",
+			AptNo:     "X-123",
+		},
+		{
+			Username:  "testuser4",
+			Password:  "alsorandom",
+			FirstName: "Teja",
+			LastName:  "D",
+			Phone:     "1234567891",
+			AptNo:     "AA-123",
+		},
+		{
+			Username:  "testuser5",
+			Password:  "hehe",
+			FirstName: "TestUser",
+			LastName:  "Five",
+			Phone:     "9848586878",
+			AptNo:     "YY-174",
+		},
+		{
+			Username:  "manish",
+			Password:  "villages",
+			FirstName: "Manish",
+			LastName:  "Alluri",
+			Phone:     "7656463626",
+			AptNo:     "X-14",
+		},
+		{
+			Username:  "anvitha",
+			Password:  "dontknow",
+			FirstName: "anvitha",
+			LastName:  "choday",
+			Phone:     "9738954545",
+			AptNo:     "HH-331",
+		},
+		{
+			Username:  "squareroot",
+			Password:  "forgot",
+			FirstName: "imaginary",
+			LastName:  "M",
+			Phone:     "6837773773",
+			AptNo:     "GG-333",
+		},
 	}
 	db.Create(&users)
 
@@ -262,5 +326,28 @@ func TestAdminCreateAnnoncementFailCase(t *testing.T) {
 		req1.Header.Set("credentials", "include")
 		router.ServeHTTP(w, req)
 		assert.Equal(t, 400, w.Code)
+	}
+}
+
+func TestAdminDeleteAnnouncementFailCase(t *testing.T) {
+	login := m.Login{
+		Username: "testadmin",
+		Password: "TestAdmin@123",
+	}
+	payload, _ := json.Marshal(login)
+	nr := httptest.NewRecorder()
+	req1, _ := http.NewRequest("POST", "/login", strings.NewReader(string(payload)))
+	req1.Header.Set("Content-Type", "application/json")
+	req1.Header.Set("credentials", "include")
+	router.ServeHTTP(nr, req1)
+	cookieValue := nr.Result().Header.Get("Set-Cookie")
+	if nr.Code == 200 {
+		w := httptest.NewRecorder()
+		req, _ := http.NewRequest("GET", "/deleteAnnouncement/-1", nil)
+		req1.Header.Set("credentials", "include")
+		req.Header.Set("Cookie", cookieValue)
+		router.ServeHTTP(w, req)
+		assert.Equal(t, 404, w.Code)
+
 	}
 }
