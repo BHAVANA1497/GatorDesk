@@ -36,6 +36,7 @@ We have written the following unit test cases:
 8)  TestRegisterFailCase
 9)  TestDeleteUserPassCase
 10) TestDeleteUserFailCase
+Demo of the above mentioned Tests after the REST API Documentation section.
 
 ## REST API Documentation
 
@@ -131,37 +132,11 @@ Sample Response
 ##### Demonstration of the API in Postman:
 <img width="478" alt="image" src="https://user-images.githubusercontent.com/43131417/156868289-e19dce28-13dd-4038-af00-14ace41240e3.png">
 
-### Backend Unit Test Cases:
-
-1)	TestListAllAnnouncementsView
-
-2)	TestAdminCreateAnnouncementPassCase
-
-3)	TestAdminCreateAnnoncementFailCase
-
-
-4)	TestAdminEditAnnouncementPassCase
-
-
-5)  TestLoginPassCase
-
-
-6)  TestLoginFailCase
-
-
-7)  TestRegisterPassCase
-
-
-8)  TestRegisterFailCase
-
-
-9)  TestDeleteUserPassCase
-
-
-10) TestDeleteUserFailCase
-
 
 ### Backend Demo - Unit Test Cases in GoLang:
+
+![delete_api-2](https://user-images.githubusercontent.com/43131417/156868531-a396f812-e788-4f9e-9116-b5914cb8c638.gif)
+
 
 ## UI tasks accomplished - (Tech Stack: Angular 13, HTML, CSS, Type Script, JavaScript)
 
@@ -188,3 +163,34 @@ Sample Response
 
 ### Video Demo Link:
 https://www.youtube.com/watch?v=OLxU4zENE8Y
+
+### Steps to run:
+
+#### Cypress Tests
+Steps:-
+
+npm install cypress
+In package.json :-
+
+"scripts": {
+    [....]
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
+    "cypress": "cypress open"
+  },
+To Run :-
+
+npm run cypress
+
+#### Jest tests
+
+npm install jest jest-preset-angular --save-dev
+
+To Run:- ng test
+
+#### Go tests:
+
+cd backend
+cd webapp
+go mod tidy
+go test -v
