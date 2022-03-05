@@ -151,3 +151,98 @@ func TestListAllAnnouncementsView(t *testing.T) {
 	assert.Equal(t, string(b), res1)
 
 }
+
+func TestAdminCreateAnnouncementPassCase(t *testing.T) {
+	login := m.Login{
+		Username: "testadmin",
+		Password: "TestAdmin@123",
+	}
+	payload, _ := json.Marshal(login)
+	nr := httptest.NewRecorder()
+	req1, _ := http.NewRequest("POST", "/login", strings.NewReader(string(payload)))
+	req1.Header.Set("Content-Type", "application/json")
+	req1.Header.Set("credentials", "include")
+	router.ServeHTTP(nr, req1)
+	cookieValue := nr.Result().Header.Get("Set-Cookie")
+	if nr.Code == 200 {
+		announcements := m.Announcement{
+			Announcement_Id:       1,
+			Admin_Id:              1,
+			Announcement_Category: "Event Announcement",
+			Announcement_Title:    "New Year Celebrations",
+			Venue:                 "Stoneridge Leasing Office",
+			Event_Description:     "We are celebrating New Year's!",
+		}
+		nr.Flush()
+		body, _ := json.Marshal(announcements)
+		req, _ := http.NewRequest("POST", "/createAnnouncement", strings.NewReader(string(body)))
+		req.Header.Set("Content-Type", "application/json")
+		req1.Header.Set("credentials", "include")
+		req.Header.Set("Cookie", cookieValue)
+		router.ServeHTTP(nr, req)
+		assert.Equal(t, 200, nr.Code)
+	}
+}
+
+func TestAdminEditAnnouncementPassCase(t *testing.T) {
+	login := m.Login{
+		Username: "testadmin",
+		Password: "TestAdmin@123",
+	}
+	payload, _ := json.Marshal(login)
+	nr := httptest.NewRecorder()
+	req1, _ := http.NewRequest("POST", "/login", strings.NewReader(string(payload)))
+	req1.Header.Set("Content-Type", "application/json")
+	req1.Header.Set("credentials", "include")
+	router.ServeHTTP(nr, req1)
+	cookieValue := nr.Result().Header.Get("Set-Cookie")
+	if nr.Code == 200 {
+		announcement := m.Announcement{
+			Announcement_Id:       1,
+			Admin_Id:              1,
+			Announcement_Category: "Event Announcement",
+			Announcement_Title:    "New Year Celebrations",
+			Venue:                 "Stoneridge Pool",
+			Event_Description:     "We are celebrating New Year's!",
+		}
+		nr.Flush()
+		body, _ := json.Marshal(announcement)
+		req, _ := http.NewRequest("PUT", "/editAnnouncement", strings.NewReader(string(body)))
+		req.Header.Set("Content-Type", "application/json")
+		req1.Header.Set("credentials", "include")
+		req.Header.Set("Cookie", cookieValue)
+		router.ServeHTTP(nr, req)
+		assert.Equal(t, 200, nr.Code)
+	}
+}
+
+func TestAdminCreateAnnoncementFailCase(t *testing.T) {
+	login := m.Login{
+		Username: "testadmin",
+		Password: "TestAdmin@123",
+	}
+	payload, _ := json.Marshal(login)
+	nr := httptest.NewRecorder()
+	req1, _ := http.NewRequest("POST", "/login", strings.NewReader(string(payload)))
+	req1.Header.Set("Content-Type", "application/json")
+	req1.Header.Set("credentials", "include")
+	router.ServeHTTP(nr, req1)
+	if nr.Code == 200 {
+		announcement := m.Announcement{
+			Announcement_Id:       1,
+			Admin_Id:              1,
+			Announcement_Category: "Event Announcement",
+			Announcement_Title:    "New Year Celebrations",
+			Venue:                 "Stoneridge Leasing Office",
+			Event_Description:     "We are celebrating New Year's!",
+		}
+		nr.Flush()
+		w := httptest.NewRecorder()
+		body, _ := json.Marshal(announcement)
+		req, _ := http.NewRequest("POST", "/createAnnouncement", strings.NewReader(string(body)))
+		req.Header.Set("Content-Type", "application/json")
+		req1.Header.Set("credentials", "include")
+		router.ServeHTTP(w, req)
+		assert.Equal(t, 400, w.Code)
+	}
+}
