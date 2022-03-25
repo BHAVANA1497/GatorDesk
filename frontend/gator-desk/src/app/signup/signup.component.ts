@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../providers/user.service';
+import { SignupService } from './signup.service';
 
 @Component({
   selector: 'app-signup',
@@ -10,19 +12,26 @@ import { UserService } from '../providers/user.service';
 })
 export class SignupComponent implements OnInit {
   userData = {
-    name: '',
-    email: '',
+    firstname: '',
+    username: '',
     password: ''
   };
-
-  constructor(private _http: HttpClient, public user: UserService,  private router: Router) { }
+  constructor( private _http: HttpClient, public signup: SignupService,  private router: Router) { 
+  }
 
   ngOnInit(): void {
   }
 
   doSignup(){
     console.log(this.userData);
-    this.router.navigate(['/home']);
+    this.signup.createUser(this.userData).subscribe(res => {
+      console.log(res);
+      alert('User has been created, you can login with your credentials');
+      this.router.navigate(['/home']);
+    }, err => {
+      console.log(err.error);
+      alert(err.error);
+    });
   }
 
 }

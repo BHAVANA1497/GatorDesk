@@ -8,13 +8,13 @@
   
             <!-- Name -->
             <div class="top25">
-              <input matInput type="text" name="name" id="name" [(ngModel)]="userData.name" class="w3-input  w3-border" placeholder="Name" #nameField="ngModel"
+              <input matInput type="text" name="name" id="name" [(ngModel)]="userData.firstname" class="w3-input  w3-border" placeholder="Name" #nameField="ngModel"
                 required>
             </div>
   
             <!-- Email -->
             <div class="top25">
-              <input matInput type="email" name="email" id="email" [(ngModel)]="userData.email" class="w3-input  w3-border" placeholder="Email" #emailField="ngModel"
+              <input matInput type="email" name="email" id="email" [(ngModel)]="userData.username" class="w3-input  w3-border" placeholder="Email" #emailField="ngModel"
                 required pattern="^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$">
             </div>
   
