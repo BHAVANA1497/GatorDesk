@@ -1,0 +1,37 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <h1>GatorDesk</h1>
+      <span class="menu-spacer"></span>
+      <div>
+        <a mat-button [routerLink]="'/home'" id="home" routerLinkActive="active"> Home </a>
+        <a mat-button [routerLink]="'/adminannoucement'" id="annoucement" routerLinkActive="active">
+          Announcement
+        </a>
+        <a mat-button [routerLink]="'/adminlost-and-found'" id="lostandfound" routerLinkActive="active">
+          Lost & Found
+        </a>
+        <a
+          mat-button
+          [routerLink]="'/adminmaintenance-request'"
+          routerLinkActive="active"
+          id="maintenancerequest"
+        >
+          Maintenance Request
+        </a>
+      </div>
+      <span class="header-spacer"></span>
+      <div class="right-margin" *ngIf="!isLoggedIn">
+        <button mat-raised-button routerLink="/login" id="login">Login</button>
+        <button mat-raised-button [routerLink]="'/signup'" id="signup">Signup</button>
+      </div>
+      <div class="right-margin" *ngIf="isLoggedIn">
+        <fa-icon
+        class="fa fa-user"
+        [icon]="['fas', 'user']"
+        ></fa-icon>
+            <a mat-button> {{userName}} </a>
+            <a mat-raised-button  (click)="logout()">Logout</a>
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  
