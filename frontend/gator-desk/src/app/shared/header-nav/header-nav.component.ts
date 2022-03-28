@@ -11,6 +11,7 @@ import { UserService } from 'src/app/providers/user.service';
 export class HeaderNavComponent implements OnInit {
 
   isLoggedIn = false;
+  userName  = '';
 
   constructor(
     public user: UserService,
@@ -22,16 +23,14 @@ export class HeaderNavComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    let user = localStorage.getItem("USER_DETAILS");
-    console.log("%o ", user);
-    //this.name = user.name;
-    if (user != null) {
+    let userName = localStorage.getItem("USER_DETAILS");
+    if (userName != null) {
       this.isLoggedIn = true;
+      this.userName = userName;
     }
   }
 
   loginCheck() {
-    console.log('tes');
     this._http.post('users/islogin', { token: this.user._token })
       .subscribe(res => {
         console.log(res);
@@ -43,8 +42,6 @@ export class HeaderNavComponent implements OnInit {
   }
 
   logout() {
-    this.user._details = null;
-    this.user._token = '';
     localStorage.clear();
     this.router.navigate(['/login']);
   }

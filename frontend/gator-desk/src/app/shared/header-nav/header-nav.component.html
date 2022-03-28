@@ -20,9 +20,17 @@
       </a>
     </div>
     <span class="header-spacer"></span>
-    <div class="right-margin">
+    <div class="right-margin" *ngIf="!isLoggedIn">
       <button mat-raised-button routerLink="/login" id="login">Login</button>
       <button mat-raised-button [routerLink]="'/signup'" id="signup">Signup</button>
+    </div>
+    <div class="right-margin" *ngIf="isLoggedIn">
+      <fa-icon
+      class="fa fa-user"
+      [icon]="['fas', 'user']"
+      ></fa-icon>
+          <a mat-button> {{userName}} </a>
+          <a mat-raised-button  (click)="logout()">Logout</a>
     </div>
   </mat-toolbar-row>
 </mat-toolbar>
