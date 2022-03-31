@@ -104,3 +104,32 @@ func TestRegisterFailCase(t *testing.T) {
 	assert.Equal(t, 400, w.Code)
 
 }
+func TestDeleteUserPassCase(t *testing.T) {
+
+	w := httptest.NewRecorder()
+
+	req, err := http.NewRequest("DELETE", "/deleteUser/10", nil)
+	if err != nil {
+		t.Fatal(err)
+	}
+	req.Header.Set("Content-Type", "application/json")
+
+	router.ServeHTTP(w, req)
+	assert.Equal(t, 200, w.Code)
+
+}
+
+func TestDeleteUserFailCase(t *testing.T) {
+
+	w := httptest.NewRecorder()
+
+	req, err := http.NewRequest("DELETE", "/deleteUser/10", nil)
+	if err != nil {
+		t.Fatal(err)
+	}
+	req.Header.Set("Content-Type", "application/json")
+
+	router.ServeHTTP(w, req)
+	assert.Equal(t, 400, w.Code)
+
+}
