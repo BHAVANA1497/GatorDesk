@@ -39,6 +39,7 @@ import { UserService } from './providers/user.service';
 import { LoginComponent } from './login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AnnouncemetService } from './announcement/annoucement.service';
+import { SignupComponent } from './signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { AnnouncemetService } from './announcement/annoucement.service';
     MaintenanceRequestComponent,
     AdminAnnouncementComponent,
     LoginComponent,
+    SignupComponent,
   ],
   imports: [
     BrowserModule,
