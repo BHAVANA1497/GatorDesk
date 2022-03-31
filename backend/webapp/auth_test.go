@@ -133,3 +133,43 @@ func TestDeleteUserFailCase(t *testing.T) {
 	assert.Equal(t, 400, w.Code)
 
 }
+
+func TestAdminLoginPassCase(t *testing.T) {
+	login := m.Login{Username: "nitya_v", Password: "MNV"}
+
+	out, err := json.Marshal(login)
+	if err != nil {
+		t.Fatal(err)
+	}
+	w := httptest.NewRecorder()
+
+	req, err := http.NewRequest("POST", "/adminlogin", strings.NewReader(string(out)))
+	if err != nil {
+		t.Fatal(err)
+	}
+	req.Header.Set("Content-Type", "application/json")
+
+	router.ServeHTTP(w, req)
+	assert.Equal(t, 200, w.Code)
+
+}
+
+func TestAdminLoginFailCase(t *testing.T) {
+	login := m.Login{Username: "nitya_v", Password: "wrongpassword@123"}
+
+	out, err := json.Marshal(login)
+	if err != nil {
+		t.Fatal(err)
+	}
+	w := httptest.NewRecorder()
+
+	req, err := http.NewRequest("POST", "/adminlogin", strings.NewReader(string(out)))
+	if err != nil {
+		t.Fatal(err)
+	}
+	req.Header.Set("Content-Type", "application/json")
+
+	router.ServeHTTP(w, req)
+	assert.Equal(t, 401, w.Code)
+
+}
