@@ -1,0 +1,23 @@
+mat-grid-tile {
+    background: lightblue;
+    height: 100%;
+  }
+  
+  mat-expansion-panel {
+    width: 700px;
+  }
+  
+  h1 {
+    position: absolute;
+    top: 0px;
+  }
+  
+  .lost-items {
+    position: absolute;
+    top: 100px;
+  }
+  .mat-success {
+    background-color: #4caf50;
+    color: #fff;
+  }
+  

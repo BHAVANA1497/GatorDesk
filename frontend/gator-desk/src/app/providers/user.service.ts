@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class UserService {
 
-  _details = null;
+  _details : any ;
   _token = '';
 
   constructor() {
