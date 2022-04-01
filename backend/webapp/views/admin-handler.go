@@ -2,6 +2,7 @@ package views
 
 import (
 	"net/http"
+	"strconv"
 
 	m "webapp/model"
 
@@ -97,6 +98,31 @@ func AdminLoginView(db *gorm.DB) gin.HandlerFunc {
 		c.JSON(http.StatusUnauthorized, gin.H{
 			"result": "Invalid Admin name and/or Password",
 		})
+	}
+
+	// return the loginHandlerfunction
+	return gin.HandlerFunc(fn)
+}
+
+func AdminDeleteView(db *gorm.DB) gin.HandlerFunc {
+	fn := func(c *gin.Context) {
+
+		adminId, err := strconv.Atoi(c.Param("id"))
+
+		if err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+			return
+		}
+
+		var rec m.Admin
+		if err := db.Where("id = ?", adminId).First(&rec).Error; err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": "Record not found!"})
+			return
+		}
+
+		db.Delete(&rec)
+		c.JSON(http.StatusOK, gin.H{"data": true})
+
 	}
 
 	// return the loginHandlerfunction
