@@ -45,3 +45,18 @@ func PostLostItemView(db *gorm.DB) gin.HandlerFunc {
 	// return the loginHandlerfunction
 	return gin.HandlerFunc(fn)
 }
+
+//API to list all the lost items to the Admin
+func ListAllLostItemsView(db *gorm.DB) gin.HandlerFunc {
+	fn := func(c *gin.Context) {
+
+		var res []l.Lost
+		db.Find(&res)
+
+		c.JSON(http.StatusOK, gin.H{"data": res})
+
+	}
+
+	// return the loginHandlerfunction
+	return gin.HandlerFunc(fn)
+}
