@@ -55,6 +55,7 @@ func SetupRouter(db *gorm.DB, storeName string, sessionName string) *gin.Engine 
 	r.POST("/adminlogin", a.AdminLoginView(db))
 	r.POST("/addAdmin", a.AddAdminView(db))
 	r.DELETE("/deleteAdmin/:id", a.AdminDeleteView(db))
+	r.POST("/postLostItem", a.PostLostItemView(db))
 
 	return r
 }
