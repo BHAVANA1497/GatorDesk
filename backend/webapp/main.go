@@ -74,6 +74,12 @@ func main() {
 	// Migrate the Announcement model to the db
 	db.AutoMigrate(&m.Announcement{})
 
+	//migrate the admin model to the db
+	db.AutoMigrate(&m.Admin{})
+
+	//migrate the lost model to the db
+	db.AutoMigrate(&m.Lost{})
+
 	// setting up the webserver with default config
 	storeName := "mainsecret"
 	sessionName := "mainsession"
