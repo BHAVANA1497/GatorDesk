@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: 'lost-and-found', component: LostAndFoundComponent },
   { path: 'maintenance-request', component: MaintenanceRequestComponent },
   { path: 'login', component: LoginComponent },
-  {path : 'signup', component: SignupComponent}
+  { path : 'signup', component: SignupComponent}
 ];
 
 @NgModule({
