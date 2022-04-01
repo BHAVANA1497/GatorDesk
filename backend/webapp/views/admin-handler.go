@@ -46,7 +46,7 @@ func AddAdminView(db *gorm.DB) gin.HandlerFunc {
 			return
 		}
 
-		// create the user
+		// create the admin
 		result := db.Create(&json)
 
 		if result.Error != nil {
@@ -86,12 +86,29 @@ func AdminLoginView(db *gorm.DB) gin.HandlerFunc {
 
 		// if user found return success
 		if len(admins) > 0 {
-			session.Set("uId", admins[0].ID)
-			session.Save()
-			c.JSON(http.StatusOK, gin.H{
-				"result": "Successful Login!",
-			})
-			return
+			v := session.Get("uId")
+			if v == nil {
+				session.Set("uId", admins[0].ID)
+				session.Save()
+				c.JSON(http.StatusOK, gin.H{
+					"result": "Successful Login!",
+				})
+				return
+
+			} else if v == admins[0].ID {
+
+				c.JSON(http.StatusBadRequest, gin.H{
+					"result": "Admin already loggedin",
+				})
+				return
+			} else {
+				c.JSON(http.StatusBadRequest, gin.H{
+					"result": "Another admin loggedin, cannot login",
+				})
+				return
+
+			}
+
 		}
 
 		// return unauthorized status
