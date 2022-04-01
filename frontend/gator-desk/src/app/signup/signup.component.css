@@ -1,0 +1,40 @@
+.signup-div{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3em;
+    width: 30rem; 
+}
+
+hr{
+    border: 0;
+    border-top: 1px solid #eee;
+    margin: 20px 0;
+}
+input.mat-input-element {
+width: 400px;
+height: 35px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Segoe UI",Arial,sans-serif;
+    font-weight: 400;
+    margin: 10px 0;
+}
+
+h4 {
+    font-size: 20px;
+}
+
+.top25{
+    margin-top : 25px;
+}
+.w3-border {
+    border: 1px solid #ccc!important;
+}
+.w3-input {
+    padding: 8px;
+    display: block;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    width: 100%;
+}
