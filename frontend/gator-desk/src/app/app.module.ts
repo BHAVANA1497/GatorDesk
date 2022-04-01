@@ -40,6 +40,7 @@ import { LoginComponent } from './login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AnnouncemetService } from './announcement/annoucement.service';
 //import { AdminLostAndFoundComponent } from './admin-lost-and-found/admin-lost-and-found.component';
+import { SignupComponent } from './signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { AnnouncemetService } from './announcement/annoucement.service';
     AdminAnnouncementComponent,
     LoginComponent,
     // AdminLostAndFoundComponent,
+    SignupComponent,
   ],
   imports: [
     BrowserModule,
