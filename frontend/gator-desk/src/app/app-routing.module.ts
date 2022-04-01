@@ -8,6 +8,7 @@ import { MaintenanceRequestComponent } from './maintenance-request/maintenance-r
 import { AdminAnnouncementComponent } from './admin-announcemet/admin-announcement.component';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
+import { AdminLostAndFoundComponent } from './admin-lost-and-found/admin-lost-and-found.component';
 
 const routes: Routes = [
   {
@@ -17,7 +18,7 @@ const routes: Routes = [
   },
   { path: 'home', component: HomeComponent },
   { path: 'announcement', component: AnnouncementComponent },
-  { path: 'lost-and-found', component: LostAndFoundComponent },
+  { path: 'lost-and-found', component: AdminLostAndFoundComponent },
   { path: 'maintenance-request', component: MaintenanceRequestComponent },
   { path: 'login', component: LoginComponent },
   { path : 'signup', component: SignupComponent}
