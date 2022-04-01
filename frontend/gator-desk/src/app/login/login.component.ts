@@ -19,6 +19,12 @@ export class LoginComponent implements OnInit {
   }
 
   doLogin() {
+    console.log(this.userData);
+    if(this.userData.email == "test@gmail.com" && this.userData.password == "test"){
+      this.user._details = this.userData;
+      localStorage.setItem('USER_DETAILS', JSON.stringify(this.userData));
+      this.user._token = "dummytoken";
+    }
     this.router.navigate(['/home']);
     // this._http.post('users/login', this.userData)
     //   .subscribe(res => {
