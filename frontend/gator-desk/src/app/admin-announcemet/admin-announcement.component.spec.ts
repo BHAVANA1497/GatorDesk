@@ -56,7 +56,14 @@ describe('AdminAnnouncementComponent', () => {
 
   });
 
+  it('Should render disclaimer value', () => {
+    const btn = fixture.debugElement.nativeElement.querySelector('#disclaimer');
+    expect(btn.innerHTML).toBeTruthy();
+  });
 
-
+  it('Button Validation', () => {
+    const btn = fixture.debugElement.nativeElement.querySelector('#formbtn');
+    expect(btn.innerHTML).toBeTruthy();
+  });
 
 });
