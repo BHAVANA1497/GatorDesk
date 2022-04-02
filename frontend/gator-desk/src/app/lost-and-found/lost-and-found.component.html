@@ -1,1 +1,120 @@
-<p>lost-and-found works!</p>
+<div class="container">
+    <div class="row">
+        <div class="columnOne">
+        <div class="lost-items">
+            <div style="float:left; width: 18%;" class="announce">
+                <form [formGroup]= "lostAndFoundForm">
+                <mat-form-field appearance="fill">
+                  <mat-label>Type</mat-label>
+                  <input matInput formControlName="losttype">
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                  <mat-label>Request Type</mat-label>
+                  <mat-select (selectionChange)="selectedValue($event)">
+                    <mat-option value="lost">LOST</mat-option>
+                    <mat-option value="found">FOUND</mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                  <mat-label>Description</mat-label>
+                  <textarea matInput formControlName="desc"></textarea>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Additional Details</mat-label>
+                    <textarea matInput formControlName="details"></textarea>
+                  </mat-form-field>
+                </form>
+                <button mat-raised-button color="primary" [disabled]="!lostAndFoundForm.valid" (click)="onSubmit()">Create Announcement</button>
+              </div>
+        </div>
+        </div>
+
+        <div class="column">
+        <h1>Lost Requests</h1>
+        <div class="lost-items">
+            <mat-accordion>
+                <mat-expansion-panel *ngFor="let item of foundItems$">
+                  <mat-expansion-panel-header>
+                   
+                    <mat-panel-description>
+                      <table>
+                        <tr>
+                          <td style="width: 150px">
+                            {{ item.type }}
+                          </td>
+                          <td style="width: 250px">
+                            <p>
+                              Found at:
+                              {{ item.createdTime | date: "yyyy-MM-dd HH:mm" }}
+                            </p>
+                          </td>
+                          <td style="width: 10px; align-items: right">
+                            <p *ngIf="item.type == 'jewellery'">
+                              <fa-icon [icon]="['fas', 'ring']"></fa-icon>
+                            </p>
+                            <p *ngIf="item.type == 'book'">
+                              <fa-icon [icon]="['fas', 'book']"></fa-icon>
+                            </p>
+                            <p *ngIf="item.type == 'bag'">
+                              <fa-icon [icon]="['fas', 'briefcase']"></fa-icon>
+                            </p>
+                          </td>
+                        </tr>
+                      </table>
+                    </mat-panel-description>
+                  </mat-expansion-panel-header>
+                  <p><b>Description: </b> {{ item.description }}</p>
+                  <p *ngIf="item.additionalDetails">
+                    <b>Additional Details: </b> {{ item.additionalDetails }}
+                  </p>
+                </mat-expansion-panel>
+              </mat-accordion>
+        </div>
+        </div>
+
+
+        <div class="column">
+        <h1>Found Items</h1>
+        <div class="lost-items">
+            <mat-accordion>
+                <mat-expansion-panel *ngFor="let item of foundItems$">
+                  <mat-expansion-panel-header>
+                    
+                    <mat-panel-description>
+                      <table>
+                        <tr>
+                          <td style="width: 150px">
+                            {{ item.type }}
+                          </td>
+                          <td style="width: 250px">
+                            <p>
+                              Found at:
+                              {{ item.createdTime | date: "yyyy-MM-dd HH:mm" }}
+                            </p>
+                          </td>
+                          <td style="width: 10px; align-items: right">
+                            <p *ngIf="item.type == 'jewellery'">
+                              <fa-icon [icon]="['fas', 'ring']"></fa-icon>
+                            </p>
+                            <p *ngIf="item.type == 'book'">
+                              <fa-icon [icon]="['fas', 'book']"></fa-icon>
+                            </p>
+                            <p *ngIf="item.type == 'bag'">
+                              <fa-icon [icon]="['fas', 'briefcase']"></fa-icon>
+                            </p>
+                          </td>
+                        </tr>
+                      </table>
+                    </mat-panel-description>
+                  </mat-expansion-panel-header>
+                  <p><b>Description: </b> {{ item.description }}</p>
+                  <p *ngIf="item.additionalDetails">
+                    <b>Additional Details: </b> {{ item.additionalDetails }}
+                  </p>
+                </mat-expansion-panel>
+              </mat-accordion>
+        </div>
+      
+    </div>
+  </div>
+  

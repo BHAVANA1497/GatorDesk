@@ -1,0 +1,44 @@
+mat-grid-tile {
+    
+    height: 100%;
+  }
+  
+  mat-expansion-panel {
+    width: 700px;
+  }
+  
+  h1 {
+    position: absolute;
+    top: 0px;
+  }
+  
+ 
+  .mat-success {
+    background-color: #4caf50;
+    color: #fff;
+  }
+
+  .announce{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 2%;
+  }
+  
+  .column {
+    float: left;
+    width: 40%;
+  }
+
+  .columnOne {
+    float: left;
+    width: 20%;
+  }
+  
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
