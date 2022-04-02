@@ -28,8 +28,13 @@ describe('AnnouncementComponent', () => {
     service = injector.get(AnnouncemetService);
     httpMock = injector.get(HttpClientTestingModule);
   });
-
-
+  
+  it('should render title in h1 tag', () => {
+    const fixture = TestBed.createComponent(AnnouncementComponent);
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('h1').textContent).toContain('Announcements:');
+  });
 
 
   it('should return list of Annoucemements>', () => {
@@ -51,6 +56,8 @@ describe('AnnouncementComponent', () => {
     });
 
   });
+
+
 
 
 });

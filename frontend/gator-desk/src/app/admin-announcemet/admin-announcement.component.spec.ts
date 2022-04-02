@@ -1,6 +1,6 @@
 import { HttpClient, HttpClientModule, HttpHandler } from '@angular/common/http';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { ComponentFixture, getTestBed, TestBed } from '@angular/core/testing';
+import { ComponentFixture, async, getTestBed, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { AdminAnnouncementService } from './admin-annoucement.service';
@@ -53,4 +53,5 @@ describe('AdminAnnouncementComponent', () => {
     });
 
   });
+
 });
