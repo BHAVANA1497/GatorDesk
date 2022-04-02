@@ -43,8 +43,10 @@ Our project ‘Gator Desk’ is an online portal that aims at increasing the eff
 ## Backend Unit Tests - (GoLang)
 We have written the following unit test cases:
 
+![ut1](https://user-images.githubusercontent.com/43131417/161365368-fa0c09f1-5b0a-4ba8-ae95-39045022e30b.jpg)
 
-Demo of the above mentioned Tests are after the REST API Documentation section.
+![unit tests backend](https://user-images.githubusercontent.com/43131417/161365274-df174d49-2c7e-4d9c-b2a0-0ca8cbeb95b8.jpg)
+
 
 ## REST API Documentation
 
