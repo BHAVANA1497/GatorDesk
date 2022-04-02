@@ -29,3 +29,8 @@ it('Fill the annoucement details, post and check if it is getting posted', () =>
   cy.wait(1000)
   cy.contains('test test')
 })
+
+it('tests navigation to Lost & Found component' , () => {
+  cy.get('#lostandfound').click();
+  cy.contains('Lost');
+});
