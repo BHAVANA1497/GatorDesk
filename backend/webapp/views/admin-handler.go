@@ -145,3 +145,17 @@ func AdminDeleteView(db *gorm.DB) gin.HandlerFunc {
 	// return the loginHandlerfunction
 	return gin.HandlerFunc(fn)
 }
+
+func ListAllAdminsView(db *gorm.DB) gin.HandlerFunc {
+	fn := func(c *gin.Context) {
+
+		var res []m.Admin
+		db.Find(&res)
+
+		c.JSON(http.StatusOK, gin.H{"data": res})
+
+	}
+
+	// return the loginHandlerfunction
+	return gin.HandlerFunc(fn)
+}
