@@ -1,6 +1,10 @@
+import { HttpClientModule } from '@angular/common/http';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { AdminLostAndFoundComponent } from './admin-lost-and-found.component';
+import { AdminLostAndFoundService } from './admin-lost-and-found.service';
 
 describe('AdminLostAndFoundComponent', () => {
   let component: AdminLostAndFoundComponent;
@@ -8,7 +12,9 @@ describe('AdminLostAndFoundComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AdminLostAndFoundComponent ]
+      declarations: [ AdminLostAndFoundComponent ],
+      providers: [AdminLostAndFoundService],
+      imports: [HttpClientModule, RouterTestingModule, HttpClientTestingModule]
     })
     .compileComponents();
   });
