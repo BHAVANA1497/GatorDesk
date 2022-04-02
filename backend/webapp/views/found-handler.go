@@ -10,7 +10,7 @@ import (
 	"gorm.io/gorm"
 )
 
-//Posting a lost item into the Lost table. The user's id who has posted the lost item shall be retrieved from the sesssion
+//Posting a found item into the Lost table. The user's id who has posted the found item shall be retrieved from the sesssion
 func PostFoundItemView(db *gorm.DB) gin.HandlerFunc {
 	fn := func(c *gin.Context) {
 		var json l.Found
@@ -40,6 +40,20 @@ func PostFoundItemView(db *gorm.DB) gin.HandlerFunc {
 		c.JSON(http.StatusOK, gin.H{
 			"result": "Found item has been updated successfully in the database!",
 		})
+	}
+
+	// return the loginHandlerfunction
+	return gin.HandlerFunc(fn)
+}
+
+func ListAllFoundItemsView(db *gorm.DB) gin.HandlerFunc {
+	fn := func(c *gin.Context) {
+
+		var res []l.Found
+		db.Find(&res)
+
+		c.JSON(http.StatusOK, gin.H{"data": res})
+
 	}
 
 	// return the loginHandlerfunction
