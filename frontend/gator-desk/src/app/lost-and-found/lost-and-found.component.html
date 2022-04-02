@@ -2,7 +2,7 @@
     <div class="row">
         <div class="columnOne">
         <div class="lost-items">
-            <div style="float:left; width: 18%;" class="announce">
+            <div  class="announce">
                 <form [formGroup]= "lostAndFoundForm">
                 <mat-form-field appearance="fill">
                   <mat-label>Type</mat-label>
@@ -24,7 +24,7 @@
                     <textarea matInput formControlName="details"></textarea>
                   </mat-form-field>
                 </form>
-                <button mat-raised-button color="primary" [disabled]="!lostAndFoundForm.valid" (click)="onSubmit()">Create Announcement</button>
+                <button mat-raised-button color="primary" [disabled]="!lostAndFoundForm.valid" (click)="onSubmit()">Create Request</button>
               </div>
         </div>
         </div>
@@ -32,7 +32,7 @@
         <div class="column">
         
         <div class="lost-items">
-
+          <h1>Found Request</h1>
             
             <mat-accordion>
                 
@@ -78,13 +78,12 @@
         </div>
 
         <div class="lost-items">
-            
+            <h1> Lost Request</h1>
             <mat-accordion>
                 
-                <mat-expansion-panel *ngFor="let item of foundItems$">
+                <mat-expansion-panel *ngFor="let item of lostItems$">
                    
-                  <mat-expansion-panel-header>
-                    
+                  <mat-expansion-panel-header> 
                     <mat-panel-description>
                       <table>
                         <tr>

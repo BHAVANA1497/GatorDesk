@@ -28,22 +28,31 @@ mat-grid-tile {
   .column {
     float: left;
     width: 70%;
+    background: lightblue;
+   
   }
 
   .columnOne {
     float: left;
     width: 20%;
-    margin: 10px;
+    background-color: white;
   }
   
   
   /* Clear floats after the columns */
-  .row:after {
+  .row {
     content: "";
     display: table;
     clear: both;
+     background: lightblue;
+    
   }
 
   .lost-items{
-      margin: 10px;
+      margin: 30px;
+  }
+
+  h1{
+      position: relative;
+      font-size: 20px;
   }
