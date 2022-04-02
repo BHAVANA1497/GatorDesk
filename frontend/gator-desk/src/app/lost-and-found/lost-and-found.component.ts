@@ -59,8 +59,9 @@ export class LostAndFoundComponent implements OnInit {
     // this.postData.announcementCategory = this.eventCategory;
 
     // this.admObj.createAnnouncement(this.postData).subscribe(res => {
-    //   window.location.reload();
+    //   
     // });
+    window.location.reload();
   }
 
 }
