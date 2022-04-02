@@ -38,6 +38,7 @@ Our project ‘Gator Desk’ is an online portal that aims at increasing the eff
 - Developed and tested Admin Management API - \deleteAdmin
 - Developed and tested Admin Management API - \adminLogin
 - Developed and tested Admin Management API - \listAllAdmins
+- Developed and tested Admin Management API - \logout
 
 ## Backend Unit Tests - (GoLang)
 We have written the following unit test cases:
@@ -213,7 +214,7 @@ Sample Response	:
 ##### Demonstration of the API in Postman:
 ![LIST ALL FOUND ITEMS](https://user-images.githubusercontent.com/43131417/161363188-a0bcffc5-c81e-49d9-adb1-e32771207a56.jpg)
 
-### 7.	\ addAdmin API:
+### 7.	\addAdmin API:
 
 ##### Request
 
@@ -252,7 +253,7 @@ In Database:
 ![add admin 2](https://user-images.githubusercontent.com/43131417/161363843-165ffabb-dd01-470d-a864-14de7f450288.jpg)
 
 
-### 8.	\ deleteAdmin API:
+### 8.	\deleteAdmin API:
 
 ##### Request
 
@@ -279,7 +280,7 @@ Sample Response	:
 
 
 
-### 9.	\ adminLogin API:
+### 9.	\adminLogin API:
 
 ##### Request
 
@@ -300,7 +301,7 @@ The following 3 scenarios for admin login has been tested:
 
 ![admin already logged in](https://user-images.githubusercontent.com/43131417/161364240-0401a55d-b41f-4db5-95b4-277e864247e2.jpg)
 
-### 10.	\ listAllAdmins API:
+### 10.	\listAllAdmins API:
 
 ##### Request
 
@@ -330,20 +331,127 @@ Sample Response	:
        }
    ]
 }
-
 ```
+### 11.	\logout API:
 
+##### Request
+
+Method: `POST`
+
+##### Target URL: `"localhost:8181/logout"`
+
+##### Example:
+
+The following scenarios for logout has been tested for User and Admin:
+
+1. Successful logout:
+
+![logout succ](https://user-images.githubusercontent.com/43131417/161364666-f2a73801-94a8-4cf7-acd0-f304c857ade5.jpg)
+
+2. Trying to logout without logging in:
+
+![logout 2](https://user-images.githubusercontent.com/43131417/161364770-f45f4bf5-447e-47ee-898f-c9277413ff87.jpg)
+
+ 
 
 ### Backend Demo:
 
+- Admin Already logged in:
+
+![admin_login_already_loggedin](https://user-images.githubusercontent.com/43131417/161365108-fab922c7-9d44-46e4-8619-2b9760ea9102.gif)
+
+- Delete Admin:
+
+![delete_admin](https://user-images.githubusercontent.com/43131417/161365117-3e11888e-3ad6-4c84-af2e-21ffa748948d.gif)
+
+- Admin Login:
+
+![admin_login](https://user-images.githubusercontent.com/43131417/161365122-44d3f038-3079-4b00-b4d0-31f28a2ca4bf.gif)
+
+- Admin login when another user already logged in:
+
+![admin_login_when_another_loggedin](https://user-images.githubusercontent.com/43131417/161365138-6219e3dd-16a9-485c-9f07-73e431044769.gif)
+
+- Add Admin:
+
+![add_admin](https://user-images.githubusercontent.com/43131417/161365141-b13542c8-2b44-4616-a63e-418977246fc6.gif)
+
+- Post Lost Item:
+
+![post_lostitem](https://user-images.githubusercontent.com/43131417/161365148-4ded7ebd-0c8d-43b6-98d0-ba860a69aa7f.gif)
 
 
 ## UI tasks accomplished - (Tech Stack: Angular 13, HTML, CSS, Type Script, JavaScript)
 
+1. Created an admin component that displays all the lost and found items
+2. Developed a backend call that fetches the entire data and displays in the UI to the end user
+3. Developed an additional feature for admin where the admin can link the lost item with the found item.
+4. Developed a webpage where the user can request his/her lost or found items to be displayed.
+5. Built unit test cases for all the angular components using Karma and Jasmine
+6. Performed automated testing using cypress for all the functionalitied developed in this sprint.
+7. Integrated the frontend and backend of the functionality developed in this sprint.
+
+### Steps to run 
+
+#### Running the project
+1. Clone the project from https://github.com/BHAVANA1497/GatorDesk.git
+2. run the below steps in the terminal
+    -- npm i
+    -- ng serve --o
+
+#### Cypress Tests
+Steps:-
 
 
-### UI Demo
+npm install cypress
+
+
+In package.json :-
+
+"scripts": {
+    [....]
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
+    "cypress": "cypress open"
+  },
+  
+To Run :-
+
+
+npm run cypress
+
+
+#### Jest tests
+
+
+npm install jest jest-preset-angular --save-dev
+
+
+To Run:-
+
+
+npm run test
+
+
+## UI Demo
+
+1. UI for Lost and Found for Admin:
+
+![lost-found-admin](https://user-images.githubusercontent.com/43131417/161365014-d18c7186-99be-406b-970a-9446779d9275.gif)
+
+2. UI for Lost and Found for User:
+
+![lost-found-user](https://user-images.githubusercontent.com/43131417/161365028-182091eb-9f67-43ab-b2b9-da2e67355dae.gif)
+
+3. Lost and Found Cypress Tests:
+
+![lost-found-cypress-test](https://user-images.githubusercontent.com/43131417/161365049-31a45f03-8b5e-4c41-a66b-9652870be43d.gif)
+
+4. Lost and Found Unit Tests:
+
+![lost-found-unit-test](https://user-images.githubusercontent.com/43131417/161365061-ae148c4e-9a2f-4ae4-9686-6200880b6fad.gif)
 
 
 ### Video Demo Link:
+https://youtu.be/tDzvsLLHSPU
 
