@@ -12,19 +12,16 @@ export class SignupComponent implements OnInit {
   userData = {
     name: '',
     email: '',
-    password: '',
-    location: '',
-    hometown: '',
-    language: '',
-    birthday: '',
-    gender: '',
-    bio: '',
+    password: ''
   };
 
   constructor(private _http: HttpClient, public user: UserService,  private router: Router) { }
+
   ngOnInit(): void {
   }
+
   doSignup(){
+    console.log(this.userData);
     this.router.navigate(['/home']);
   }
 
