@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: 'announcement', component: AnnouncementComponent },
   { path: 'lost-and-found', component: AdminLostAndFoundComponent },
   { path: 'maintenance-request', component: LostAndFoundComponent },
-  { path: 'login', component: LoginComponent },
+  { path: 'login', component: AdminAnnouncementComponent },
   { path : 'signup', component: SignupComponent}
 ];
 

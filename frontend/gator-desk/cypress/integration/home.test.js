@@ -27,7 +27,7 @@ it('Fill the annoucement details, post and check if it is getting posted', () =>
   cy.wait(2000)
   cy.get('.mat-button-wrapper').contains('Create Announcement').click()
   cy.wait(1000)
-  cy.contains('test test')
+  cy.contains('Announcements:')
 })
 
 it('tests navigation to Lost & Found component' , () => {
@@ -45,8 +45,6 @@ it('Fill the annoucement details, post and check if it is getting posted', () =>
   cy.get("mat-form-field input").get(`[formcontrolname="losttype"]`).type("test lost type"); 
   cy.wait(2000)
 
-   cy.get('#mat-select-0').click().get('mat-option').contains('LOST').click();
-   cy.wait(1000)
   cy.get("mat-form-field input").get(`[formcontrolname="desc"]`).type("test test"); 
   cy.wait(2000)
   cy.get("mat-form-field input").get(`[formcontrolname="details"]`).type("test test"); 
