@@ -19,8 +19,8 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'announcement', component: AnnouncementComponent },
   { path: 'lost-and-found', component: AdminLostAndFoundComponent },
-  { path: 'maintenance-request', component: MaintenanceRequestComponent },
-  { path: 'login', component: LoginComponent },
+  { path: 'maintenance-request', component: LostAndFoundComponent },
+  { path: 'login', component: AdminAnnouncementComponent },
   { path : 'signup', component: SignupComponent}
 ];
 
