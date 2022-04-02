@@ -27,12 +27,13 @@ mat-grid-tile {
   
   .column {
     float: left;
-    width: 40%;
+    width: 70%;
   }
 
   .columnOne {
     float: left;
     width: 20%;
+    margin: 10px;
   }
   
   
@@ -41,4 +42,8 @@ mat-grid-tile {
     content: "";
     display: table;
     clear: both;
+  }
+
+  .lost-items{
+      margin: 10px;
   }

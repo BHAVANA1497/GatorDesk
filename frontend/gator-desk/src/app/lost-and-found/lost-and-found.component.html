@@ -30,10 +30,14 @@
         </div>
 
         <div class="column">
-        <h1>Lost Requests</h1>
+        
         <div class="lost-items">
+
+            
             <mat-accordion>
+                
                 <mat-expansion-panel *ngFor="let item of foundItems$">
+                    
                   <mat-expansion-panel-header>
                    
                     <mat-panel-description>
@@ -69,15 +73,16 @@
                   </p>
                 </mat-expansion-panel>
               </mat-accordion>
-        </div>
+
+              
         </div>
 
-
-        <div class="column">
-        <h1>Found Items</h1>
         <div class="lost-items">
+            
             <mat-accordion>
+                
                 <mat-expansion-panel *ngFor="let item of foundItems$">
+                   
                   <mat-expansion-panel-header>
                     
                     <mat-panel-description>
@@ -113,8 +118,11 @@
                   </p>
                 </mat-expansion-panel>
               </mat-accordion>
-        </div>
+      
       
     </div>
+        </div> 
+        
+        
   </div>
   
