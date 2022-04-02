@@ -28,7 +28,6 @@ describe('HomeComponent', () => {
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('span').textContent).toContain('What do you love?');
   });
-
   
  
 });
