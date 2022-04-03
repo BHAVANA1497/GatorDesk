@@ -39,7 +39,7 @@ describe('SignupComponent', () => {
   });
 
   it('should have Signup button enabled', () => {
-    const btn = fixture.debugElement.nativeElement.querySelector('#sinup');
+    const btn = fixture.debugElement.nativeElement.querySelector('#signup');
     expect(btn.innerHTML).toBeTruthy();
   });
 
