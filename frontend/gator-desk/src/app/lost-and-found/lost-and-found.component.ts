@@ -18,6 +18,7 @@ export class LostAndFoundComponent implements OnInit {
   postData: any = {};
   lostItems$: any;
   foundItems$: any;
+  isAdmin: boolean = false;
 
   constructor(private fb: FormBuilder , public lostservice: LostAndFoundService) { 
     this.lostAndFoundForm = fb.group({
@@ -45,6 +46,10 @@ export class LostAndFoundComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    let isAdmin = localStorage.getItem("isAdmin");
+    if (isAdmin) {
+      this.isAdmin = true;
+    }
   }
 
   selectedValue(selectedValue: any){
