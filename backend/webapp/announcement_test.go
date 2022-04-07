@@ -267,6 +267,7 @@ func initData(db *gorm.DB) {
 			ImagePath:   "https://image",
 		},
 		{
+			UserId:      1,
 			LostType:    "Bag",
 			Description: "Contains my wallet and laptop",
 			ImagePath:   "https://image2",
