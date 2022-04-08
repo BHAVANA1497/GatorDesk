@@ -125,7 +125,7 @@ func GetAllLostItemsByUserId(db *gorm.DB) gin.HandlerFunc {
 			id := int64(v.(uint))
 
 			var lostitems []l.Lost
-			db.Find(&lostitems, "user_id = ?", id)
+			db.Find(&lostitems, "id= ?", id)
 
 			c.JSON(http.StatusOK, gin.H{"data": lostitems})
 			return
