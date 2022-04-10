@@ -62,6 +62,9 @@ func SetupRouter(db *gorm.DB, storeName string, sessionName string) *gin.Engine 
 	r.POST("/postFoundItem", a.PostFoundItemView(db))
 	r.GET("/listAllFoundItems", a.ListAllFoundItemsView(db))
 	r.GET("/listAllFoundItemsByUserId", a.GetAllFoundItemsByUserId(db))
+	r.GET("/listFoundItemById/:id", a.GetFoundItemById(db))
+	r.GET("/listLostItemById/:id", a.GetLostItemById(db))
+	r.PUT("/linkLostFound/:id", a.LinkLostFoundView(db))
 
 	return r
 }
