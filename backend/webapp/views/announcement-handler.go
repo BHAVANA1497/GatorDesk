@@ -1,10 +1,12 @@
 package views
 
 import (
+	"fmt"
 	"net/http"
 	"strconv"
 	l "webapp/model"
 
+	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
 	"github.com/microcosm-cc/bluemonday"
 	"gorm.io/gorm"
@@ -15,8 +17,9 @@ import (
 // could've passed db variable as middleware but it is strictly against doing it in go documentation
 func CreateAnnouncementView(db *gorm.DB) gin.HandlerFunc {
 	fn := func(c *gin.Context) {
+		session := sessions.Default(c)
 		var json l.Announcement
-		// try to bind the request json to the Login struct
+		// try to bind the request json to the Announcement struct
 		if err := c.ShouldBindJSON(&json); err != nil {
 			// return bad request if field names are wrong
 			// and if fields are missing
@@ -32,17 +35,45 @@ func CreateAnnouncementView(db *gorm.DB) gin.HandlerFunc {
 		json.Venue = p.Sanitize(json.Venue)
 		json.Event_Description = p.Sanitize(json.Event_Description)
 
-		// create the announcement
-		result := db.Create(&json)
+		//check if any user is logged-in
+		if session != nil {
 
-		if result.Error != nil {
-			c.JSON(http.StatusBadRequest, gin.H{"error": result.Error.Error()})
-			return
+			v := session.Get("uId")
+
+			var admin l.Admin
+			db.Find(&admin, "id = ?", v)
+
+			//check if logged-in user is admin
+			if v == admin.ID {
+
+				json.Admin_Id = int64(admin.ID)
+				// create the announcement
+				result := db.Create(&json)
+
+				if result.Error != nil {
+					c.JSON(http.StatusBadRequest, gin.H{"error": result.Error.Error()})
+					return
+				}
+
+				c.JSON(http.StatusOK, gin.H{
+					"result": "Announcement created successfully",
+				})
+			} else {
+				fmt.Print(" debug print 1- detected1\n")
+				c.JSON(http.StatusUnauthorized, gin.H{
+
+					"result": "Login in Admin mode to create an announcement",
+				})
+			}
+
+		} else {
+			fmt.Print(" debug print 2- detected2\n")
+			c.JSON(http.StatusUnauthorized, gin.H{
+
+				"result": "Login in Admin mode to create an announcement",
+			})
+
 		}
-
-		c.JSON(http.StatusOK, gin.H{
-			"result": "Announcement created successfully",
-		})
 	}
 
 	// return the loginHandlerfunction
