@@ -1,3 +1,9 @@
+<div id="header" style="position:absolute; top:0px; left:0px; right:0px;overflow:hidden;" *ngIf="isAdmin"> 
+  <app-header-nav></app-header-nav>
+</div> 
+<div id="header" style="position:absolute; top:0px; left:0px; right:0px;overflow:hidden;" *ngIf="!isAdmin"> 
+  <app-admin-header-nav></app-admin-header-nav>
+</div>
 <div style="width: 100%" > 
   <div style="float:left; width: 18%;" class="announce" id = "formbtn">
    <form [formGroup]= "announcementForm">
@@ -24,5 +30,8 @@
    <app-announcement></app-announcement>
  </div>
 
+</div>
+<div id="footer" style="position:absolute; bottom:0px; height:200px; left:0px; right:0px; overflow:hidden;"> 
+  <app-footer></app-footer>
 </div>
 

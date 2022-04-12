@@ -14,6 +14,7 @@ export class AdminAnnouncementComponent implements OnInit {
   eventCategory = '';
   eventDesc = '';
   postData: any = {};
+  isAdmin: boolean = false;
 
   constructor(private fb: FormBuilder, public  admObj:AdminAnnouncementService ) { 
     this.announcementForm = fb.group({
@@ -23,6 +24,11 @@ export class AdminAnnouncementComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    let isAdmin = localStorage.getItem("isAdmin");
+    if (isAdmin) {
+      console.log("is admin", isAdmin);
+      this.isAdmin = true;
+    }
   }
 
   selectedValue(selectedValue: any){
