@@ -67,7 +67,7 @@ func GetAllLostItemsByUserId(db *gorm.DB) gin.HandlerFunc {
 	fn := func(c *gin.Context) {
 
 		var json l.Lost
-		// try to bind the request json to the Announcement struct
+		// try to bind the request json to the lost struct
 		if err := c.ShouldBindJSON(&json); err != nil {
 			// return bad request if field names are wrong
 			// and if fields are missing

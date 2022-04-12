@@ -5,10 +5,10 @@ go 1.17
 require (
 	github.com/gin-contrib/sessions v0.0.4
 	github.com/gin-gonic/gin v1.7.7
-	github.com/microcosm-cc/bluemonday v1.0.17
-	github.com/stretchr/testify v1.7.0
-	gorm.io/driver/sqlite v1.2.6
-	gorm.io/gorm v1.22.5
+	github.com/microcosm-cc/bluemonday v1.0.18
+	github.com/stretchr/testify v1.7.1
+	gorm.io/driver/sqlite v1.3.1
+	gorm.io/gorm v1.23.3
 )
 
 require (
