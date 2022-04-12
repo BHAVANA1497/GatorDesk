@@ -1,7 +1,7 @@
 import { HttpClient, HttpClientModule, HttpHandler } from '@angular/common/http';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { ComponentFixture, getTestBed, TestBed } from '@angular/core/testing';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ComponentFixture, async, getTestBed, TestBed } from '@angular/core/testing';
+import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { AdminAnnouncementService } from './admin-annoucement.service';
 import { By } from '@angular/platform-browser';
@@ -34,6 +34,8 @@ describe('AdminAnnouncementComponent', () => {
     fixture.detectChanges();
   });
 
+
+
   it('post an annoucement', () => {
     const dummyTodoLists = [
       {adminId: 1,
@@ -53,4 +55,15 @@ describe('AdminAnnouncementComponent', () => {
     });
 
   });
+
+  it('Should render disclaimer value', () => {
+    const btn = fixture.debugElement.nativeElement.querySelector('#disclaimer');
+    expect(btn.innerHTML).toBeTruthy();
+  });
+
+  it('Button Validation', () => {
+    const btn = fixture.debugElement.nativeElement.querySelector('#formbtn');
+    expect(btn.innerHTML).toBeTruthy();
+  });
+
 });

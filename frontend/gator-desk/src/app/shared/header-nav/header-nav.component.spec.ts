@@ -28,4 +28,45 @@ describe('HeaderNavComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should render title in a h1 tag', () => {
+    const fixture = TestBed.createComponent(HeaderNavComponent);
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('h1').textContent).toContain('GatorDesk');
+  });
+
+  
+  it('should have Login button enabled', () => {
+    const btn = fixture.debugElement.nativeElement.querySelector('#login');
+    expect(btn.innerHTML).toBeTruthy();
+  });
+
+  it('should have Signup button enabled', () => {
+    const btn = fixture.debugElement.nativeElement.querySelector('#signup');
+    expect(btn.innerHTML).toBeTruthy();
+  });
+
+  it('should have maintenancerequest button enabled', () => {
+    const btn = fixture.debugElement.nativeElement.querySelector('#maintenancerequest');
+    expect(btn.innerHTML).toBeTruthy();
+  });
+
+  it('should have lostandfound button enabled', () => {
+    const btn = fixture.debugElement.nativeElement.querySelector('#lostandfound');
+    expect(btn.innerHTML).toBeTruthy();
+  });
+
+  it('should have annoucement button enabled', () => {
+    const btn = fixture.debugElement.nativeElement.querySelector('#annoucement');
+    expect(btn.innerHTML).toBeTruthy();
+  });
+
+  it('should have home button enabled', () => {
+    const btn = fixture.debugElement.nativeElement.querySelector('#home');
+    expect(btn.innerHTML).toBeTruthy();
+  });
+
+
+
 });

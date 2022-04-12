@@ -1,5 +1,5 @@
 <div style="width: 100%" > 
-  <div style="float:left; width: 18%;" class="announce">
+  <div style="float:left; width: 18%;" class="announce" id = "formbtn">
    <form [formGroup]= "announcementForm">
    <mat-form-field appearance="fill">
      <mat-label>Event Title</mat-label>
@@ -8,8 +8,8 @@
    <mat-form-field appearance="fill">
      <mat-label>Even Catogery</mat-label>
      <mat-select (selectionChange)="selectedValue($event)">
-       <mat-option value="Event">Event</mat-option>
-       <mat-option value="Disclaimer">Disclaimer</mat-option>
+       <mat-option id="evnt" value="Event">Event</mat-option>
+       <mat-option id="disclaimer" value="Disclaimer">Disclaimer</mat-option>
      </mat-select>
    </mat-form-field>
    <mat-form-field appearance="fill">
