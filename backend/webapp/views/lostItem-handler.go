@@ -1,7 +1,6 @@
 package views
 
 import (
-	"fmt"
 	"net/http"
 
 	l "webapp/model"
@@ -26,7 +25,7 @@ func PostLostItemView(db *gorm.DB) gin.HandlerFunc {
 		}
 
 		//check if any user logged in
-		if session != nil {
+		if session.Get("uId") != nil {
 
 			// strips HTML input from user for security purpose
 			p := bluemonday.StripTagsPolicy()
@@ -69,8 +68,6 @@ func ListAllLostItemsView(db *gorm.DB) gin.HandlerFunc {
 
 		session := sessions.Default(c)
 
-		fmt.Print(session)
-
 		// m, ok := session.(interface{})
 		// if !ok {
 		// 	return fmt.Errorf("want type map[string]interface{};  got %T", session)
@@ -79,7 +76,7 @@ func ListAllLostItemsView(db *gorm.DB) gin.HandlerFunc {
 		// 	fmt.Println(k, "=>", v)
 		// }
 
-		if session != nil {
+		if session.Get("uId") != nil {
 
 			v := session.Get("uId")
 

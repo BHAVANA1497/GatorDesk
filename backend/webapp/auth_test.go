@@ -115,7 +115,7 @@ func TestDeleteUserPassCase(t *testing.T) {
 	req.Header.Set("Content-Type", "application/json")
 
 	router.ServeHTTP(w, req)
-	assert.Equal(t, 400, w.Code)
+	assert.Equal(t, 200, w.Code)
 
 }
 
@@ -150,7 +150,7 @@ func TestAdminLoginPassCase(t *testing.T) {
 	req.Header.Set("Content-Type", "application/json")
 
 	router.ServeHTTP(w, req)
-	assert.Equal(t, 400, w.Code)
+	assert.Equal(t, 200, w.Code)
 
 }
 
@@ -170,6 +170,6 @@ func TestAdminLoginFailCase(t *testing.T) {
 	req.Header.Set("Content-Type", "application/json")
 
 	router.ServeHTTP(w, req)
-	assert.Equal(t, 400, w.Code)
+	assert.Equal(t, 401, w.Code)
 
 }
