@@ -4,9 +4,11 @@
 <div id="header" style="position:absolute; top:0px; left:0px; right:0px;overflow:hidden;" *ngIf="!isAdmin"> 
   <app-admin-header-nav></app-admin-header-nav>
 </div>
-<mat-accordion >
+
+<div style="margin-top: 7%">
+<mat-accordion>
  <div class="announcement_style">
-  <h1>Announcements:</h1>
+  <h1>Announcements</h1>
   <mat-expansion-panel *ngFor = "let annoucement of annoucements$ ">
     <mat-expansion-panel-header>
       <mat-panel-title>
@@ -20,6 +22,7 @@
   </mat-expansion-panel>
  </div>
   </mat-accordion>
+  </div>
   <div id="footer" style="position:absolute; bottom:0px; height:200px; left:0px; right:0px; overflow:hidden;"> 
     <app-footer></app-footer>
   </div>
