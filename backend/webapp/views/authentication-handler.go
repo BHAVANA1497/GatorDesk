@@ -30,6 +30,7 @@ func SignUpView(db *gorm.DB) gin.HandlerFunc {
 
 		// strips HTML input from strings preventing XSS
 		p := bluemonday.StripTagsPolicy()
+		json.IsAdmin = false
 		json.Username = p.Sanitize(json.Username)
 		json.Password = p.Sanitize(json.Password)
 		json.FirstName = p.Sanitize(json.FirstName)
