@@ -1,24 +1,29 @@
-<div id="header" style="position:absolute; top:0px; left:0px; right:0px;overflow:hidden;" *ngIf="!isAdmin"> 
+<div id="header" style="position:absolute; top:0px; left:0px; right:0px;overflow:hidden;" *ngIf="isAdmin"> 
   <app-header-nav></app-header-nav>
 </div> 
-<div id="header" style="position:absolute; top:0px; left:0px; right:0px;overflow:hidden;" *ngIf="isAdmin"> 
+<div id="header" style="position:absolute; top:0px; left:0px; right:0px;overflow:hidden;" *ngIf="!isAdmin"> 
   <app-admin-header-nav></app-admin-header-nav>
 </div>
-<div class="container">
+<div class="container" style="margin-top: 4%;">
     <div class="row">
         <div class="columnOne">
         <div class="lost-items">
             <div  class="announce">
                 <form [formGroup]= "lostAndFoundForm">
                 <mat-form-field appearance="fill">
-                  <mat-label>Item Name</mat-label>
-                  <input matInput formControlName="losttype">
-                </mat-form-field>
-                <mat-form-field appearance="fill">
                   <mat-label>Request Type</mat-label>
-                  <mat-select (selectionChange)="selectedValue($event)">
+                  <mat-select formControlName="requestType" (selectionChange)="selectedRequestType($event)">
                     <mat-option value="lost">LOST</mat-option>
                     <mat-option value="found">FOUND</mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                  <mat-label>Item Type</mat-label>
+                  <mat-select  (selectionChange)="selectedLostType($event)">
+                    <mat-option value="jewellery">Jewellery</mat-option>
+                    <mat-option value="book">Book</mat-option>
+                    <mat-option value="bag">Bag</mat-option>
+                    <mat-option value="other">Other</mat-option>
                   </mat-select>
                 </mat-form-field>
                 <mat-form-field appearance="fill">

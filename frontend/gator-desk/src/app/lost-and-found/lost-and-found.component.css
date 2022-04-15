@@ -37,6 +37,10 @@ mat-grid-tile {
     width: 20%;
     background-color: white;
   }
+
+  .container{
+    overflow-y: scroll;
+  }
   
   
   /* Clear floats after the columns */

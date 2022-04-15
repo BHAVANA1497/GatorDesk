@@ -69,7 +69,7 @@ func CreateAnnouncementView(db *gorm.DB) gin.HandlerFunc {
 			//fmt.Print(" debug print 2- detected2\n")
 			c.JSON(http.StatusUnauthorized, gin.H{
 
-				"result": "Login in Admin mode to create an announcement",
+				"result": "admin not logged in",
 			})
 
 		}
