@@ -72,19 +72,19 @@ export class AdminLostAndFoundService {
   constructor(private _http: HttpClient) {}
 
   getLostItems(): Observable<any> {
-    return of(this.lostItems);
-    // return this._http.get(
-    //   'http://localhost:8181/getLostItems',
-    //   this.httpOptions
-    // );
+    //return of(this.lostItems);
+    return this._http.get(
+      'http://localhost:8181/getLostItems',
+      this.httpOptions
+    );
   }
 
   getFoundItems(): Observable<any> {
-    return of(this.foundItems);
-    // return this._http.get(
-    //   'http://localhost:8181/getLostItems',
-    //   this.httpOptions
-    // );
+    //return of(this.foundItems);
+    return this._http.get(
+      'http://localhost:8181/getLostItems',
+      this.httpOptions
+    );
   }
 
   getFoundItem(foundId: any): Observable<any> {
@@ -104,7 +104,17 @@ export class AdminLostAndFoundService {
     // );
   }
 
-  linkFoundItem(foundId: any, lostId: any): Observable<any> {
+  // to do
+  getLostItem(foundId: any): Observable<any> {
+    return this._http.get(
+      'http://localhost:8181/getLostItems',
+      this.httpOptions
+    );
+  }
+
+  linkFoundItem(lostId: any, lostObj: any): Observable<any> {
+
+    this._http.put('', this.httpOptions, lostObj);
     return of(null);
   }
 

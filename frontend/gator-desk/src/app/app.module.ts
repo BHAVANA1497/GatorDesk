@@ -43,6 +43,8 @@ import { AnnouncemetService } from './announcement/annoucement.service';
 import { AdminLostAndFoundComponent } from './admin-lost-and-found/admin-lost-and-found.component';
 import { SignupComponent } from './signup/signup.component';
 import { AdminHeaderNavComponent } from './shared/admin-header-nav/admin-header-nav.component';
+import {MatTableModule} from '@angular/material/table';
+import {  MatPaginatorModule } from '@angular/material/paginator';
 
 
 @NgModule({
@@ -82,7 +84,9 @@ import { AdminHeaderNavComponent } from './shared/admin-header-nav/admin-header-
     MatIconModule,
     MatOptionModule,
     HttpClientModule,
-    MatDividerModule
+    MatDividerModule,
+    MatTableModule,
+    MatPaginatorModule
   ],
   providers: [
     AdminAnnouncementService,

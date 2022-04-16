@@ -27,8 +27,8 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     let isAdmin = localStorage.getItem("isAdmin");
-    if (isAdmin) {
-      console.log("is admin", isAdmin);
+    console.log("is admin", isAdmin);
+    if (isAdmin) {  
       this.isAdmin = true;
     }
   }

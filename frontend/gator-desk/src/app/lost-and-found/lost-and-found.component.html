@@ -19,7 +19,7 @@
                 </mat-form-field>
                 <mat-form-field appearance="fill">
                   <mat-label>Item Type</mat-label>
-                  <mat-select  (selectionChange)="selectedLostType($event)">
+                  <mat-select formControlName="itemType" (selectionChange)="selectedLostType($event)">
                     <mat-option value="jewellery">Jewellery</mat-option>
                     <mat-option value="book">Book</mat-option>
                     <mat-option value="bag">Bag</mat-option>
@@ -40,101 +40,77 @@
         </div>
         </div>
 
-        <div class="column">
-        
-        <div class="lost-items">
-          <h1>Found Request</h1>
+      <div class="column"> 
+          <div class="lost-items">
+            <h1>Found Request</h1> 
+                 
+            <table mat-table [dataSource]="datasourceFound" class="mat-elevation-z8">
+
+              <ng-container matColumnDef="lost_type">
+                <th mat-header-cell *matHeaderCellDef> Found Item Name </th>
+                <td mat-cell *matCellDef="let element"> {{element.lost_type}} </td>
+              </ng-container>
+
+              <!-- <ng-container matColumnDef="announcementTitle">
+                <th mat-header-cell *matHeaderCellDef> Found At </th>
+                <td mat-cell *matCellDef="let element"> {{ element.createdTime | date: "yyyy-MM-dd HH:mm" }} </td>
+              </ng-container> -->
+
+              <ng-container matColumnDef="description">
+                <th mat-header-cell *matHeaderCellDef> Description </th>
+                <td mat-cell *matCellDef="let element"> {{ element.description }} </td>
+              </ng-container>
             
-            <mat-accordion>
-                
-                <mat-expansion-panel *ngFor="let item of foundItems$">
-                    
-                  <mat-expansion-panel-header>
-                   
-                    <mat-panel-description>
-                      <table>
-                        <tr>
-                          <td style="width: 150px">
-                            {{ item.type }}
-                          </td>
-                          <td style="width: 250px">
-                            <p>
-                              Found at:
-                              {{ item.createdTime | date: "yyyy-MM-dd HH:mm" }}
-                            </p>
-                          </td>
-                          <td style="width: 10px; align-items: right">
-                            <p *ngIf="item.type == 'jewellery'">
-                              <fa-icon [icon]="['fas', 'ring']"></fa-icon>
-                            </p>
-                            <p *ngIf="item.type == 'book'">
-                              <fa-icon [icon]="['fas', 'book']"></fa-icon>
-                            </p>
-                            <p *ngIf="item.type == 'bag'">
-                              <fa-icon [icon]="['fas', 'briefcase']"></fa-icon>
-                            </p>
-                          </td>
-                        </tr>
-                      </table>
-                    </mat-panel-description>
-                  </mat-expansion-panel-header>
-                  <p><b>Description: </b> {{ item.description }}</p>
-                  <p *ngIf="item.additionalDetails">
-                    <b>Additional Details: </b> {{ item.additionalDetails }}
-                  </p>
-                </mat-expansion-panel>
-              </mat-accordion>
-
-              
-        </div>
-
+              <tr mat-header-row *matHeaderRowDef="displayedColumnsFound"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumnsFound;"></tr>
+      
+            </table>
+      
+            <mat-paginator #paginator
+            [pageSize]="2"
+            [pageSizeOptions]="[2, 5, 10, 25, 100]">
+            </mat-paginator>
+            
+          </div>
+      </div> 
+           
+      <div class="column">
         <div class="lost-items">
-            <h1> Lost Request</h1>
-            <mat-accordion>
-                
-                <mat-expansion-panel *ngFor="let item of lostItems$">
-                   
-                  <mat-expansion-panel-header> 
-                    <mat-panel-description>
-                      <table>
-                        <tr>
-                          <td style="width: 150px">
-                            {{ item.type }}
-                          </td>
-                          <td style="width: 250px">
-                            <p>
-                              Found at:
-                              {{ item.createdTime | date: "yyyy-MM-dd HH:mm" }}
-                            </p>
-                          </td>
-                          <td style="width: 10px; align-items: right">
-                            <p *ngIf="item.type == 'jewellery'">
-                              <fa-icon [icon]="['fas', 'ring']"></fa-icon>
-                            </p>
-                            <p *ngIf="item.type == 'book'">
-                              <fa-icon [icon]="['fas', 'book']"></fa-icon>
-                            </p>
-                            <p *ngIf="item.type == 'bag'">
-                              <fa-icon [icon]="['fas', 'briefcase']"></fa-icon>
-                            </p>
-                          </td>
-                        </tr>
-                      </table>
-                    </mat-panel-description>
-                  </mat-expansion-panel-header>
-                  <p><b>Description: </b> {{ item.description }}</p>
-                  <p *ngIf="item.additionalDetails">
-                    <b>Additional Details: </b> {{ item.additionalDetails }}
-                  </p>
-                </mat-expansion-panel>
-              </mat-accordion>
-      
-      
-    </div>
-        </div> 
-        
-        
+          <h1> Lost Request</h1>
+          
+          <table mat-table [dataSource]="datasourceLost" class="mat-elevation-z8">
+
+            <ng-container matColumnDef="lost_type">
+              <th mat-header-cell *matHeaderCellDef> Lost Item Name </th>
+              <td mat-cell *matCellDef="let element"> {{element.lost_type}} </td>
+            </ng-container>
+
+          
+            <!-- <ng-container matColumnDef="announcementTitle">
+              <th mat-header-cell *matHeaderCellDef> Found At </th>
+              <td mat-cell *matCellDef="let element"> {{ element.createdTime | date: "yyyy-MM-dd HH:mm" }} </td>
+            </ng-container> -->
+
+            <ng-container matColumnDef="description">
+              <th mat-header-cell *matHeaderCellDef> Description </th>
+              <td mat-cell *matCellDef="let element"> {{ element.description }} </td>
+            </ng-container>
+          
+            <tr mat-header-row *matHeaderRowDef="displayedColumnsLost"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumnsLost;"></tr>
+    
+          </table>
+    
+          <mat-paginator #paginator
+          [pageSize]="2"
+          [pageSizeOptions]="[2, 5, 10, 25, 100]">
+          </mat-paginator>
+    
+      </div>
+      </div>
   </div>
+
+
   <div id="footer" style="position:absolute; bottom:0px; height:200px; left:0px; right:0px; overflow:hidden;"> 
     <app-footer></app-footer>
   </div>

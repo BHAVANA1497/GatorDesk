@@ -46,13 +46,24 @@ export class AdminLostAndFoundComponent implements OnInit {
 
   linkFoundItem(foundId: any, lostId: any) {
     console.log(foundId + ' = ' + lostId);
-    this.adminService.linkFoundItem(foundId, lostId);
-
+    let lostObj = this.getFoundItem(foundId);
+    lostObj.found_id =  foundId;
+    this.adminService.linkFoundItem( lostId, lostObj).subscribe((data)=> {
+      console.log(data);
+    });
     this.getLostItems();
     this.getFoundItems();
   }
 
-  getFoundItem(foundId: any) {
+  getLostItem( lostItemId : any) : any {
+    let lostRec : any;
+    this.adminService.getLostItem(lostItemId).subscribe((data) => {
+      lostRec = data.data;
+    })
+    return lostRec;
+  }
+
+  getFoundItem(foundId: any) : any{
     let resp: any;
     this.adminService.getFoundItem(foundId).subscribe((data) => {
       console.log(data);
