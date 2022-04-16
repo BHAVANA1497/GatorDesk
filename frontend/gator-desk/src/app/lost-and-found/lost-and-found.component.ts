@@ -14,6 +14,7 @@ export class LostAndFoundComponent implements OnInit {
   eventCategory = '';
   desc = '';
   details = '';
+  requestType = '';
   postData: any = {};
   lostItems$: any;
   foundItems$: any;
@@ -47,16 +48,18 @@ export class LostAndFoundComponent implements OnInit {
   }
 
   selectedValue(selectedValue: any){
-    this.eventCategory = selectedValue.value;
+    this.requestType = selectedValue.value;
   }
 
   onSubmit(){
     this.losttype = this.lostAndFoundForm.value.losttype;
-    this.desc = this.lostAndFoundForm.value.eventDesc;
-    console.log( this.losttype + " "+ this.eventCategory + " " + this.desc);
-    // this.postData.announcementTitle = this.lostAndFoundForm.value.losttype;
-    // this.postData.eventDescription = this.lostAndFoundForm.value.desc;
-    // this.postData.announcementCategory = this.eventCategory;
+    this.desc = this.lostAndFoundForm.value.desc;
+ 
+    this.postData.losttype = this.lostAndFoundForm.value.losttype;
+    this.postData.desc = this.lostAndFoundForm.value.desc;
+    this.postData.requestType = this.requestType;
+
+    this.lostservice
 
     // this.admObj.createAnnouncement(this.postData).subscribe(res => {
     //   
