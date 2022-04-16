@@ -5,6 +5,7 @@ import "gorm.io/gorm"
 //Admin table
 type Admin struct {
 	gorm.Model
+	IsAdmin   bool
 	Adminname string `gorm:"not_null" form:"adminname" json:"adminname" binding:"required"`
 	Password  string `gorm:"not_null" form:"password" json:"password" binding:"required"`
 	FirstName string `gorm:"not_null" form:"firstname" json:"firstname" binding:"required"`

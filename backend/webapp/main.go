@@ -87,6 +87,9 @@ func main() {
 	//migrate the lost model to the db
 	db.AutoMigrate(&m.Lost{})
 
+	//migrate the found model to the db
+	db.AutoMigrate((&m.Found{}))
+
 	// setting up the webserver with default config
 	storeName := "mainsecret"
 	sessionName := "mainsession"
