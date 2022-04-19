@@ -151,6 +151,7 @@ func LogoutView(c *gin.Context) {
 	}
 
 	session.Clear()
+	session.Options(sessions.Options{MaxAge: -1})
 	session.Save()
 
 	v = session.Get("uId")

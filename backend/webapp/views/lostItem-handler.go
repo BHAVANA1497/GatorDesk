@@ -1,6 +1,7 @@
 package views
 
 import (
+	"fmt"
 	"net/http"
 
 	l "webapp/model"
@@ -66,10 +67,45 @@ func PostLostItemView(db *gorm.DB) gin.HandlerFunc {
 func ListAllLostItemsView(db *gorm.DB) gin.HandlerFunc {
 	fn := func(c *gin.Context) {
 
-		var res []l.Lost
-		db.Find(&res)
+		session := sessions.Default(c)
 
-		c.JSON(http.StatusOK, gin.H{"data": res})
+		fmt.Print(session)
+
+		// m, ok := session.(interface{})
+		// if !ok {
+		// 	return fmt.Errorf("want type map[string]interface{};  got %T", session)
+		// }
+		// for k, v := range m {
+		// 	fmt.Println(k, "=>", v)
+		// }
+
+		if session != nil {
+
+			v := session.Get("uId")
+
+			id := int64(v.(uint))
+
+			var admin l.User
+			db.Find(&admin, "id = ?", id)
+			if admin.IsAdmin == true {
+				var res []l.Lost
+				db.Find(&res)
+
+				c.JSON(http.StatusOK, gin.H{"data": res})
+			} else {
+				c.JSON(http.StatusUnauthorized, gin.H{
+
+					"result": "login as admin to view this page",
+				})
+				return
+			}
+		} else {
+			c.JSON(http.StatusUnauthorized, gin.H{
+
+				"result": "User not loggedin",
+			})
+			return
+		}
 
 	}
 
