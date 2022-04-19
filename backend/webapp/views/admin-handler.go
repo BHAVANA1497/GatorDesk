@@ -20,7 +20,7 @@ import (
 */
 func AddAdminView(db *gorm.DB) gin.HandlerFunc {
 	fn := func(c *gin.Context) {
-		var json m.Admin
+		var json m.User
 		// try to bind the request json to the User struct
 		if err := c.ShouldBindJSON(&json); err != nil {
 			// return bad request if field names are wrong
@@ -32,18 +32,19 @@ func AddAdminView(db *gorm.DB) gin.HandlerFunc {
 		// strips HTML input from strings preventing XSS
 		p := bluemonday.StripTagsPolicy()
 		json.IsAdmin = true
-		json.Adminname = p.Sanitize(json.Adminname)
+		json.Username = p.Sanitize(json.Username)
 		json.Password = p.Sanitize(json.Password)
 		json.FirstName = p.Sanitize(json.FirstName)
 		json.LastName = p.Sanitize(json.LastName)
 		json.Phone = p.Sanitize(json.Phone)
+		//** handle apt num case here **
 
 		// check db if the admin exists
-		var admin m.Admin
-		db.Find(&admin, "adminname = ?", json.Adminname)
+		var admin m.User
+		db.Find(&admin, "username = ?", json.Username)
 		// return error if the admin exists
-		if admin != (m.Admin{}) {
-			c.JSON(http.StatusBadRequest, gin.H{"error": "Admin with these credentials already exists!"})
+		if admin != (m.User{}) {
+			c.JSON(http.StatusBadRequest, gin.H{"error": "User with these credentials already exists!"})
 			return
 		}
 
@@ -67,7 +68,7 @@ func AddAdminView(db *gorm.DB) gin.HandlerFunc {
 func AdminLoginView(db *gorm.DB) gin.HandlerFunc {
 	fn := func(c *gin.Context) {
 		session := sessions.Default(c)
-		var json m.AdminLogin
+		var json m.Login
 		// try to bind the request json to the Login struct
 		if err := c.ShouldBindJSON(&json); err != nil {
 			// return bad request if field names are wrong
@@ -75,15 +76,15 @@ func AdminLoginView(db *gorm.DB) gin.HandlerFunc {
 			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 			return
 		}
-		var admins []m.Admin
+		var admins []m.User
 
 		// strips HTML input from strings preventing XSS
 		p := bluemonday.StripTagsPolicy()
-		adminname := p.Sanitize(json.Adminname)
+		adminname := p.Sanitize(json.Username)
 		password := p.Sanitize(json.Password)
 
 		// DB query to search for username and password and store the results in users
-		db.Find(&admins, "adminname = ? AND password = ?", adminname, password)
+		db.Find(&admins, "username = ? AND password = ?", adminname, password)
 
 		// if user found return success
 		if len(admins) > 0 {
@@ -92,7 +93,9 @@ func AdminLoginView(db *gorm.DB) gin.HandlerFunc {
 				session.Set("uId", admins[0].ID)
 				session.Save()
 				c.JSON(http.StatusOK, gin.H{
-					"result": "Successful Login!",
+					"result":   "Successful Login!",
+					"username": admins[0].Username,
+					"isAdmin":  admins[0].IsAdmin,
 				})
 				return
 
@@ -104,7 +107,7 @@ func AdminLoginView(db *gorm.DB) gin.HandlerFunc {
 				return
 			} else {
 				c.JSON(http.StatusBadRequest, gin.H{
-					"result": "Another admin loggedin, cannot login",
+					"result": "Another user loggedin, cannot login",
 				})
 				return
 
@@ -132,7 +135,7 @@ func AdminDeleteView(db *gorm.DB) gin.HandlerFunc {
 			return
 		}
 
-		var rec m.Admin
+		var rec m.User
 		if err := db.Where("id = ?", adminId).First(&rec).Error; err != nil {
 			c.JSON(http.StatusBadRequest, gin.H{"error": "Record not found!"})
 			return
@@ -150,8 +153,8 @@ func AdminDeleteView(db *gorm.DB) gin.HandlerFunc {
 func ListAllAdminsView(db *gorm.DB) gin.HandlerFunc {
 	fn := func(c *gin.Context) {
 
-		var res []m.Admin
-		db.Find(&res)
+		var res []m.User
+		db.Find(&res, "is_admin = ?", true)
 
 		c.JSON(http.StatusOK, gin.H{"data": res})
 

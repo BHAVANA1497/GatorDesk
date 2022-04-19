@@ -25,8 +25,8 @@ func TestAddAdminPassCase(t *testing.T) {
 	router.ServeHTTP(nr, req1)
 	cookieValue := nr.Result().Header.Get("Set-Cookie")
 	if nr.Code == 200 {
-		admins := m.Admin{
-			Adminname: "Akhil",
+		admins := m.User{
+			Username:  "Akhil",
 			Password:  "password",
 			FirstName: "Akhil",
 			LastName:  "Maddukuri",
@@ -55,8 +55,8 @@ func TestAddAdminFailCase(t *testing.T) {
 	req1.Header.Set("credentials", "include")
 	router.ServeHTTP(nr, req1)
 	if nr.Code == 200 {
-		admin := m.Admin{
-			Adminname: "Akhil",
+		admin := m.User{
+			Username:  "Akhil",
 			Password:  "password",
 			FirstName: "Akhil",
 			LastName:  "Maddukuri",

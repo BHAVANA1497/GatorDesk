@@ -19,8 +19,8 @@ var dbName string = "test.db"
 var storeName string = "testsecret"
 var sessionName string = "testsession"
 var users []m.User
+var admins []m.User
 var announcements []m.Announcement
-var admins []m.Admin
 var router *gin.Engine
 
 func setupTestDb(dbName string) *gorm.DB {
@@ -204,37 +204,37 @@ func initData(db *gorm.DB) {
 		},
 	}
 	db.Create(&announcements)
-	admins = []m.Admin{
+	admins = []m.User{
 		{
-			Adminname: "nitya_v",
+			Username:  "nitya_v",
 			Password:  "MNV",
 			FirstName: "Nitya Vaishnavi",
 			LastName:  "Mamillapalle",
 			Phone:     "1234567890",
 		},
 		{
-			Adminname: "akhil_m",
+			Username:  "akhil_m",
 			Password:  "MAC",
 			FirstName: "Akhil",
 			LastName:  "Maddukuri",
 			Phone:     "09876543221",
 		},
 		{
-			Adminname: "bhavana_ch",
+			Username:  "bhavana_ch",
 			Password:  "CHB",
 			FirstName: "Bhavana",
 			LastName:  "Chinthalapally",
 			Phone:     "6789012345",
 		},
 		{
-			Adminname: "test_123",
+			Username:  "test_123",
 			Password:  "123",
 			FirstName: "Test",
 			LastName:  "User",
 			Phone:     "1234509876",
 		},
 		{
-			Adminname: "harshitha_m",
+			Username:  "harshitha_m",
 			Password:  "GCDC",
 			FirstName: "Harshitha",
 			LastName:  "Myadam",
