@@ -1,7 +1,6 @@
 package views
 
 import (
-	"fmt"
 	"net/http"
 	"strconv"
 	l "webapp/model"
@@ -59,7 +58,7 @@ func CreateAnnouncementView(db *gorm.DB) gin.HandlerFunc {
 					"result": "Announcement created successfully",
 				})
 			} else {
-				fmt.Print(" debug print 1- detected1\n")
+				//fmt.Print(" debug print 1- detected1\n")
 				c.JSON(http.StatusUnauthorized, gin.H{
 
 					"result": "Login in Admin mode to create an announcement",
@@ -67,7 +66,7 @@ func CreateAnnouncementView(db *gorm.DB) gin.HandlerFunc {
 			}
 
 		} else {
-			fmt.Print(" debug print 2- detected2\n")
+			//fmt.Print(" debug print 2- detected2\n")
 			c.JSON(http.StatusUnauthorized, gin.H{
 
 				"result": "Login in Admin mode to create an announcement",

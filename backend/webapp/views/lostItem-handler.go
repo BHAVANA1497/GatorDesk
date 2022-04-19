@@ -5,6 +5,7 @@ import (
 
 	l "webapp/model"
 
+	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
 	"github.com/microcosm-cc/bluemonday"
 	"gorm.io/gorm"
@@ -13,6 +14,7 @@ import (
 //Posting a lost item into the Lost table. The user's id who has posted the lost item shall be retrieved from the sesssion
 func PostLostItemView(db *gorm.DB) gin.HandlerFunc {
 	fn := func(c *gin.Context) {
+		session := sessions.Default(c)
 		var json l.Lost
 		// try to bind the request json to the Login struct
 		if err := c.ShouldBindJSON(&json); err != nil {
@@ -22,24 +24,38 @@ func PostLostItemView(db *gorm.DB) gin.HandlerFunc {
 			return
 		}
 
-		// strips HTML input from user for security purpose
-		p := bluemonday.StripTagsPolicy()
+		//check if any user logged in
+		if session != nil {
 
-		json.LostType = p.Sanitize(json.LostType)
-		json.Description = p.Sanitize(json.Description)
-		json.ImagePath = p.Sanitize(json.ImagePath)
+			// strips HTML input from user for security purpose
+			p := bluemonday.StripTagsPolicy()
+			v := session.Get("uId")
 
-		// create the announcement
-		result := db.Create(&json)
+			json.UserId = int64(v.(uint))
+			json.LostType = p.Sanitize(json.LostType)
+			json.Description = p.Sanitize(json.Description)
+			json.ImagePath = p.Sanitize(json.ImagePath)
+			json.IsFound = false
 
-		if result.Error != nil {
-			c.JSON(http.StatusBadRequest, gin.H{"error": result.Error.Error()})
+			// create the announcement
+			result := db.Create(&json)
+
+			if result.Error != nil {
+				c.JSON(http.StatusBadRequest, gin.H{"error": result.Error.Error()})
+				return
+			}
+
+			c.JSON(http.StatusOK, gin.H{
+				"result": "Lost item uploaded successfully!",
+			})
+		} else {
+			c.JSON(http.StatusUnauthorized, gin.H{
+
+				"result": "User not loggedin",
+			})
 			return
 		}
 
-		c.JSON(http.StatusOK, gin.H{
-			"result": "Lost item uploaded successfully!",
-		})
 	}
 
 	// return the loginHandlerfunction
