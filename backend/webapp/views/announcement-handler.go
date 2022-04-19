@@ -39,11 +39,11 @@ func CreateAnnouncementView(db *gorm.DB) gin.HandlerFunc {
 
 			v := session.Get("uId")
 
-			var admin l.Admin
+			var admin l.User
 			db.Find(&admin, "id = ?", v)
 
 			//check if logged-in user is admin
-			if v == admin.ID {
+			if (admin != l.User{}) && (admin.IsAdmin == true) {
 
 				json.Admin_Id = int64(admin.ID)
 				// create the announcement

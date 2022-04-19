@@ -11,7 +11,7 @@ type User struct {
 	FirstName string `gorm:"not_null" form:"firstname" json:"firstname" binding:"required"`
 	LastName  string `gorm:"not_null" form:"lastname" json:"lastname" binding:"required"`
 	Phone     string `gorm:"not_null" form:"phone" json:"phone" binding:"required"`
-	AptNo     string `gorm:"not_null" form:"aptNo" json:"aptNo" binding:"required"`
+	AptNo     string `gorm:"not_null" form:"aptNo" json:"aptNo"`
 }
 
 // Login struct, mapping json to the variables
