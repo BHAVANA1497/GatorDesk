@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthenticationService } from '../providers/authentication.service';
 import { UserService } from '../providers/user.service';
 
 @Component({
@@ -10,35 +11,29 @@ import { UserService } from '../providers/user.service';
 })
 export class LoginComponent implements OnInit {
   userData = {
-    email: '',
+    username: '',
     password: '',
   };
-  constructor(private _http: HttpClient, public user: UserService,  private router: Router) { }
+
+  responseData: any;
+
+  constructor(private _http: HttpClient, public authservice: AuthenticationService,  private router: Router) { }
 
   ngOnInit(): void {
+    
   }
 
   doLogin() {
-    console.log(this.userData);
-    if(this.userData.email == "test@gmail.com" && this.userData.password == "test"){
-      this.user._details = this.userData;
-      localStorage.setItem('USER_DETAILS', JSON.stringify(this.userData));
-      this.user._token = "dummytoken";
-    }
-    this.router.navigate(['/home']);
-    // this._http.post('users/login', this.userData)
-    //   .subscribe(res => {
-    //     console.log(res);
-    //     // this.user._details = res['data'];
-    //     // this.user._token = res['token'];
-    //     // localStorage.setItem('TOKEN', res['token']);
-    //     // localStorage.setItem('USER_DETAILS', JSON.stringify(res['data']));
-    //     this.router.navigate(['/home']);
-    //     // alert(res.message);
-    //   }, err => {
-    //     console.log(err);
-    //     alert(JSON.parse(err._body).message);
-    //   });
+    this.authservice.continueLogin(this.userData).subscribe( res =>{
+      console.log(res);  
+      this.responseData = res;
+      localStorage.setItem('USER_DETAILS', this.userData.username);
+      localStorage.setItem('isAdmin', this.responseData.isAdmin)
+       this.router.navigate(['/home']);
+    }, err => {
+      console.log(err.error);
+    });
+    
   }
 
 }
