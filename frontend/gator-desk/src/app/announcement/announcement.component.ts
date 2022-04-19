@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs/internal/Observable';
+import { Router } from '@angular/router';
 import { AnnouncemetService } from './annoucement.service';
 
 
@@ -11,7 +11,9 @@ import { AnnouncemetService } from './annoucement.service';
 export class AnnouncementComponent implements OnInit {
   panelOpenState = false;
   annoucements$ : any;
-  constructor(public announcementService: AnnouncemetService) { 
+  isAdmin: boolean = false;
+
+  constructor(public announcementService: AnnouncemetService, private router: Router) { 
    this.announcementService.getAllAnnouncements().subscribe((data)=>{
      console.log(data.data);
    this.annoucements$ = data.data;
@@ -20,6 +22,11 @@ export class AnnouncementComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    let isAdmin = localStorage.getItem("isAdmin");
+    if (isAdmin) {
+      console.log("is admin", isAdmin);
+      this.isAdmin = true;
+    }
   }
 
 }

@@ -67,6 +67,7 @@ export class AdminLostAndFoundService {
       Accept: '*/*',
     }),
   };
+  isAdmin: boolean = false;
 
   constructor(private _http: HttpClient) {}
 
@@ -105,5 +106,13 @@ export class AdminLostAndFoundService {
 
   linkFoundItem(foundId: any, lostId: any): Observable<any> {
     return of(null);
+  }
+
+  ngOnInit(): void {
+    let isAdmin = localStorage.getItem("isAdmin");
+    if (isAdmin) {
+      console.log("is admin", isAdmin);
+      this.isAdmin = true;
+    }
   }
 }

@@ -13,6 +13,8 @@ export class HomeComponent implements OnInit {
     {path: '../../assets/apartments.jpg'},
     
   ];
+  
+  isAdmin = false;
 
   constructor() {}
 
@@ -23,5 +25,12 @@ export class HomeComponent implements OnInit {
     stopAutoplayMinWidth: 768,
   };
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    let isAdmin = localStorage.getItem("isAdmin");
+    if (isAdmin) {
+      console.log("is admin", isAdmin);
+      this.isAdmin = true;
+    }
+  }
+
 }

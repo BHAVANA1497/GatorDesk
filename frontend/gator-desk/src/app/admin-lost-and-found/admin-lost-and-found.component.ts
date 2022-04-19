@@ -10,13 +10,19 @@ export class AdminLostAndFoundComponent implements OnInit {
   lostItems$: any;
   foundItems$: any;
   currentFoundItem$: any;
+  isAdmin: boolean = false;
 
   constructor(public adminService: AdminLostAndFoundService) {
     this.getLostItems();
     this.getFoundItems();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    let isAdmin = localStorage.getItem("isAdmin");
+    if (isAdmin) {
+      this.isAdmin = true;
+    }
+  }
 
   getLostItems() {
     this.adminService.getLostItems().subscribe((data) => {
