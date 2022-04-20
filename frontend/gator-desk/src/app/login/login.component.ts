@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
       console.log(res);  
       this.responseData = res;
       localStorage.setItem('USER_DETAILS', this.userData.username);
-      localStorage.setItem('isAdmin', this.responseData.isAdmin)
+      localStorage.setItem('isAdmin', this.responseData.IsAdmin)
        this.router.navigate(['/home']);
     }, err => {
       console.log(err.error);

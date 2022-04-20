@@ -87,12 +87,22 @@ export class LostAndFoundService {
     // );
   }
 
-  createRequest(): Observable<any> {
-    return of(this.foundItems);
-    // return this._http.get(
-    //   'http://localhost:8181/getLostItems',
-    //   this.httpOptions
-    // );
+  createLostRequest(postData : any): Observable<any> {
+    //return of(this.foundItems);
+    return this._http.post(
+      'http://localhost:8181/postLostItem',
+      postData,
+      this.httpOptions
+    );
+  }
+
+  createFoundRequest(postData : any): Observable<any> {
+    //return of(this.foundItems);
+    return this._http.post(
+      'http://localhost:8181/postFoundItem',
+      postData,
+      this.httpOptions
+    );
   }
 
   ngOnInit(): void {

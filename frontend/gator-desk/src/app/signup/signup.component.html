@@ -1,37 +1,37 @@
 <div class="w3-container">
-    <div class="signup-div">
-      <div class="w3-card-3" style="width: 30rem;padding:15px">
-        <div class="">
-          <h4 class="">Signup</h4>
-          <hr>
-          <form #loginForm="ngForm" (submit)="loginForm.valid && doSignup()">
-  
-            <!-- Name -->
-            <div class="top25">
-              <input matInput type="text" name="name" id="name" [(ngModel)]="userData.firstname" class="w3-input  w3-border" placeholder="Name" #nameField="ngModel"
-                required>
-            </div>
-  
-            <!-- Email -->
-            <div class="top25">
-              <input matInput type="email" name="email" id="email" [(ngModel)]="userData.username" class="w3-input  w3-border" placeholder="Email" #emailField="ngModel"
-                required pattern="^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$">
-            </div>
-  
-            <!-- Password -->
-            <div class="top25">
-              <input matInput type="password" name="password" id="password" [(ngModel)]="userData.password" class="w3-input  w3-border" placeholder="Password"
-                #passwordField="ngModel" required minlength="6" maxlength="64">
-            </div>
-  
-            <div class="w3-container" style="text-align:right; margin-top: 33px;margin-right: -16px;">
-              <button type="submit" id="signup" (click)="doSignup()" mat-raised-button color="warn">Signup</button>
-            </div>
-            <p>
-              <a href="javascript:void(0)" mat-button color="warn" routerLink="/login">Already have an account? Login</a>
-            </p>
-          </form>
-        </div>
+  <div class="signup-div">
+    <div class="w3-card-3" style="width: 30rem;padding:15px">
+      <div class="">
+        <h4 class="">Signup</h4>
+        <hr>
+        <form #loginForm="ngForm" (submit)="loginForm.valid && doSignup()">
+
+          <!-- Name -->
+          <div class="top25">
+            <input matInput type="text" name="name" id="name" [(ngModel)]="userData.firstname" class="w3-input  w3-border" placeholder="Name" #nameField="ngModel"
+              required>
+          </div>
+
+          <!-- Email -->
+          <div class="top25">
+            <input matInput type="email" name="email" id="email" [(ngModel)]="userData.username" class="w3-input  w3-border" placeholder="Email" #emailField="ngModel"
+              required pattern="^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$">
+          </div>
+
+          <!-- Password -->
+          <div class="top25">
+            <input matInput type="password" name="password" id="password" [(ngModel)]="userData.password" class="w3-input  w3-border" placeholder="Password"
+              #passwordField="ngModel" required minlength="6" maxlength="64">
+          </div>
+
+          <div class="w3-container" style="text-align:right; margin-top: 33px;margin-right: -16px;">
+            <button type="submit" id="signup" (click)="doSignup()" mat-raised-button color="warn">Signup</button>
+          </div>
+          <p>
+            <a href="javascript:void(0)" mat-button color="warn" routerLink="/login">Already have an account? Login</a>
+          </p>
+        </form>
       </div>
     </div>
   </div>
+</div>

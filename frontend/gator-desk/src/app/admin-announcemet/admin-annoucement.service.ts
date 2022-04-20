@@ -8,8 +8,9 @@ export class AdminAnnouncementService {
   result: any;
 
   httpOptions = {
+    withCredentials: true,
     headers: new HttpHeaders({ 
-    "Content-Type": "application/json",
+    "Content-Type": "application/x-www-form-urlencoded",
     "Accept": "*/*"
    })
   };

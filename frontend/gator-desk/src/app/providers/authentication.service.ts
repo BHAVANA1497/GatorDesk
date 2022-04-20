@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -6,11 +6,19 @@ import { Injectable } from '@angular/core';
 })
 export class AuthenticationService {
 
-  apiUrl = "http://localhost:8181/login"
+  apiUrl = "http://localhost:8181/login";
+
+  httpOptions = {
+    headers: new HttpHeaders({ 
+    "Content-Type": "application/x-www-form-urlencoded",
+    "Accept": "*/*"
+   })
+  };
+
 
   constructor(private http: HttpClient) { }
 
   continueLogin(userData : any){
-    return this.http.post(this.apiUrl, userData);
+    return this.http.post(this.apiUrl, userData, this.httpOptions);
   }
 }

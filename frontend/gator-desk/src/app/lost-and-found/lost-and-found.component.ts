@@ -10,19 +10,20 @@ import { LostAndFoundService } from './lost-and-found.service';
 export class LostAndFoundComponent implements OnInit {
 
   lostAndFoundForm: FormGroup;
-  losttype = '';
+
   eventCategory = '';
   desc = '';
-  details = '';
   requestType = '';
-  postData: any = {};
+  lostType = '';
+  postDataLost: any = {};
+  postDataFound: any = {};
   lostItems$: any;
   foundItems$: any;
   isAdmin: boolean = false;
 
   constructor(private fb: FormBuilder , public lostservice: LostAndFoundService) { 
     this.lostAndFoundForm = fb.group({
-      'losttype': [],
+      'requestType': [null, Validators.required],
       'desc': [null, Validators.required],
       'details': []
     });
@@ -52,24 +53,38 @@ export class LostAndFoundComponent implements OnInit {
     }
   }
 
-  selectedValue(selectedValue: any){
+  selectedRequestType(selectedValue: any){
     this.requestType = selectedValue.value;
   }
 
+  selectedLostType( selectedValue: any){
+     this.lostType = selectedValue.value;
+  }
+
   onSubmit(){
-    this.losttype = this.lostAndFoundForm.value.losttype;
+    this.lostType = this.lostType;
+    this.requestType = this.requestType;
     this.desc = this.lostAndFoundForm.value.desc;
+    this.postDataLost.lostType = this.lostType;
+    this.postDataLost.desc = this.lostAndFoundForm.value.desc;
  
-    this.postData.losttype = this.lostAndFoundForm.value.losttype;
-    this.postData.desc = this.lostAndFoundForm.value.desc;
-    this.postData.requestType = this.requestType;
+    this.postDataFound.FoundType = this.lostType;
+    this.postDataFound.desc = this.lostAndFoundForm.value.desc;
 
-    this.lostservice
-
-    // this.admObj.createAnnouncement(this.postData).subscribe(res => {
-    //   
-    // });
-    window.location.reload();
+   console.log(this.requestType);
+  
+    if( this.requestType == "lost"){
+      this.lostservice.createLostRequest(this.postDataLost).subscribe(res => {
+        console.log(res);
+        window.location.reload();
+      });
+    }
+    if( this.requestType == "found"){
+      this.lostservice.createFoundRequest(this.postDataFound).subscribe(res => {
+        console.log(res);
+        window.location.reload();
+      });
+    }
   }
 
 }
