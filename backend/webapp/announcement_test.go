@@ -218,7 +218,7 @@ func initData(db *gorm.DB) {
 	db.Create(&announcements)
 	admins = []m.User{
 		{
-			Username:  "nitya_v",
+			Username:  "nitya_v2",
 			Password:  "MNV",
 			FirstName: "Nitya Vaishnavi",
 			LastName:  "Mamillapalle",
@@ -226,7 +226,7 @@ func initData(db *gorm.DB) {
 			IsAdmin:   true,
 		},
 		{
-			Username:  "akhil_m",
+			Username:  "akhil_m2",
 			Password:  "MAC",
 			FirstName: "Akhil",
 			LastName:  "Maddukuri",
@@ -234,7 +234,7 @@ func initData(db *gorm.DB) {
 			IsAdmin:   true,
 		},
 		{
-			Username:  "bhavana_ch",
+			Username:  "bhavana_ch2",
 			Password:  "CHB",
 			FirstName: "Bhavana",
 			LastName:  "Chinthalapally",
@@ -242,7 +242,7 @@ func initData(db *gorm.DB) {
 			IsAdmin:   true,
 		},
 		{
-			Username:  "test_123",
+			Username:  "test_1234",
 			Password:  "123",
 			FirstName: "Test",
 			LastName:  "User",
@@ -250,7 +250,7 @@ func initData(db *gorm.DB) {
 			IsAdmin:   true,
 		},
 		{
-			Username:  "harshitha_m",
+			Username:  "harshitha_m2",
 			Password:  "GCDC",
 			FirstName: "Harshitha",
 			LastName:  "Myadam",
