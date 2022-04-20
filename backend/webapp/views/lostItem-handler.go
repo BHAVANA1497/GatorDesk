@@ -2,7 +2,7 @@ package views
 
 import (
 	"net/http"
-
+	"strconv"
 	l "webapp/model"
 
 	"github.com/gin-contrib/sessions"
@@ -111,6 +111,38 @@ func ListAllLostItemsView(db *gorm.DB) gin.HandlerFunc {
 	return gin.HandlerFunc(fn)
 }
 
+func GetLostItemById(db *gorm.DB) gin.HandlerFunc {
+
+	fn := func(c *gin.Context) {
+
+		session := sessions.Default(c)
+
+		if session.Get("uId") != nil {
+
+			lostId, err := strconv.Atoi(c.Param("id"))
+
+			if err != nil {
+				c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+				return
+			}
+			var res []l.Lost
+			db.Find(&res, "id = ?", lostId)
+
+			c.JSON(http.StatusOK, gin.H{"data": res})
+
+		} else {
+			c.JSON(http.StatusUnauthorized, gin.H{
+
+				"result": "User not loggedin",
+			})
+			return
+		}
+	}
+
+	// return the loginHandlerfunction
+	return gin.HandlerFunc(fn)
+}
+
 //API to get all the lost items posted by a particular user (with a unique userId)
 func GetAllLostItemsByUserId(db *gorm.DB) gin.HandlerFunc {
 
@@ -145,9 +177,8 @@ func GetAllLostItemsByUserId(db *gorm.DB) gin.HandlerFunc {
 
 func LinkLostFoundView(db *gorm.DB) gin.HandlerFunc {
 	fn := func(c *gin.Context) {
-		session := sessions.Default(c)
 		var json l.Lost
-		// try to bind the request json to the Login struct
+		// try to bind the request json to the Announcement struct
 		if err := c.ShouldBindJSON(&json); err != nil {
 			// return bad request if field names are wrong
 			// and if fields are missing
@@ -155,37 +186,25 @@ func LinkLostFoundView(db *gorm.DB) gin.HandlerFunc {
 			return
 		}
 
-		//check if any user logged in
-		if session.Get("uId") != nil {
+		// strips HTML input from user for security purpose
+		p := bluemonday.StripTagsPolicy()
 
-			// strips HTML input from user for security purpose
-			p := bluemonday.StripTagsPolicy()
-			v := session.Get("uId")
+		json.LostType = p.Sanitize(json.LostType)
+		json.Description = p.Sanitize(json.Description)
+		json.ImagePath = p.Sanitize(json.ImagePath)
 
-			json.UserId = int64(v.(uint))
-			json.LostType = p.Sanitize(json.LostType)
-			json.Description = p.Sanitize(json.Description)
-			json.ImagePath = p.Sanitize(json.ImagePath)
-			json.IsFound = true
+		// get the existing post
+		var lost l.Lost
+		db.Find(&lost, "id = ?", json.ID)
 
-			// create the announcement
-			result := db.Create(&json)
+		result := db.Model(&lost).Where("id=?", json.ID).Updates(json)
 
-			if result.Error != nil {
-				c.JSON(http.StatusBadRequest, gin.H{"error": result.Error.Error()})
-				return
-			}
-
-			c.JSON(http.StatusOK, gin.H{
-				"result": "Lost item uploaded successfully!",
-			})
-		} else {
-			c.JSON(http.StatusUnauthorized, gin.H{
-
-				"result": "User not loggedin",
-			})
+		if result.Error != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": result.Error.Error()})
 			return
 		}
+
+		c.JSON(http.StatusOK, lost)
 
 	}
 

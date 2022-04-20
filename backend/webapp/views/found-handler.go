@@ -2,7 +2,7 @@ package views
 
 import (
 	"net/http"
-
+	"strconv"
 	l "webapp/model"
 
 	"github.com/gin-contrib/sessions"
@@ -45,6 +45,38 @@ func PostFoundItemView(db *gorm.DB) gin.HandlerFunc {
 			c.JSON(http.StatusOK, gin.H{
 				"result": "Found item has been updated successfully in the database!",
 			})
+		} else {
+			c.JSON(http.StatusUnauthorized, gin.H{
+
+				"result": "User not loggedin",
+			})
+			return
+		}
+	}
+
+	// return the loginHandlerfunction
+	return gin.HandlerFunc(fn)
+}
+
+func GetFoundItemById(db *gorm.DB) gin.HandlerFunc {
+
+	fn := func(c *gin.Context) {
+
+		session := sessions.Default(c)
+
+		if session.Get("uId") != nil {
+
+			foundId, err := strconv.Atoi(c.Param("id"))
+
+			if err != nil {
+				c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+				return
+			}
+			var res []l.Found
+			db.Find(&res, "id = ?", foundId)
+
+			c.JSON(http.StatusOK, gin.H{"data": res})
+
 		} else {
 			c.JSON(http.StatusUnauthorized, gin.H{
 
