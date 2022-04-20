@@ -34,8 +34,8 @@ func setupTestDb(dbName string) *gorm.DB {
 	db.Migrator().DropTable(&m.User{})
 	db.Migrator().DropTable(&m.Announcement{})
 
-	// Migrate the User & Product model to the db
-	db.AutoMigrate(&m.User{}, &m.Announcement{})
+	// Migrate the User, Announcements, Losts model to the db
+	db.AutoMigrate(&m.User{}, &m.Announcement{}, &m.Lost{})
 
 	return db
 }
@@ -49,6 +49,7 @@ func initData(db *gorm.DB) {
 			LastName:  "Mamillapalle",
 			Phone:     "1234567890",
 			AptNo:     "GG-333",
+			IsAdmin:   false,
 		},
 		{
 			Username:  "akhil_m",
@@ -57,6 +58,7 @@ func initData(db *gorm.DB) {
 			LastName:  "Maddukuri",
 			Phone:     "09876543221",
 			AptNo:     "HH-331",
+			IsAdmin:   false,
 		},
 		{
 			Username:  "bhavana_ch",
@@ -65,6 +67,7 @@ func initData(db *gorm.DB) {
 			LastName:  "Chinthalapally",
 			Phone:     "6789012345",
 			AptNo:     "DD-447",
+			IsAdmin:   false,
 		},
 		{
 			Username:  "test_123",
@@ -73,6 +76,7 @@ func initData(db *gorm.DB) {
 			LastName:  "User",
 			Phone:     "1234509876",
 			AptNo:     "Apt123",
+			IsAdmin:   false,
 		},
 		{
 			Username:  "harshitha_m",
@@ -81,6 +85,7 @@ func initData(db *gorm.DB) {
 			LastName:  "Myadam",
 			Phone:     "67878123345",
 			AptNo:     "DD-233",
+			IsAdmin:   false,
 		},
 		{
 			Username:  "tejarocks",
@@ -89,6 +94,7 @@ func initData(db *gorm.DB) {
 			LastName:  "Dontham",
 			Phone:     "6783201145",
 			AptNo:     "DD-244",
+			IsAdmin:   false,
 		},
 		{
 			Username:  "testuser3",
@@ -97,6 +103,7 @@ func initData(db *gorm.DB) {
 			LastName:  "User",
 			Phone:     "9162201145",
 			AptNo:     "X-123",
+			IsAdmin:   false,
 		},
 		{
 			Username:  "testuser4",
@@ -105,6 +112,7 @@ func initData(db *gorm.DB) {
 			LastName:  "D",
 			Phone:     "1234567891",
 			AptNo:     "AA-123",
+			IsAdmin:   false,
 		},
 		{
 			Username:  "testuser5",
@@ -113,6 +121,7 @@ func initData(db *gorm.DB) {
 			LastName:  "Five",
 			Phone:     "9848586878",
 			AptNo:     "YY-174",
+			IsAdmin:   false,
 		},
 		{
 			Username:  "manish",
@@ -121,6 +130,7 @@ func initData(db *gorm.DB) {
 			LastName:  "Alluri",
 			Phone:     "7656463626",
 			AptNo:     "X-14",
+			IsAdmin:   false,
 		},
 		{
 			Username:  "anvitha",
@@ -129,6 +139,7 @@ func initData(db *gorm.DB) {
 			LastName:  "choday",
 			Phone:     "9738954545",
 			AptNo:     "HH-331",
+			IsAdmin:   false,
 		},
 		{
 			Username:  "squareroot",
@@ -137,6 +148,7 @@ func initData(db *gorm.DB) {
 			LastName:  "M",
 			Phone:     "6837773773",
 			AptNo:     "GG-333",
+			IsAdmin:   false,
 		},
 	}
 	db.Create(&users)
@@ -211,6 +223,7 @@ func initData(db *gorm.DB) {
 			FirstName: "Nitya Vaishnavi",
 			LastName:  "Mamillapalle",
 			Phone:     "1234567890",
+			IsAdmin:   true,
 		},
 		{
 			Username:  "akhil_m",
@@ -218,6 +231,7 @@ func initData(db *gorm.DB) {
 			FirstName: "Akhil",
 			LastName:  "Maddukuri",
 			Phone:     "09876543221",
+			IsAdmin:   true,
 		},
 		{
 			Username:  "bhavana_ch",
@@ -225,6 +239,7 @@ func initData(db *gorm.DB) {
 			FirstName: "Bhavana",
 			LastName:  "Chinthalapally",
 			Phone:     "6789012345",
+			IsAdmin:   true,
 		},
 		{
 			Username:  "test_123",
@@ -232,6 +247,7 @@ func initData(db *gorm.DB) {
 			FirstName: "Test",
 			LastName:  "User",
 			Phone:     "1234509876",
+			IsAdmin:   true,
 		},
 		{
 			Username:  "harshitha_m",
@@ -239,9 +255,35 @@ func initData(db *gorm.DB) {
 			FirstName: "Harshitha",
 			LastName:  "Myadam",
 			Phone:     "67878123345",
+			IsAdmin:   true,
 		},
 	}
 	db.Create(&admins)
+
+	lostitems := []m.Lost{
+		{
+			LostType:    "Jewellery",
+			Description: "lost near pool",
+			ImagePath:   "https://image",
+		},
+		{
+			LostType:    "Bag",
+			Description: "Contains my wallet and laptop",
+			ImagePath:   "https://image2",
+		},
+		{
+			LostType:    "Key",
+			Description: "I don't have a spare key, Please return if found",
+			ImagePath:   "https://image4",
+		},
+		{
+			LostType:    "Heart",
+			Description: "don't wanna be heartless",
+			ImagePath:   "https://image5",
+		},
+	}
+	db.Create(&lostitems)
+
 }
 
 func TestMain(m *testing.M) {

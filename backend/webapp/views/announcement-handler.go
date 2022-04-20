@@ -35,7 +35,7 @@ func CreateAnnouncementView(db *gorm.DB) gin.HandlerFunc {
 		json.Event_Description = p.Sanitize(json.Event_Description)
 
 		//check if any user is logged-in
-		if session != nil {
+		if session.Get("uId") != nil {
 
 			v := session.Get("uId")
 
