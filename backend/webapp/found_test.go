@@ -77,3 +77,30 @@ func TestPostFoundItemFailCase(t *testing.T) {
 	}
 
 }
+func TestListFoundItemsPassCase(t *testing.T) {
+	login := m.Login{
+		Username: "nitya_v2",
+		Password: "MNV",
+	}
+	payload, _ := json.Marshal(login)
+	nr := httptest.NewRecorder()
+	nr2 := httptest.NewRecorder()
+	req1, _ := http.NewRequest("POST", "/adminlogin", strings.NewReader(string(payload)))
+	req1.Header.Set("Content-Type", "application/json")
+	req1.Header.Set("credentials", "include")
+	router.ServeHTTP(nr, req1)
+	cookieValue := nr.Result().Header.Get("Set-Cookie")
+	if nr.Code == 200 {
+		//fmt.Print("here")
+		nr.Flush()
+		req, _ := http.NewRequest("GET", "/listAllFoundItems", nil)
+		req.Header.Set("Content-Type", "application/json")
+		req.Header.Set("credentials", "include")
+		req.Header.Set("Cookie", cookieValue)
+		router.ServeHTTP(nr2, req)
+		assert.Equal(t, 200, nr2.Code)
+	} else {
+		assert.Equal(t, 200, nr.Code)
+	}
+
+}
