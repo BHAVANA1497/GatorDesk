@@ -27,8 +27,7 @@ mat-grid-tile {
   
   .column {
     float: left;
-    width: 70%;
-    background: lightblue;
+    width: 30%;
    
   }
 
@@ -38,8 +37,9 @@ mat-grid-tile {
     background-color: white;
   }
 
-  .container{
-    overflow-y: scroll;
+  h1{
+    font-size: 17px;
+    letter-spacing: 1.5px;
   }
   
   
@@ -48,12 +48,12 @@ mat-grid-tile {
     content: "";
     display: table;
     clear: both;
-     background: lightblue;
+    background-color: lightblue;
     
   }
 
   .lost-items{
-      margin: 30px;
+      margin: 10px;
   }
 
   h1{

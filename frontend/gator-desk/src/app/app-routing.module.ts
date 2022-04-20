@@ -21,7 +21,7 @@ const routes: Routes = [
   {path : 'adminannoucement', component : AdminAnnouncementComponent},
   { path: 'lost-and-found', component: LostAndFoundComponent },
   {path : 'adminlost-and-found', component : AdminLostAndFoundComponent},
-  { path: 'adminmaintenance-request', component: LostAndFoundComponent },
+  { path: 'maintenance-request', component: AdminLostAndFoundComponent },
   { path: 'login', component: LoginComponent },
   { path : 'signup', component: SignupComponent}
 ];
