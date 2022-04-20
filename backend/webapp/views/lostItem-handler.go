@@ -116,26 +116,26 @@ func GetAllLostItemsByUserId(db *gorm.DB) gin.HandlerFunc {
 
 	fn := func(c *gin.Context) {
 
-		var json l.Lost
-		// try to bind the request json to the lost struct
-		if err := c.ShouldBindJSON(&json); err != nil {
-			// return bad request if field names are wrong
-			// and if fields are missing
-			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		session := sessions.Default(c)
+
+		if session.Get("uId") != nil {
+
+			v := session.Get("uId")
+
+			id := int64(v.(uint))
+
+			var lostitems []l.Lost
+			db.Find(&lostitems, "user_id = ?", id)
+
+			c.JSON(http.StatusOK, gin.H{"data": lostitems})
+			return
+		} else {
+			c.JSON(http.StatusUnauthorized, gin.H{
+
+				"result": "User not loggedin",
+			})
 			return
 		}
-
-		// strips HTML input from user for security purpose
-		p := bluemonday.StripTagsPolicy()
-
-		json.LostType = p.Sanitize(json.LostType)
-		json.Description = p.Sanitize(json.Description)
-		json.ImagePath = p.Sanitize(json.ImagePath)
-
-		var res []l.Lost
-		db.Find(&res, "UserId = ?", json.UserId)
-
-		c.JSON(http.StatusOK, gin.H{"data": res})
 
 	}
 
