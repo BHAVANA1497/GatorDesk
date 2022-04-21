@@ -10,7 +10,7 @@
           <form #loginForm="ngForm" (submit)="loginForm.valid && doLogin()">
             <!-- Email -->
             <div class="">
-              <input matInput type="email" name="email" id="email" [(ngModel)]="userData.username" class="w3-input w3-border" placeholder="User Id"
+              <input matInput type="email" name="email" id="email" [(ngModel)]="userData.username" class="w3-input w3-border" placeholder="Email ID"
                 #emailField="ngModel" required>
             </div>
   

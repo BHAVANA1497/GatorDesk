@@ -1,62 +1,65 @@
-mat-grid-tile {
-    
-    height: 100%;
-  }
-  
-  mat-expansion-panel {
-    width: 700px;
-  }
-  
-  h1 {
-    position: absolute;
-    top: 0px;
-  }
-  
- 
-  .mat-success {
-    background-color: #4caf50;
-    color: #fff;
-  }
+mat-grid-tile {    
+  height: 100%;
+}
 
-  .announce{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding-left: 2%;
-  }
+mat-expansion-panel {
+  width: 700px;
+}
+
+h1 {
+  position: absolute;
+  top: 0px;
+}
+
+
+.mat-success {
+  background-color: #4caf50;
+  color: #fff;
+}
+
+.announce{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-left: 2%;
+}
+
+.column {
+  float: left;
+  width: 40%;
+  background: lightblue;
+}
+
+.columnOne {
+  float: left;
+  width: 16%;
+  background-color: white;
+}
+
+h1{
+  font-size: 17px;
+  letter-spacing: 1.5px;
+}
+
+
+/* Clear floats after the columns */
+.row {
+  content: "";
+  display: table;
+  clear: both;
+  background-color: lightblue;
   
-  .column {
-    float: left;
-    width: 30%;
-   
-  }
+}
 
-  .columnOne {
-    float: left;
-    width: 20%;
-    background-color: white;
-  }
+.lost-items{
+    margin: 10px;
+}
 
-  h1{
-    font-size: 17px;
-    letter-spacing: 1.5px;
-  }
-  
-  
-  /* Clear floats after the columns */
-  .row {
-    content: "";
-    display: table;
-    clear: both;
-    background-color: lightblue;
-    
-  }
+h1{
+    position: relative;
+    font-size: 20px;
+}
 
-  .lost-items{
-      margin: 10px;
-  }
-
-  h1{
-      position: relative;
-      font-size: 20px;
-  }
+table {
+  width: 100%;
+}

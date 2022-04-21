@@ -21,10 +21,10 @@ export class LostAndFoundComponent implements OnInit {
   postDataFound: any = {};
   lostItems$: any;
   foundItems$: any;
-  isAdmin: boolean = false;
+  isAdmin = 'user';
 
-  displayedColumnsLost = ['lost_type', 'description'];
-  displayedColumnsFound = ['lost_type', 'description'];
+  displayedColumnsLost = ['lost_type','CreatedAt' ,'description'];
+  displayedColumnsFound = ['lost_type','CreatedAt', 'description'];
 
   datasourceLost !: MatTableDataSource<any>;
   @ViewChild('paginator') paginatorLost!: MatPaginator;
@@ -39,14 +39,16 @@ export class LostAndFoundComponent implements OnInit {
       'itemType':  [null, Validators.required],
       'details': []
     });
-    this.getLostItems();
-    this.getFoundItems();
+    // this.getLostItems();
+    // this.getFoundItems();
   }
 
   getLostItems() {
     this.lostservice.getLostItems().subscribe((data) => {
       console.log(data.data);
       this.lostItems$ = data.data;
+      this.datasourceLost = new MatTableDataSource(this.lostItems$);
+      this.datasourceLost.paginator = this.paginatorLost;
     });
   }
 
@@ -54,26 +56,29 @@ export class LostAndFoundComponent implements OnInit {
     this.lostservice.getFoundItems().subscribe((data) => {
       console.log(data.data);
       this.foundItems$ = data.data;
+      this.datasourceFound = new MatTableDataSource(this.foundItems$);
+      this.datasourceFound.paginator = this.paginatorFound;
     });
-    console.log(this.lostItems$);
   }
 
   ngOnInit(): void {
     let isAdmin = localStorage.getItem("isAdmin");
-    if (isAdmin) {
-      this.isAdmin = true;
+    if (isAdmin === 'true') {
+      this.isAdmin = 'admin';
     }
     this.lostservice.getLostItems().subscribe((data) => {
       console.log(data.data);
       this.lostItems$ = data.data;
       this.datasourceLost = new MatTableDataSource(this.lostItems$);
       this.datasourceLost.paginator = this.paginatorLost;
+      console.log(this.datasourceLost);
     });
     this.lostservice.getFoundItems().subscribe((data) => {
       console.log(data.data);
       this.foundItems$ = data.data;
       this.datasourceFound = new MatTableDataSource(this.foundItems$);
       this.datasourceFound.paginator = this.paginatorFound;
+      console.log(this.datasourceFound);
     });
   }
 
@@ -86,26 +91,29 @@ export class LostAndFoundComponent implements OnInit {
   }
 
   onSubmit(){
+    console.log(this.lostType);
     this.lostType = this.lostType;
     this.requestType = this.requestType;
     this.desc = this.lostAndFoundForm.value.desc;
-    this.postDataLost.lostType = this.lostType;
-    this.postDataLost.desc = this.lostAndFoundForm.value.desc;
- 
-    this.postDataFound.FoundType = this.lostType;
-    this.postDataFound.desc = this.lostAndFoundForm.value.desc;
 
-   console.log(this.requestType);
+    this.postDataLost.lost_type = this.lostType;
+    this.postDataLost.description = this.lostAndFoundForm.value.desc;
+ 
+    this.postDataFound.found_type = this.lostType;
+    this.postDataFound.description = this.lostAndFoundForm.value.desc;
+
   
     if( this.requestType == "lost"){
       this.lostservice.createLostRequest(this.postDataLost).subscribe(res => {
         console.log(res);
+       window.location.reload();
         
       });
     }
     if( this.requestType == "found"){
       this.lostservice.createFoundRequest(this.postDataFound).subscribe(res => {
         console.log(res);
+       window.location.reload();
         
       });
     }

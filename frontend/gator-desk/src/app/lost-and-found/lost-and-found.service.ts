@@ -62,39 +62,34 @@ export class LostAndFoundService {
   result: any;
 
   httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json',
-      Accept: '*/*',
-    }),
-    withCredentials: true
-  };
-
-  httpOptionsNew = {
+    withCredentials: true,
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
       Accept: '*/*',
     })
   };
+
+
   isAdmin: boolean = false;
 
   constructor(private _http: HttpClient) {}
 
   getLostItems(): Observable<any> {
     return this._http.get(
-      'http://localhost:8181/listAllFoundItems',
-      this.httpOptions
-    );
-  }
-
-  getFoundItems(): Observable<any> {
-    return this._http.get(
       'http://localhost:8181/listAllLostItems',
       this.httpOptions
     );
   }
 
+  getFoundItems(): Observable<any> {
+  
+    return this._http.get(
+      'http://localhost:8181/listAllFoundItems',
+      this.httpOptions
+    );
+  }
+
   createLostRequest(postData : any): Observable<any> {
-    //return of(this.foundItems);
     return this._http.post(
       'http://localhost:8181/postLostItem',
       postData,
@@ -103,11 +98,8 @@ export class LostAndFoundService {
   }
 
   createFoundRequest(postData : any): Observable<any> {
-    //return of(this.foundItems);
     return this._http.post(
-      'http://localhost:8181/postFoundItem',
-      postData,
-      this.httpOptions
+      'http://localhost:8181/postFoundItem',postData,this.httpOptions
     );
   }
 
