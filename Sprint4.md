@@ -418,15 +418,15 @@ npm run test
 
 1. UI Link Lost item to Found item for Admin:
 
-lost-found-admin.gif
+![lost-found-admin](https://user-images.githubusercontent.com/46106443/164374380-8f60c31d-049c-4ea6-b0e2-d5157e25f633.gif)
 
 2. UI for Lost and Found for User:
 
-![lost-found-user](https://user-images.githubusercontent.com/43131417/161365028-182091eb-9f67-43ab-b2b9-da2e67355dae.gif)
+![lost-found-user](https://user-images.githubusercontent.com/46106443/164374452-a57c9c69-cbf6-485e-a2d3-1979240ae156.gif)
 
 3. Overall Cypress Tests:
+![cypress-tests](https://user-images.githubusercontent.com/46106443/164374483-706010cd-d934-43d9-b282-b6266a69f88b.gif)
 
-![lost-found-cypress-test](https://user-images.githubusercontent.com/43131417/161365049-31a45f03-8b5e-4c41-a66b-9652870be43d.gif)
 
 
 
