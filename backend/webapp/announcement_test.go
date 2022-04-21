@@ -35,7 +35,7 @@ func setupTestDb(dbName string) *gorm.DB {
 	db.Migrator().DropTable(&m.Announcement{})
 
 	// Migrate the User, Announcements, Losts model to the db
-	db.AutoMigrate(&m.User{}, &m.Announcement{}, &m.Lost{})
+	db.AutoMigrate(&m.User{}, &m.Announcement{}, &m.Lost{}, &m.Found{})
 
 	return db
 }
@@ -284,6 +284,31 @@ func initData(db *gorm.DB) {
 		},
 	}
 	db.Create(&lostitems)
+
+	founditems := []m.Found{
+		{
+			FoundType:   "Jewellery",
+			Description: "found near pool",
+			ImagePath:   "https://image",
+		},
+		{
+			UserId:      1,
+			FoundType:   "Bag",
+			Description: "Contains my wallet and laptop",
+			ImagePath:   "https://image2",
+		},
+		{
+			FoundType:   "Key",
+			Description: "key found",
+			ImagePath:   "https://image4",
+		},
+		{
+			FoundType:   "Heart",
+			Description: "i don't wanna return",
+			ImagePath:   "https://image5",
+		},
+	}
+	db.Create(&founditems)
 
 }
 
