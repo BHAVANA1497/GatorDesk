@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
     
   ];
   
-  isAdmin = false;
+  isAdmin = 'user';
 
   constructor() {}
 
@@ -27,9 +27,10 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     let isAdmin = localStorage.getItem("isAdmin");
-    console.log("is admin", isAdmin);
-    if (isAdmin) {  
-      this.isAdmin = true;
+    console.log(isAdmin);
+    if (isAdmin === 'true') {  
+      this.isAdmin = 'admin';
+      console.log(this.isAdmin);
     }
   }
 
