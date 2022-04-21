@@ -1,1 +1,13 @@
+<div id="header"  *ngIf="isAdmin == 'user'"> 
+    <app-header-nav></app-header-nav>
+  </div> 
+  <div id="header"  *ngIf="isAdmin == 'admin'"> 
+    <app-admin-header-nav></app-admin-header-nav>
+  </div>
+
 <p>maintenance-request works!</p>
+
+<div id="footer" style="position:absolute; bottom:0px; height:200px; left:0px; right:0px; overflow:hidden;"> 
+    <app-footer></app-footer>
+  </div>
+
