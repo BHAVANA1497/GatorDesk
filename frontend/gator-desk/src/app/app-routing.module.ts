@@ -9,6 +9,7 @@ import { AdminAnnouncementComponent } from './admin-announcemet/admin-announceme
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { AdminLostAndFoundComponent } from './admin-lost-and-found/admin-lost-and-found.component';
+import { AuthGuard } from './shared/auth.guard';
 
 const routes: Routes = [
   {
@@ -17,11 +18,11 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   { path: 'home', component: HomeComponent },
-  { path: 'announcement', component: AnnouncementComponent },
-  {path : 'adminannoucement', component : AdminAnnouncementComponent},
-  { path: 'lost-and-found', component: LostAndFoundComponent },
-  {path : 'adminlost-and-found', component : AdminLostAndFoundComponent},
-  { path: 'maintenance-request', component: AdminLostAndFoundComponent },
+  { path: 'announcement', component: AnnouncementComponent , canActivate:[AuthGuard]},
+  {path : 'adminannoucement', component : AdminAnnouncementComponent, canActivate:[AuthGuard]},
+  { path: 'lost-and-found', component: LostAndFoundComponent , canActivate:[AuthGuard]},
+  {path : 'adminlost-and-found', component : AdminLostAndFoundComponent, canActivate:[AuthGuard]},
+  { path: 'maintenance-request', component: MaintenanceRequestComponent , canActivate:[AuthGuard]},
   { path: 'login', component: LoginComponent },
   { path : 'signup', component: SignupComponent}
 ];

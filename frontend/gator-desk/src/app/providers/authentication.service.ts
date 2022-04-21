@@ -21,4 +21,8 @@ export class AuthenticationService {
   continueLogin(userData : any){
     return this.http.post(this.apiUrl, userData, this.httpOptions);
   }
+
+  isLoggedIn(){
+    return localStorage.getItem('USER_DETAILS') != null;
+  }
 }

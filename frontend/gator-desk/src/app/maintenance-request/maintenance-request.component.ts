@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MaintenanceRequestComponent implements OnInit {
 
+  isAdmin: string = 'user';
+
   constructor() { }
 
   ngOnInit(): void {
+    let isAdmin = localStorage.getItem("isAdmin");
+   if (isAdmin === 'true') {
+      this.isAdmin = 'admin';
+    }
   }
 
 }
