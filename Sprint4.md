@@ -1,3 +1,58 @@
+# Sprint 4 – Report on the Tasks Accomplished
+
+## Overview of the Project
+Our project ‘Gator Desk’ is an online portal that aims at increasing the efficiency of handling basic maintenance tasks and fostering communication among residents in any residential community. Few of the key features of this project include - raising of complaints and maintenance requests by the residents, lost and found portal, portal for announcements of various community events and invitations for gatherings, and a discussion forum for the residents. It is basically a go-to place for the residents of the Gator Community, to cater for all their needs.
+
+## Backend Developers:
+- Nitya Vaishnavi Mamillapalle
+- Akhil Maddukuri
+
+## Frontend Developers:
+- Bhavana Chinthalapally
+- Harshitha Myadam
+
+## Overview of the Tasks done in this sprint
+- Link Lost and Found API in the Backend (Golang) - Nitya and Akhil
+- Session management for all the Lost and Found APIs (Golang) - Nitya and Akhil
+- Unit tests for all the the Lost and Found APIs in Backend (Golang) - Nitya and Akhil
+- Deployed Backend to Heroku - Nitya and Akhil
+- Lost and Found Page for Admin in Frontend - Bhavana and Harshitha
+- Lost and Found Page for User in Frontend - Bhavana and Harshitha
+- Cypress tests and Unit tests - Bhavana and Harshitha
+
+## Links pertaining to the project
+- [GatorDesk Repo Link](https://github.com/BHAVANA1497/GatorDesk) 
+- [Jira Board tasks for Sprint 4](https://github.com/BHAVANA1497/GatorDesk/projects/5)
+- [GitHub – Discussion Forum for our project](https://github.com/BHAVANA1497/GatorDesk/discussions/121)
+- [Hyperlink to the user stories in this sprint](https://github.com/BHAVANA1497/GatorDesk/issues?q=is%3Aissue+is%3Aclosed)
+- [Actions and Workflows tab for our project on Git](https://github.com/BHAVANA1497/GatorDesk/actions)
+
+## Backend tasks achieved - (GoLang) - [Akhil Maddukuri and Nitya Vaishnavi Mamillapalle]
+- Update lost and found models to gorm Models
+- Updated the signUp, Login APIs to include the user object in reponse
+- Go Unit testing for lost views
+- Go Unit testing for found views
+- Link lost and found items API - /linkLostFound/:id
+- Merge admins and users models
+- Implemented session  management in found views
+- Implemented sessions management in lost views
+- Tested all the API calls
+- Deployed the backend codebase to Heroku 
+
+## Backend Unit Tests - (GoLang)
+Apart from the unit tests written for the previous sprints, we have added the following unit test cases in this Sprint:
+- TestPostLostItemPassCase
+- TestPostLostItemFailCase
+- TestListLostItemsPassCase
+- TestListLostItemsFailCase
+- TestListLostItemsByUserPassCase
+- TestListLostItemsByUserFailCase
+- TestPostFoundItemPassCase
+- TestPostFoundItemFailCase
+- TestListFoundItemsPassCase
+- TestListFoundItemsFailCase
+- TestListFoundItemsByUserPassCase
+- TestListFoundItemsByUserFailCase
 
 
 ![unit_tests](https://user-images.githubusercontent.com/46106443/164350900-b841619f-cb26-4c3a-ba4d-a9748a9f307b.gif)
