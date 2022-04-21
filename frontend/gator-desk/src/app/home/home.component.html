@@ -1,7 +1,7 @@
-<div id="header" style="position:absolute; top:0px; left:0px; right:0px;overflow:hidden;" *ngIf="!isAdmin"> 
+<div id="header" style="position:absolute; top:0px; left:0px; right:0px;overflow:hidden;" *ngIf="isAdmin == 'user'"> 
   <app-header-nav></app-header-nav>
 </div> 
-<div id="header" style="position:absolute; top:0px; left:0px; right:0px;overflow:hidden;" *ngIf="isAdmin"> 
+<div id="header" style="position:absolute; top:0px; left:0px; right:0px;overflow:hidden;" *ngIf="isAdmin == 'admin'"> 
   <app-admin-header-nav></app-admin-header-nav>
 </div>
 <div id="content" style="position:absolute; top: 60px; bottom:175px; left:0px; right:0px; overflow:auto;"> 
@@ -25,10 +25,10 @@
       padding-bottom: 20px;
     "
   >
-    What do you love?
+    We hear you
   </span>
   <span style="font-size: 24px; color: #263238; font-weight: 200">
-    Do more of it with Gator Meetup
+    Do more of it with Gator Desk
   </span>
 </div>
 <mat-grid-list cols="3" rowHeight="2:1">
