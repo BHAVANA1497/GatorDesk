@@ -16,9 +16,10 @@ Our project ‘Gator Desk’ is an online portal that aims at increasing the eff
 - Session management for all the Lost and Found APIs (Golang) - Nitya and Akhil
 - Unit tests for all the the Lost and Found APIs in Backend (Golang) - Nitya and Akhil
 - Deployed Backend to Heroku - Nitya and Akhil
-- Lost and Found Page for Admin in Frontend - Bhavana and Harshitha
-- Lost and Found Page for User in Frontend - Bhavana and Harshitha
+- Added Role-based access in Frontend - Bhavana and Harshitha
+- Implemented Authguard in Frontend - Bhavana and Harshitha
 - Cypress tests and Unit tests - Bhavana and Harshitha
+- Deployed Frontend in Netlify - Bhavana and Harshitha
 
 ## Links pertaining to the project
 - [GatorDesk Repo Link](https://github.com/BHAVANA1497/GatorDesk) 
@@ -363,13 +364,13 @@ Sample Response	:
 
 ## UI tasks accomplished - (Tech Stack: Angular 13, HTML, CSS, Type Script, JavaScript)
 
-1. Created an admin component that displays all the lost and found items
-2. Developed a backend call that fetches the entire data and displays in the UI to the end user
-3. Developed an additional feature for admin where the admin can link the lost item with the found item.
-4. Developed a webpage where the user can request his/her lost or found items to be displayed.
-5. Built unit test cases for all the angular components using Karma and Jasmine
-6. Performed automated testing using cypress for all the functionalitied developed in this sprint.
-7. Integrated the frontend and backend of the functionality developed in this sprint.
+- Added role based routing based on the person logging in user or admin. The app is developed in such a way that based on the person logging in it directly routes to his page
+- Implemented authguard: if users tries to access the portal without logging in he/she will not be allowed to route to the respective pages
+- Implemented cypress automation tests and jasmine karma unit test cases in the code
+- Made enhancements to UI
+- Linked Lost to Found items - Admin can link a lost item with a found item and mark the is_found field of lost item to true
+- Hosted website frontend in Netlify
+
 
 ### Steps to run 
 
@@ -415,21 +416,25 @@ npm run test
 
 ## UI Demo
 
-1. UI for Lost and Found for Admin:
+1. UI Link Lost item to Found item for Admin:
 
-![lost-found-admin](https://user-images.githubusercontent.com/43131417/161365014-d18c7186-99be-406b-970a-9446779d9275.gif)
+lost-found-admin.gif
 
 2. UI for Lost and Found for User:
 
 ![lost-found-user](https://user-images.githubusercontent.com/43131417/161365028-182091eb-9f67-43ab-b2b9-da2e67355dae.gif)
 
-3. Lost and Found Cypress Tests:
+3. Overall Cypress Tests:
 
 ![lost-found-cypress-test](https://user-images.githubusercontent.com/43131417/161365049-31a45f03-8b5e-4c41-a66b-9652870be43d.gif)
 
-4. Lost and Found Unit Tests:
-
-![lost-found-unit-test](https://user-images.githubusercontent.com/43131417/161365061-ae148c4e-9a2f-4ae4-9686-6200880b6fad.gif)
 
 
-### Video Demo Link:
+### [Video Demo Link : Please Click here](https://youtu.be/Wl-NAkqwZ5w)
+
+
+## Bonus : Deployed Link
+
+We have hosted our website using Netlify for Fronend and Heroku for Backend. Please find our site below:
+
+### [GatorDesk.com](https://taupe-chimera-0b2aed.netlify.app/home)
