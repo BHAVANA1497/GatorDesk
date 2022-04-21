@@ -10,7 +10,8 @@ export class AdminLostAndFoundComponent implements OnInit {
   lostItems$: any;
   foundItems$: any;
   currentFoundItem$: any;
-  isAdmin: boolean = false;
+  isAdmin = 'user';
+  lostRec : any;
 
   constructor(public adminService: AdminLostAndFoundService) {
     this.getLostItems();
@@ -20,45 +21,49 @@ export class AdminLostAndFoundComponent implements OnInit {
   ngOnInit(): void {
     let isAdmin = localStorage.getItem("isAdmin");
     if (isAdmin) {
-      this.isAdmin = true;
+      this.isAdmin = 'admin';
     }
   }
 
   getLostItems() {
     this.adminService.getLostItems().subscribe((data) => {
       console.log(data);
-      this.lostItems$ = data;
+      this.lostItems$ = data.data;
     });
   }
 
   getFoundItems() {
     this.adminService.getFoundItems().subscribe((data) => {
       console.log(data);
-      this.foundItems$ = data;
+      this.foundItems$ = data.data;
     });
-    this.lostItems$.forEach((item: any) => {
-      if (item.isFound) {
-        item.foundItem = this.getFoundItem(item.foundId);
-      }
-    });
-    console.log(this.lostItems$);
   }
 
   linkFoundItem(foundId: any, lostId: any) {
     console.log(foundId + ' = ' + lostId);
-    let lostObj = this.getFoundItem(foundId);
-    lostObj.found_id =  foundId;
-    this.adminService.linkFoundItem( lostId, lostObj).subscribe((data)=> {
+    let lostRec : any;
+    let fId : number = Number(foundId);
+    this.adminService.getLostItem(lostId).subscribe((data) => {
       console.log(data);
+      lostRec = data.data[0];
+      this.lostRec = lostRec;
+      this.lostRec.found_id =  fId;
+      this.lostRec.is_found = true;
+      console.log(lostRec);
+
+    this.adminService.linkFoundItem( lostId, lostRec).subscribe((data)=> {
+      console.log(data);
+      window.location.reload();
     });
-    this.getLostItems();
-    this.getFoundItems();
+
+    });
   }
 
   getLostItem( lostItemId : any) : any {
     let lostRec : any;
     this.adminService.getLostItem(lostItemId).subscribe((data) => {
-      lostRec = data.data;
+      console.log(data);
+      lostRec = data;
     })
     return lostRec;
   }

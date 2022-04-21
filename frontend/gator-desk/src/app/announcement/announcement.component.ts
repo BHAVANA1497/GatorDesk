@@ -11,7 +11,7 @@ import { AnnouncemetService } from './annoucement.service';
 export class AnnouncementComponent implements OnInit {
   panelOpenState = false;
   annoucements$ : any;
-  isAdmin: boolean = false;
+  isAdmin = 'user';
 
   constructor(public announcementService: AnnouncemetService, private router: Router) { 
    this.announcementService.getAllAnnouncements().subscribe((data)=>{
@@ -23,9 +23,8 @@ export class AnnouncementComponent implements OnInit {
 
   ngOnInit(): void {
     let isAdmin = localStorage.getItem("isAdmin");
-    if (isAdmin) {
-      console.log("is admin", isAdmin);
-      this.isAdmin = true;
+    if (isAdmin === 'true') {
+      this.isAdmin = 'admin';
     }
   }
 

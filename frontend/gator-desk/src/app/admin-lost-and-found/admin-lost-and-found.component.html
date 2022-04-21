@@ -1,7 +1,7 @@
-<div id="header"  *ngIf="!isAdmin"> 
+<div id="header" style="position:absolute; top:0px; left:0px; right:0px;overflow:hidden;" *ngIf="isAdmin == 'user'"> 
   <app-header-nav></app-header-nav>
 </div> 
-<div id="header"  *ngIf="isAdmin"> 
+<div id="header" style="position:absolute; top:0px; left:0px; right:0px;overflow:hidden;" *ngIf="isAdmin == 'admin'"> 
   <app-admin-header-nav></app-admin-header-nav>
 </div>
 <div class="container" style="position:relative; top:0px; left:0px; right:0px;" >
@@ -13,34 +13,34 @@
             <mat-expansion-panel *ngFor="let item of lostItems$">
               <mat-expansion-panel-header>
                 <mat-panel-title>
-                  {{ item.id }}
+                  {{ item.ID }}
                 </mat-panel-title>
                 <mat-panel-description>
                   <table>
                     <tr>
                       <td style="width: 150px">
-                        {{ item.type }}
+                        {{ item.lost_type }}
                       </td>
                       <td style="width: 250px">
                         <p>
                           Lost at:
-                          {{ item.createdTime | date: "yyyy-MM-dd HH:mm" }}
+                          {{ item.CreatedAt | date: "yyyy-MM-dd HH:mm" }}
                         </p>
                       </td>
                       <td style="width: 50px; align-items: right">
-                        <p *ngIf="item.type == 'jewellery'">
+                        <p *ngIf="item.lost_type == 'jewellery'">
                           <fa-icon [icon]="['fas', 'ring']"></fa-icon>
                         </p>
-                        <p *ngIf="item.type == 'book'">
+                        <p *ngIf="item.lost_type == 'book'">
                           <fa-icon [icon]="['fas', 'book']"></fa-icon>
                         </p>
-                        <p *ngIf="item.type == 'bag'">
+                        <p *ngIf="item.lost_type == 'bag'">
                           <fa-icon [icon]="['fas', 'briefcase']"></fa-icon>
                         </p>
                       </td>
                       <td style="width: 70px">
                         <button
-                          *ngIf="item.isFound"
+                          *ngIf="item.is_found"
                           mat-raised-button
                           color="success"
                         >
@@ -55,7 +55,7 @@
               <p *ngIf="item.additionalDetails">
                 <b>Additional Details: </b> {{ item.additionalDetails }}
               </p>
-              <div *ngIf="!item.isFound">
+              <div *ngIf="!item.is_found">
                 <button
                   mat-raised-button
                   color="accent"
@@ -73,7 +73,7 @@
                   <button
                     mat-raised-button
                     color="success"
-                    (click)="linkFoundItem(foundId.value, item.id)"
+                    (click)="linkFoundItem(foundId.value, item.ID)"
                     style="margin-left: 10px"
                   >
                     link
@@ -114,28 +114,28 @@
             <mat-expansion-panel *ngFor="let item of foundItems$">
               <mat-expansion-panel-header>
                 <mat-panel-title>
-                  {{ item.id }}
+                  {{ item.ID }}
                 </mat-panel-title>
                 <mat-panel-description>
                   <table>
                     <tr>
                       <td style="width: 150px">
-                        {{ item.type }}
+                        {{ item.found_type }}
                       </td>
                       <td style="width: 250px">
                         <p>
                           Found at:
-                          {{ item.createdTime | date: "yyyy-MM-dd HH:mm" }}
+                          {{ item.CreatedAt | date: "yyyy-MM-dd HH:mm" }}
                         </p>
                       </td>
                       <td style="width: 10px; align-items: right">
-                        <p *ngIf="item.type == 'jewellery'">
+                        <p *ngIf="item.found_type == 'jewellery'">
                           <fa-icon [icon]="['fas', 'ring']"></fa-icon>
                         </p>
-                        <p *ngIf="item.type == 'book'">
+                        <p *ngIf="item.found_type == 'book'">
                           <fa-icon [icon]="['fas', 'book']"></fa-icon>
                         </p>
-                        <p *ngIf="item.type == 'bag'">
+                        <p *ngIf="item.found_type == 'bag'">
                           <fa-icon [icon]="['fas', 'briefcase']"></fa-icon>
                         </p>
                       </td>

@@ -1,7 +1,7 @@
-<div id="header" style="position:absolute; top:0px; left:0px; right:0px;overflow:hidden;" *ngIf="isAdmin"> 
+<div id="header" style="position:absolute; top:0px; left:0px; right:0px;overflow:hidden;" *ngIf="isAdmin == 'user'"> 
   <app-header-nav></app-header-nav>
 </div> 
-<div id="header" style="position:absolute; top:0px; left:0px; right:0px;overflow:hidden;" *ngIf="!isAdmin"> 
+<div id="header" style="position:absolute; top:0px; left:0px; right:0px;overflow:hidden;" *ngIf="isAdmin == 'admin'"> 
   <app-admin-header-nav></app-admin-header-nav>
 </div>
 <div style="width: 100%" > 

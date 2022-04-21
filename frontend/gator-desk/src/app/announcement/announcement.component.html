@@ -1,26 +1,46 @@
-<div id="header" style="position:absolute; top:0px; left:0px; right:0px;overflow:hidden;" *ngIf="isAdmin"> 
+<div id="header" style="position:absolute; top:0px; left:0px; right:0px;overflow:hidden;" *ngIf="isAdmin == 'user'"> 
   <app-header-nav></app-header-nav>
 </div> 
-<div id="header" style="position:absolute; top:0px; left:0px; right:0px;overflow:hidden;" *ngIf="!isAdmin"> 
+<div id="header" style="position:absolute; top:0px; left:0px; right:0px;overflow:hidden;" *ngIf="isAdmin == 'admin'"> 
   <app-admin-header-nav></app-admin-header-nav>
 </div>
 
 <div style="margin-top: 7%">
 <mat-accordion>
- <div class="announcement_style">
-  <h1>Announcements</h1>
-  <mat-expansion-panel *ngFor = "let annoucement of annoucements$ ">
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        {{annoucement.announcementTitle}}
-      </mat-panel-title>
-      <mat-panel-description>
-        {{annoucement.eventDescription}}
-      </mat-panel-description>
-    </mat-expansion-panel-header>
-     <p>{{annoucement.venue}}</p>
-  </mat-expansion-panel>
- </div>
+  <div class="announcement_style">
+    <h1>Announcements</h1>
+    <mat-expansion-panel *ngFor="let item of annoucements$">             
+      <mat-expansion-panel-header> 
+        <mat-panel-description>
+          <table>
+            <tr>
+              <td style="width: 10px; align-items: right">
+                <p>
+                  <fa-icon [icon]="['fas', 'bell']"></fa-icon>
+                </p>
+              </td>
+              <td style="width: 150px">
+                {{ item.announcementTitle }}
+              </td>
+              <td style="width: 250px">
+                <p>
+                  Annoucement Created At:
+                  {{ item.createdAt | date: "yyyy-MM-dd HH:mm" }}
+                </p>
+              </td>
+              <td style="width: 250px">
+                <p>
+                  venue:
+                  Stoneridge Apartments
+                </p>
+              </td>
+            </tr>
+          </table>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <p><b>Description: </b> {{ item.eventDescription }}</p>
+    </mat-expansion-panel>
+  </div>
   </mat-accordion>
   </div>
   <div id="footer" style="position:absolute; bottom:0px; height:200px; left:0px; right:0px; overflow:hidden;"> 
